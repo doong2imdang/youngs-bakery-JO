@@ -5,9 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>calculator</title>
+    <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="container">
+      <div class="value-container">
+        <div class="calculating-value">0</div>
+        <div class="input-value">0</div>
+        <div class="previousResult-value">0</div>
+      </div>
+      <div class="btn-container">
+        <ul class="btn control">
+          <li><button type="button">AC</button></li>
+          <li><button type="button">±</button></li>
+          <li><button type="button">%</button></li>
+        </ul>
+        <ul class="btn number">
+          <li class="first-content">
+            <button type="button">7</button>
+            <button type="button">8</button>
+            <button type="button">9</button>
+          </li>
+          <li class="second-content">
+            <button type="button">4</button>
+            <button type="button">5</button>
+            <button type="button">6</button>
+          </li>
+          <li class="third-content">
+            <button type="button">1</button>
+            <button type="button">2</button>
+            <button type="button">3</button>
+          </li>
+          <li class="fourth-content">
+            <button type="button">0</button>
+            <button type="button">.</button>
+          </li>
+        </ul>
+        <ul class="btn sign">
+          <li><button type="button">÷</button></li>
+          <li><button type="button">x</button></li>
+          <li><button type="button">-</button></li>
+          <li><button type="button">+</button></li>
+          <li><button type="button">=</button></li>
+        </ul>
+      </div>
+    </div>
     <script src="index.js"></script>
   </body>
 </html>

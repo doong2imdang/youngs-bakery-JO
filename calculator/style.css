@@ -1,0 +1,98 @@
+.container {
+  background: black;
+  max-width: 400px;
+  margin: 100px auto;
+  border-radius: 40px;
+  border: 6px solid #a3a3a3;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.value-container {
+  padding: 40px 50px 0 50px;
+}
+
+.calculating-value,
+.input-value {
+  text-align: right;
+}
+
+.calculating-value,
+.previousResult-value {
+  color: #a3a3a3;
+  font-size: 23px;
+}
+
+.input-value {
+  padding: 7px 0 20px 0;
+  font-size: 40px;
+  color: white;
+}
+
+button {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+}
+
+.btn-container {
+  padding: 23px;
+  display: grid;
+  grid-template-areas:
+    "a c"
+    "b c";
+}
+
+.btn.control {
+  grid-area: a;
+  display: flex;
+  flex-direction: row;
+  gap: 13px;
+  color: black;
+}
+
+.btn.control li button {
+  background: #a3a3a3;
+  font-size: 22px;
+}
+
+.btn.number {
+  grid-area: b;
+}
+
+.btn.number li {
+  display: flex;
+  gap: 15px;
+}
+
+.btn.number li button {
+  background: #323232;
+  color: white;
+  font-size: 30px;
+}
+
+.first-content {
+  margin-top: 20px;
+}
+
+.btn.number li button {
+  margin-bottom: 15px;
+}
+
+.btn.sign {
+  grid-area: c;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-left: 10px;
+}
+
+.btn.sign li button {
+  background: #fc9400;
+  color: white;
+  font-size: 30px;
+}
+
+.fourth-content button:first-child {
+  width: 170px;
+  border-radius: 50px;
+}
