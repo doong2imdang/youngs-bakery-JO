@@ -7,6 +7,7 @@ function clearDisplay() {
   currentInput = "";
   inputValue.innerHTML = "0";
   calculatingValue.innerHTML = "0";
+  previousResultValue.innerHTML = "0";
 }
 
 function appendToDisplay(value) {
