@@ -22,3 +22,11 @@ function changeSign() {
     calculatingValue.innerHTML = currentInput;
   }
 }
+
+function calculatingPercentage() {
+  if (currentInput !== "" && currentInput !== "0") {
+    currentInput = currentInput / 100;
+    inputValue.innerHTML = currentInput;
+    calculatingValue.innerHTML = currentInput;
+  }
+}
