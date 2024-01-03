@@ -8,3 +8,9 @@ function clearDisplay() {
   inputValue.innerHTML = "0";
   calculatingValue.innerHTML = "0";
 }
+
+function appendToDisplay(value) {
+  currentInput += value;
+  inputValue.innerHTML = currentInput;
+  calculatingValue.innerHTML = currentInput;
+}
