@@ -14,3 +14,11 @@ function appendToDisplay(value) {
   inputValue.innerHTML = currentInput;
   calculatingValue.innerHTML = currentInput;
 }
+
+function changeSign() {
+  if (currentInput !== "" && currentInput !== "0") {
+    currentInput = currentInput * -1;
+    inputValue.innerHTML = currentInput;
+    calculatingValue.innerHTML = currentInput;
+  }
+}
