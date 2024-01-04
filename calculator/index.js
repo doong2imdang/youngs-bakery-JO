@@ -1,6 +1,7 @@
 let calculatingValue = document.querySelector(".calculating-value");
 let inputValue = document.querySelector(".input-value");
 let previousResultValue = document.querySelector(".previousResult-value");
+let btnReset = document.querySelector(".btn-reset");
 let currentInput = "";
 
 function clearDisplay() {
@@ -8,12 +9,14 @@ function clearDisplay() {
   inputValue.innerHTML = "0";
   calculatingValue.innerHTML = "0";
   previousResultValue.innerHTML = "0";
+  btnReset.innerHTML = "AC";
 }
 
 function appendToDisplay(value) {
   currentInput += value;
   inputValue.innerHTML = currentInput;
   calculatingValue.innerHTML = currentInput;
+  btnReset.innerHTML = "C";
 }
 
 function changeSign() {
