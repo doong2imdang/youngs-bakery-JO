@@ -31,3 +31,44 @@ function calculatingPercentage() {
     calculatingValue.innerHTML = currentInput;
   }
 }
+
+function calculateResult() {
+  if (currentInput !== "" && currentInput !== "0") {
+    currentInput = currentInput.replace(/x/g, "*").replace(/÷/g, "/");
+    const tokens = currentInput
+      .split(/([+\-*/])/)
+      .map((token) => (token === "" ? "0" : token));
+
+    let result = parseFloat(tokens[0]);
+
+    for (let i = 1; i < tokens.length; i += 2) {
+      const operator = tokens[i];
+      const operand = parseFloat(tokens[i + 1]);
+
+      result = performOperation(result, operator, operand);
+    }
+
+    inputValue.innerHTML = result;
+    calculatingValue.innerHTML = result;
+    previousResultValue.innerHTML = result;
+    currentInput = result;
+  }
+}
+
+function performOperation(a, operator, b) {
+  switch (operator) {
+    case "+":
+      return a + b;
+    case "-":
+      return a - b;
+    case "*":
+      return a * b;
+    case "/":
+      if (b === 0) {
+        return "오류";
+      }
+      return a / b;
+    default:
+      throw new Error("Error");
+  }
+}
