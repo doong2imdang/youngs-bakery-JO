@@ -195,8 +195,21 @@ body {
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   border: 1px solid #bdbdbd;
+}
+
+.selected-drinks::-webkit-scrollbar {
+  background-color: transparent;
+  width: 12px;
+}
+
+.selected-drinks::-webkit-scrollbar-thumb {
+  background-color: #ffffff;
+  border-radius: 50px;
+  background-clip: padding-box;
+  border: 4px solid transparent;
 }
 
 .selected-drink img {
@@ -274,11 +287,25 @@ body {
 }
 
 .acquired-items {
-  min-height: 364px;
+  height: 364px;
   background: #ffd2b9;
   margin: 8px 0 9px 0;
   padding: 12px;
   border-radius: 5px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.acquired-items::-webkit-scrollbar {
+  background-color: transparent;
+  width: 12px;
+}
+
+.acquired-items::-webkit-scrollbar-thumb {
+  background-color: #ffffff;
+  border-radius: 50px;
+  background-clip: padding-box;
+  border: 4px solid transparent;
 }
 
 .acquired-item img {
