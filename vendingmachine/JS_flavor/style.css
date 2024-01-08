@@ -33,7 +33,7 @@ body {
 
 .drink-items {
   justify-content: center;
-  padding: 11px 9px;
+  padding: 12px 9px;
   border-radius: 10px;
   background: #3f3f3f;
 }
@@ -43,6 +43,7 @@ body {
   grid-template-columns: repeat(3, 94px);
   justify-content: center;
   gap: 12px;
+  position: relative;
 }
 
 .drink-item {
@@ -54,6 +55,16 @@ body {
 
 .drink-item:focus-within {
   box-shadow: 0 0 0 3px #ff7d35;
+}
+
+.sold-out {
+  background: url("./images/sold-out.svg") center no-repeat #000000;
+  position: absolute;
+  opacity: 80%;
+  width: 94px;
+  height: 130px;
+  border-radius: 10px;
+  top: 0px;
 }
 
 .drink-name {
@@ -302,12 +313,4 @@ body {
   border-radius: 5px;
   font-size: 16px;
   font-weight: bold;
-}
-
-.sold-out {
-  background: url("./images/sold-out.svg") no-repeat #000000;
-  opacity: 80%;
-  width: 94px;
-  height: 130px;
-  border-radius: 10px;
 }
