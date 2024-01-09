@@ -12,7 +12,13 @@
     <div class="container">
       <header>
         <h1>
-          <img class="image-logo" src="./images/logo-pc.svg" alt="로고" />
+          <picture>
+            <source
+              srcset="images/logo-mobile.svg"
+              media="(max-width: 792px)"
+            />
+            <img class="image-logo" src="./images/logo-pc.svg" alt="로고" />
+          </picture>
         </h1>
       </header>
       <main class="vending-machine">

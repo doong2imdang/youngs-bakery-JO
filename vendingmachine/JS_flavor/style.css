@@ -341,3 +341,40 @@ body {
   font-size: 16px;
   font-weight: bold;
 }
+
+/* media query */
+@media screen and (max-width: 792px) {
+  body {
+    background: #3f3f3f;
+  }
+
+  .image-logo {
+    max-width: 188px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .vending-machine {
+    display: grid;
+    place-items: center;
+    grid-template-areas:
+      "selection "
+      "wallet "
+      "acquired";
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .drink-selection {
+    justify-self: center;
+    margin-top: -10px;
+    border: 10px solid #a59b9b;
+    border-radius: 0px;
+    max-width: 336px;
+    padding: 5px;
+  }
+
+  .drink-items {
+    padding: 12px;
+  }
+}
