@@ -368,13 +368,14 @@ body {
   .drink-selection {
     justify-self: center;
     margin-top: -10px;
-    border: 10px solid #a59b9b;
+    border: 0;
     border-radius: 0px;
     max-width: 336px;
-    padding: 5px;
+    min-width: 334px;
   }
 
   .drink-items {
     padding: 12px;
+    margin-top: 6px;
   }
 }
