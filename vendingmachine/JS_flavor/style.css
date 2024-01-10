@@ -53,7 +53,7 @@ body {
   border-radius: 10px;
 }
 
-.drink-item:focus-within {
+.drink-item:active {
   box-shadow: 0 0 0 3px #ff7d35;
 }
 
@@ -169,6 +169,8 @@ body {
   padding: 9px 10px;
   color: #3f3f3f;
   font-size: 13px;
+  text-align: right;
+  font-weight: bold;
 }
 
 #amount-input::placeholder {
@@ -198,6 +200,7 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   border: 1px solid #bdbdbd;
+  cursor: pointer;
 }
 
 .selected-drinks::-webkit-scrollbar {
