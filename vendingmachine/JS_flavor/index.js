@@ -5,6 +5,8 @@ const walletDisplay = document.querySelector(".wallet");
 const returnButton = document.querySelector(".return-button");
 const drinkButtons = document.querySelectorAll(".drink-item button");
 const selectedDrinksContainer = document.querySelector(".selected-drinks");
+const acquiredButton = document.querySelector(".acquire-button");
+const acquiredItemsContainer = document.querySelector(".acquired-items");
 
 let balance = 25000;
 
@@ -72,4 +74,31 @@ drinkButtons.forEach(function (drinkButton) {
       selectedDrinksContainer.appendChild(selectedDrinkElement);
     }
   });
+});
+
+acquiredButton.addEventListener("click", function () {
+  const selectedDrinks =
+    selectedDrinksContainer.querySelectorAll(".selected-drink");
+  selectedDrinks.forEach(function (selectedDrink) {
+    const drinkImage = selectedDrink.querySelector("img").src;
+    const drinkName = selectedDrink.querySelector("span").innerText;
+    const drinkStock = selectedDrink.querySelector(
+      ".selected-stock strong"
+    ).innerText;
+
+    const acquiredItemElement = document.createElement("div");
+    acquiredItemElement.classList.add("acquired-item");
+
+    acquiredItemElement.innerHTML = `
+    <img src="${drinkImage}" alt="" />
+    <span>${drinkName}</span>
+    <div class="acquired-stock">
+      <strong>${drinkStock}</strong>
+    </div>
+    `;
+
+    acquiredItemsContainer.appendChild(acquiredItemElement);
+  });
+
+  selectedDrinksContainer.innerHTML = "";
 });
