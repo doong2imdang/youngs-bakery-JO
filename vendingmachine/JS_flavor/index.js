@@ -8,7 +8,12 @@ let balance = 25000;
 
 depositButton.addEventListener("click", function () {
   const depositAmount = parseInt(amountInput.value.replaceAll(",", ""));
-  if (!isNaN(depositAmount) && depositAmount > 0 && balance > 0) {
+  if (
+    !isNaN(depositAmount) &&
+    depositAmount > 0 &&
+    balance > 0 &&
+    depositAmount <= balance
+  ) {
     balance -= depositAmount;
     balanceDisplay.innerText =
       (
