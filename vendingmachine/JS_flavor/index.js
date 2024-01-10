@@ -2,6 +2,7 @@ const amountInput = document.getElementById("amount-input");
 const depositButton = document.querySelector(".deposit-button");
 const balanceDisplay = document.querySelector(".balance");
 const walletDisplay = document.querySelector(".wallet");
+const returnButton = document.querySelector(".return-button");
 
 let balance = 25000;
 
@@ -27,4 +28,10 @@ amountInput.addEventListener("keyup", function (e) {
   value = Number(value.replaceAll(",", ""));
   const formatValue = value.toLocaleString();
   amountInput.value = formatValue;
+});
+
+returnButton.addEventListener("click", function () {
+  balance += parseInt(balanceDisplay.innerText.replaceAll(",", ""));
+  balanceDisplay.innerText = "0원";
+  walletDisplay.innerText = balance.toLocaleString() + "원";
 });
