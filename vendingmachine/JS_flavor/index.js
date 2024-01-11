@@ -7,6 +7,7 @@ const drinkButtons = document.querySelectorAll(".drink-item button");
 const selectedDrinksContainer = document.querySelector(".selected-drinks");
 const acquiredButton = document.querySelector(".acquire-button");
 const acquiredItemsContainer = document.querySelector(".acquired-items");
+const totalDisplay = document.querySelector(".total");
 
 let balance = 25000;
 
@@ -79,7 +80,6 @@ drinkButtons.forEach(function (drinkButton) {
 acquiredButton.addEventListener("click", function () {
   const selectedDrinks =
     selectedDrinksContainer.querySelectorAll(".selected-drink");
-
   let selectedAmounts = [];
 
   selectedDrinks.forEach((selectedDrink) => {
@@ -111,6 +111,9 @@ acquiredButton.addEventListener("click", function () {
           parseInt(balanceDisplay.innerText.replace(",", "")) - totalAmount
         ).toLocaleString() + "원";
       selectedDrinksContainer.innerHTML = "";
+      const totalCash =
+        acquiredItemsContainer.querySelectorAll("div div strong");
+      totalDisplay.innerText = (totalCash.length * 1000).toLocaleString();
     } else {
       alert("잔액이 부족합니다");
     }
