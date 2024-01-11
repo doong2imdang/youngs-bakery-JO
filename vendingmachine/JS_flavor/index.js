@@ -79,26 +79,40 @@ drinkButtons.forEach(function (drinkButton) {
 acquiredButton.addEventListener("click", function () {
   const selectedDrinks =
     selectedDrinksContainer.querySelectorAll(".selected-drink");
-  selectedDrinks.forEach(function (selectedDrink) {
+
+  let selectedAmounts = [];
+
+  selectedDrinks.forEach((selectedDrink) => {
     const drinkImage = selectedDrink.querySelector("img").src;
     const drinkName = selectedDrink.querySelector("span").innerText;
-    const drinkStock = selectedDrink.querySelector(
-      ".selected-stock strong"
-    ).innerText;
+    const drinkStock = parseInt(
+      selectedDrink.querySelector(".selected-stock strong").innerText
+    );
+    const drinkPrice = 1000;
+    const selectedAmount = drinkStock * drinkPrice;
 
     const acquiredItemElement = document.createElement("div");
     acquiredItemElement.classList.add("acquired-item");
 
     acquiredItemElement.innerHTML = `
-    <img src="${drinkImage}" alt="" />
-    <span>${drinkName}</span>
-    <div class="acquired-stock">
-      <strong>${drinkStock}</strong>
-    </div>
-    `;
+      <img src="${drinkImage}" alt="" />
+      <span> ${drinkName}</span>
+      <div class="acquired-stock">
+        <strong>${drinkStock}</strong>
+      </div>
+      `;
+    selectedAmounts.push(selectedAmount);
+    const totalAmount = selectedAmounts.pop();
 
-    acquiredItemsContainer.appendChild(acquiredItemElement);
+    if (totalAmount <= parseInt(balanceDisplay.innerText.replace(",", ""))) {
+      acquiredItemsContainer.appendChild(acquiredItemElement);
+      balanceDisplay.innerText =
+        (
+          parseInt(balanceDisplay.innerText.replace(",", "")) - totalAmount
+        ).toLocaleString() + "원";
+      selectedDrinksContainer.innerHTML = "";
+    } else {
+      alert("잔액이 부족합니다");
+    }
   });
-
-  selectedDrinksContainer.innerHTML = "";
 });
