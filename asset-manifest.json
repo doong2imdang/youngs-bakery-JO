@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/youngs-bakery/calculator/react_flavor/static/js/main.0fcf1d04.js",
-    "index.html": "/youngs-bakery/calculator/react_flavor/index.html",
-    "main.0fcf1d04.js.map": "/youngs-bakery/calculator/react_flavor/static/js/main.0fcf1d04.js.map"
+    "main.js": "/youngs-bakery/static/js/main.4b623090.js",
+    "index.html": "/youngs-bakery/index.html",
+    "main.4b623090.js.map": "/youngs-bakery/static/js/main.4b623090.js.map"
   },
   "entrypoints": [
-    "static/js/main.0fcf1d04.js"
+    "static/js/main.4b623090.js"
   ]
 }
