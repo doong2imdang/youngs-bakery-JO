@@ -40,6 +40,15 @@ function App() {
   const [balanceDisplay, setBalanceDisplay] = useState(0);
   const [amountInput, setAmountInput] = useState("");
   const [walletDisplay, setWalletDispaly] = useState(25000);
+  const [selectedDrinks, setSelectedDrinks] = useState([]);
+  const [selectedStock, setSelectedStock] = useState({
+    Original_Cola: 1,
+    Violet_Cola: 1,
+    Yellow_Cola: 1,
+    Cool_Cola: 1,
+    Green_Cola: 1,
+    Orange_Cola: 1,
+  });
 
   const handleInputValue = (e) => {
     let value = e.target.value;
@@ -70,6 +79,28 @@ function App() {
     }
   };
 
+  const handleDrinkItemClick = (drinkName) => {
+    const drinkIndex = selectedDrinks.findIndex((drink) => drink === drinkName);
+
+    if (drinkIndex === -1) {
+      setSelectedDrinks([...selectedDrinks, drinkName]);
+    } else {
+      setSelectedStock((prevStock) => ({
+        ...prevStock,
+        [drinkName]: prevStock[drinkName] + 1,
+      }));
+    }
+  };
+
+  const DrinkImages = {
+    Original_Cola: OriginalCola,
+    Violet_Cola: VioletCola,
+    Yellow_Cola: YellowCola,
+    Cool_Cola: CoolCola,
+    Green_Cola: GreenCola,
+    Orange_Cola: OrangeCola,
+  };
+
   return (
     <>
       <GlobalStyles />
@@ -87,42 +118,60 @@ function App() {
             <DrinkItems>
               <DrinkLists>
                 <DrinkItem>
-                  <button type="button">
+                  <button
+                    type="button"
+                    onClick={() => handleDrinkItemClick("Original_Cola")}
+                  >
                     <img src={OriginalCola} alt="" />
                     <DrinkName>Original_Cola</DrinkName>
                     <DrinkPrice type="button">1000원</DrinkPrice>
                   </button>
                 </DrinkItem>
                 <DrinkItem>
-                  <button type="button">
+                  <button
+                    type="button"
+                    onClick={() => handleDrinkItemClick("Violet_Cola")}
+                  >
                     <img src={VioletCola} alt="" />
                     <DrinkName>Violet_Cola</DrinkName>
                     <DrinkPrice type="button">1000원</DrinkPrice>
                   </button>
                 </DrinkItem>
                 <DrinkItem>
-                  <button type="button">
+                  <button
+                    type="button"
+                    onClick={() => handleDrinkItemClick("Yellow_Cola")}
+                  >
                     <img src={YellowCola} alt="" />
                     <DrinkName>Yellow_Cola</DrinkName>
                     <DrinkPrice type="button">1000원</DrinkPrice>
                   </button>
                 </DrinkItem>
                 <DrinkItem>
-                  <button type="button">
+                  <button
+                    type="button"
+                    onClick={() => handleDrinkItemClick("Cool_Cola")}
+                  >
                     <img src={CoolCola} alt="" />
                     <DrinkName>Cool_Cola</DrinkName>
                     <DrinkPrice type="button">1000원</DrinkPrice>
                   </button>
                 </DrinkItem>
                 <DrinkItem>
-                  <button type="button">
+                  <button
+                    type="button"
+                    onClick={() => handleDrinkItemClick("Green_Cola")}
+                  >
                     <img src={GreenCola} alt="" />
                     <DrinkName>Green_Cola</DrinkName>
                     <DrinkPrice type="button">1000원</DrinkPrice>
                   </button>
                 </DrinkItem>
                 <DrinkItem>
-                  <button type="button">
+                  <button
+                    type="button"
+                    onClick={() => handleDrinkItemClick("Orange_Cola")}
+                  >
                     <img src={OrangeCola} alt="" />
                     <DrinkName>Orange_Cola</DrinkName>
                     <DrinkPrice type="button">1000원</DrinkPrice>
@@ -157,7 +206,16 @@ function App() {
                 </li>
                 <li>
                   <SelectedDrinks>
-                    <SelectedDrink>
+                    {selectedDrinks.map((drink, index) => (
+                      <SelectedDrink key={index}>
+                        <img src={DrinkImages[drink]} alt="" />
+                        <span> {drink} </span>
+                        <SelectedStock>
+                          <strong>{selectedStock[drink]}</strong>
+                        </SelectedStock>
+                      </SelectedDrink>
+                    ))}
+                    {/* <SelectedDrink>
                       <img src={OriginalCola} alt="" />
                       <span> Original_Cola </span>
                       <SelectedStock>
@@ -170,7 +228,7 @@ function App() {
                       <SelectedStock>
                         <strong>2</strong>
                       </SelectedStock>
-                    </SelectedDrink>
+                    </SelectedDrink> */}
                   </SelectedDrinks>
                 </li>
                 <li>
@@ -188,7 +246,7 @@ function App() {
           <DrinkAcquired>
             <h2>획득한 음료</h2>
             <AcquiredItems>
-              <AcquiredItem>
+              {/* <AcquiredItem>
                 <img src={OriginalCola} alt="" />
                 <span> Original_Cola </span>
                 <AcquiredStock>
@@ -243,7 +301,7 @@ function App() {
                 <AcquiredStock>
                   <strong>1</strong>
                 </AcquiredStock>
-              </AcquiredItem>
+              </AcquiredItem> */}
             </AcquiredItems>
             <TotalAmount>
               <span>
