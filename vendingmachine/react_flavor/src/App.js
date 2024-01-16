@@ -103,13 +103,34 @@ function App() {
   };
 
   const handleAcquireButtonClick = () => {
-    const acquiredItemsToAdd = selectedDrinks.map((drink) => ({
-      name: drink,
-      stock: selectedStock[drink],
-    }));
+    const totalCost = selectedDrinks.reduce(
+      (total, drink) => total + selectedStock[drink] * 1000,
+      0
+    );
 
-    setAcquiredItems((prevItems) => [...prevItems, ...acquiredItemsToAdd]);
-    setSelectedDrinks([]);
+    if (totalCost <= balanceDisplay) {
+      setBalanceDisplay((prevBalance) => prevBalance - totalCost);
+
+      const acquiredItemsToAdd = selectedDrinks.map((drink) => ({
+        name: drink,
+        stock: selectedStock[drink],
+      }));
+
+      setAcquiredItems((prevItems) => [...prevItems, ...acquiredItemsToAdd]);
+
+      setSelectedDrinks([]);
+      setSelectedStock({
+        Original_Cola: 1,
+        Violet_Cola: 1,
+        Yellow_Cola: 1,
+        Cool_Cola: 1,
+        Green_Cola: 1,
+        Orange_Cola: 1,
+      });
+    } else {
+      alert("잔액이 부족합니다!");
+      setSelectedDrinks([]);
+    }
   };
 
   return (
