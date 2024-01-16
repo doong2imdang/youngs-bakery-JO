@@ -61,6 +61,15 @@ function App() {
     }
   };
 
+  const handleReturnButtonClick = () => {
+    if (balanceDisplay > 0) {
+      setWalletDispaly(walletDisplay + balanceDisplay);
+      setBalanceDisplay(0);
+    } else {
+      alert("반환할 거스름돈이 없습니다!");
+    }
+  };
+
   return (
     <>
       <GlobalStyles />
@@ -126,7 +135,9 @@ function App() {
                   </BalanceDisplay>
                 </li>
                 <li>
-                  <ReturnButton type="button">거스름돈 변환</ReturnButton>
+                  <ReturnButton type="button" onClick={handleReturnButtonClick}>
+                    거스름돈 변환
+                  </ReturnButton>
                 </li>
                 <li>
                   <AmountInput
