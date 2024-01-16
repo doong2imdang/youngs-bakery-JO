@@ -111,6 +111,10 @@ body {
   border-radius: 10px;
 }
 
+input::placeholder {
+  color: #ffffff;
+}
+
 .colon {
   color: #fbf23b;
   font-size: 90px;
