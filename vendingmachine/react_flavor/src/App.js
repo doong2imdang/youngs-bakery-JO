@@ -351,7 +351,11 @@ function App() {
             </AcquiredItems>
             <TotalAmount>
               <span>
-                총금액: <strong>0</strong>원
+                총금액:{" "}
+                <strong>
+                  {(acquiredItems.length * 1000).toLocaleString()}
+                </strong>
+                원
               </span>
             </TotalAmount>
           </DrinkAcquired>
