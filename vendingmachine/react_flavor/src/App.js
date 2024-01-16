@@ -41,6 +41,7 @@ function App() {
   const [amountInput, setAmountInput] = useState("");
   const [walletDisplay, setWalletDispaly] = useState(25000);
   const [selectedDrinks, setSelectedDrinks] = useState([]);
+  const [acquiredItems, setAcquiredItems] = useState([]);
   const [selectedStock, setSelectedStock] = useState({
     Original_Cola: 1,
     Violet_Cola: 1,
@@ -99,6 +100,16 @@ function App() {
     Cool_Cola: CoolCola,
     Green_Cola: GreenCola,
     Orange_Cola: OrangeCola,
+  };
+
+  const handleAcquireButtonClick = () => {
+    const acquiredItemsToAdd = selectedDrinks.map((drink) => ({
+      name: drink,
+      stock: selectedStock[drink],
+    }));
+
+    setAcquiredItems((prevItems) => [...prevItems, ...acquiredItemsToAdd]);
+    setSelectedDrinks([]);
   };
 
   return (
@@ -232,7 +243,12 @@ function App() {
                   </SelectedDrinks>
                 </li>
                 <li>
-                  <AcqurieButton type="button">획득</AcqurieButton>
+                  <AcqurieButton
+                    type="button"
+                    onClick={handleAcquireButtonClick}
+                  >
+                    획득
+                  </AcqurieButton>
                 </li>
               </DrinkLists>
             </DrinkItems>
@@ -246,6 +262,15 @@ function App() {
           <DrinkAcquired>
             <h2>획득한 음료</h2>
             <AcquiredItems>
+              {acquiredItems.map((item, index) => (
+                <AcquiredItem key={index}>
+                  <img src={DrinkImages[item.name]} alt="" />
+                  <span> {item.name} </span>
+                  <AcquiredStock>
+                    <strong>{item.stock}</strong>
+                  </AcquiredStock>
+                </AcquiredItem>
+              ))}
               {/* <AcquiredItem>
                 <img src={OriginalCola} alt="" />
                 <span> Original_Cola </span>
