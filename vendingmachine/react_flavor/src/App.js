@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import GlobalStyles from "./style/GlobalStyle";
 import LogoMobile from "./images/logo-mobile.svg";
 import LogoPC from "./images/logo-pc.svg";
@@ -37,6 +37,15 @@ import {
 } from "./style/VendingMachine";
 
 function App() {
+  const [amountInput, setAmountInput] = useState("");
+
+  const handleInputValue = (e) => {
+    let value = e.target.value;
+    value = Number(value.replaceAll(",", ""));
+    const formatValue = value.toLocaleString();
+    setAmountInput(formatValue);
+  };
+
   return (
     <>
       <GlobalStyles />
@@ -98,14 +107,19 @@ function App() {
                 <li>
                   <BalanceDisplay>
                     <span>잔액 : </span>
-                    <strong class="balance">0원</strong>
+                    <strong>0원</strong>
                   </BalanceDisplay>
                 </li>
                 <li>
                   <ReturnButton type="button">거스름돈 변환</ReturnButton>
                 </li>
                 <li>
-                  <AmountInput type="text" placeholder="입금액 입력" />
+                  <AmountInput
+                    type="text"
+                    value={amountInput}
+                    placeholder="입금액 입력"
+                    onChange={handleInputValue}
+                  />
                 </li>
                 <li>
                   <DepositButton type="button">입금</DepositButton>
@@ -137,7 +151,7 @@ function App() {
           <WalletDisplay>
             <WalletCotent>
               <span>소지금 : </span>
-              <strong class="wallet">25,000원</strong>
+              <strong>25000원</strong>
             </WalletCotent>
           </WalletDisplay>
           <DrinkAcquired>
@@ -202,7 +216,7 @@ function App() {
             </AcquiredItems>
             <TotalAmount>
               <span>
-                총금액: <strong class="total">0</strong>원
+                총금액: <strong>0</strong>원
               </span>
             </TotalAmount>
           </DrinkAcquired>
