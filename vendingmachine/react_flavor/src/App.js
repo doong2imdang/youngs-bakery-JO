@@ -37,13 +37,28 @@ import {
 } from "./style/VendingMachine";
 
 function App() {
+  const [balanceDisplay, setBalanceDisplay] = useState(0);
   const [amountInput, setAmountInput] = useState("");
+  const [walletDisplay, setWalletDispaly] = useState(25000);
 
   const handleInputValue = (e) => {
     let value = e.target.value;
     value = Number(value.replaceAll(",", ""));
     const formatValue = value.toLocaleString();
     setAmountInput(formatValue);
+  };
+
+  const handleDepositButtonClick = () => {
+    const depositAmount = Number(amountInput.replaceAll(",", ""));
+
+    if (depositAmount <= walletDisplay) {
+      setWalletDispaly(walletDisplay - depositAmount);
+      setBalanceDisplay(balanceDisplay + depositAmount);
+      setAmountInput("");
+    } else {
+      alert("유효한 입금 금액을 입력하세요!");
+      setAmountInput("");
+    }
   };
 
   return (
@@ -107,7 +122,7 @@ function App() {
                 <li>
                   <BalanceDisplay>
                     <span>잔액 : </span>
-                    <strong>0원</strong>
+                    <strong>{balanceDisplay.toLocaleString()}원</strong>
                   </BalanceDisplay>
                 </li>
                 <li>
@@ -122,7 +137,12 @@ function App() {
                   />
                 </li>
                 <li>
-                  <DepositButton type="button">입금</DepositButton>
+                  <DepositButton
+                    type="button"
+                    onClick={handleDepositButtonClick}
+                  >
+                    입금
+                  </DepositButton>
                 </li>
                 <li>
                   <SelectedDrinks>
@@ -151,7 +171,7 @@ function App() {
           <WalletDisplay>
             <WalletCotent>
               <span>소지금 : </span>
-              <strong>25000원</strong>
+              <strong>{walletDisplay.toLocaleString()}원</strong>
             </WalletCotent>
           </WalletDisplay>
           <DrinkAcquired>
