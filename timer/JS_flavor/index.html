@@ -25,7 +25,7 @@
             <div class="hour-container">
               <p>HRS</p>
               <div class="hour-content">
-                <input type="number" placeholder="00" />
+                <input id="hour" type="number" placeholder="00" />
               </div>
             </div>
             <div class="colon">
@@ -34,7 +34,7 @@
             <div class="minute-container">
               <p>MIN</p>
               <div class="minute-content">
-                <input type="number" placeholder="00" />
+                <input id="minute" type="number" placeholder="00" />
               </div>
             </div>
             <div class="colon">
@@ -43,16 +43,24 @@
             <div class="second-container">
               <p>SEC</p>
               <div class="second-content">
-                <input type="number" placeholder="00" />
+                <input id="second" type="number" placeholder="00" />
               </div>
             </div>
           </div>
           <div class="button-container">
             <button class="start-button" type="button">
-              <img src="./images/start-button-disabled.svg" alt="" />START
+              <img
+                class="start-button-image"
+                src="./images/start-button-disabled.svg"
+                alt=""
+              />START
             </button>
             <button class="reset-button" type="button">
-              <img src="./images/reset-button-disabled.svg" alt="" />RESET
+              <img
+                class="reset-button-image"
+                src="./images/reset-button-disabled.svg"
+                alt=""
+              />RESET
             </button>
           </div>
         </div>
