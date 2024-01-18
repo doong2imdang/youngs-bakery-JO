@@ -23,7 +23,7 @@ function handleInputFocus() {
 }
 
 inputs.forEach((input) => {
-  input.addEventListener("focus", handleInputFocus);
+  input.addEventListener("change", handleInputFocus);
 
   input.addEventListener("change", function (e) {
     if (e.target.value.length === 1) {
@@ -88,6 +88,10 @@ function updateDisplay() {
 }
 
 function resetDisplay() {
+  inputs.forEach((input) => {
+    input.removeAttribute("readonly");
+  });
+
   totalSeconds = 0;
   hourInput.value = "";
   minuteInput.value = "";
