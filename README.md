@@ -1,7 +1,10 @@
 ![KakaoTalk_20231228_150639883](https://github.com/doong2imdang/youngs-bakery/assets/124869695/691bd61d-f915-44c5-8100-f73b3189bc9e)
-계산기 JS(https://doong2imdang.github.io/youngs-bakery/calculator/JS_flavor/)
+계산기 JS(https://doong2imdang.github.io/youngs-bakery/calculator/JS_flavor/
+)
 
 자판기 JS(https://doong2imdang.github.io/youngs-bakery/vendingmachine/JS_flavor/)
+
+타이머 JS(https://doong2imdang.github.io/youngs-bakery/timer/JS_flavor/)
 
 #### 커밋 타입
 
