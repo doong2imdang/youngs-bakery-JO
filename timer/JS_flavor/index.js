@@ -25,7 +25,7 @@ function handleInputFocus() {
 }
 
 inputs.forEach((input) => {
-  input.addEventListener("focus", handleInputFocus);
+  input.addEventListener("change", handleInputFocus);
 
   input.addEventListener("change", function (e) {
     if (e.target.value.length === 1) {
@@ -72,7 +72,7 @@ function pauseCountdown() {
 }
 
 function updateDisplay() {
-  if (totalSeconds === 0) {
+  if (totalSeconds < 0) {
     clearInterval(intervalId);
     alert("시간이 종료되었습니다.");
     resetDisplay();
