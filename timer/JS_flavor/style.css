@@ -80,13 +80,17 @@ body {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  color: #568037;
-  font-size: 20px;
-  font-weight: bold;
-  background: #69a13f;
   width: 171px;
   height: 78px;
   border-radius: 50px;
+  font-size: 20px;
+}
+
+.start-button:disabled,
+.reset-button:disabled {
+  color: #568037;
+  font-weight: bold;
+  background: #69a13f;
 }
 
 .hour-container p,

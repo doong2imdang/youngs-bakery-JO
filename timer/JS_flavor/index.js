@@ -20,10 +20,12 @@ function handleInputFocus() {
   resetButtonImage.src = "./images/reset-button.svg";
   resetButton.style.color = "#ffffff";
   resetButton.style.background = "#F84A34";
+  startButton.removeAttribute("disabled");
+  resetButton.removeAttribute("disabled");
 }
 
 inputs.forEach((input) => {
-  input.addEventListener("change", handleInputFocus);
+  input.addEventListener("focus", handleInputFocus);
 
   input.addEventListener("change", function (e) {
     if (e.target.value.length === 1) {
@@ -104,6 +106,9 @@ function resetDisplay() {
   resetButtonImage.src = "./images/reset-button-disabled.svg";
   resetButton.style.background = "#69A13F";
   resetButton.style.color = "#568037";
+
+  startButton.setAttribute("disabled", true);
+  resetButton.setAttribute("disabled", true);
 }
 
 function limitInputValue(input, maxValue) {
