@@ -7,6 +7,7 @@ const hourInput = document.querySelector("#hour");
 const minuteInput = document.querySelector("#minute");
 const secondInput = document.querySelector("#second");
 const startButtonText = document.querySelector(".start-button-text");
+const sideBox = document.querySelector(".side-box");
 
 let isPaused = false;
 let totalSeconds = 0;
@@ -47,6 +48,7 @@ startButton.addEventListener("click", function () {
     startButton.style.background = "#FBF23B";
     startButtonText.innerHTML = "PAUSE";
     startButton.style.color = "#ffffff";
+    sideBox.classList.add("start-active");
 
     if (totalSeconds === 0) {
       totalSeconds =
@@ -58,6 +60,7 @@ startButton.addEventListener("click", function () {
     startButton.style.background = "#3661CC";
     startButtonText.innerHTML = "START";
     startButton.style.color = "#ffffff";
+    sideBox.classList.remove("start-active");
     pauseCountdown();
   }
 });
@@ -94,6 +97,7 @@ function resetDisplay() {
     input.removeAttribute("readonly");
   });
 
+  sideBox.classList.remove("start-active");
   totalSeconds = 0;
   hourInput.value = "";
   minuteInput.value = "";

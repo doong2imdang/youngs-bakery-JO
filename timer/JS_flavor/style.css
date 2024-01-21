@@ -37,6 +37,32 @@ body {
   align-items: center;
 }
 
+.side-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-300.5%, 482%);
+  z-index: 10;
+  transition: transform 0.5s ease-in-out;
+}
+
+.start-active {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translate(-300.5%, 470%) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(-300.5%, 370%) rotate(180deg);
+  }
+  100% {
+    transform: translate(-300.5%, 482%) rotate(360deg);
+  }
+}
+
 .side-content {
   color: #ffffff;
   font-weight: bold;
