@@ -26,6 +26,9 @@ const GlobalStyles = createGlobalStyle`
     --color-b-lightgreen: #92CD5F;
     --color-b-green: #69A13F;
     --color-b-deepgreen: #7ABC49;
+    --color-b-blue: #3661CC;
+    --color-b-red: #F84A34;
+    --color-b-yellow: #F9F03E;
   }
 `;
 
