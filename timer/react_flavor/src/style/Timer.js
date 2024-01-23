@@ -105,7 +105,7 @@ const ButtonContainer = styled.div`
   justify-content: space-around;
 `;
 
-const ButtonStyle = styled.button`
+const StartButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -114,12 +114,43 @@ const ButtonStyle = styled.button`
   height: 78px;
   border-radius: 50px;
   font-size: 20px;
+  font-weight: bold;
+  color: ${(props) =>
+    props.disabled ? "var(--color-f-green)" : "var(--color-f-white)"};
+  background: ${(props) =>
+    props.disabled ? "var(--color-b-green)" : "var(--color-b-blue)"};
+  cursor: ${(props) => (props.disabled ? "unset" : "pointer")};
+`;
 
-  &:disabled {
-    color: var(--color-f-green);
-    font-weight: bold;
-    background: var(--color-b-green);
-  }
+const PauseButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 171px;
+  height: 78px;
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--color-f-white);
+  background: var(--color-b-yellow);
+`;
+
+const ResetButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 171px;
+  height: 78px;
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  color: ${(props) =>
+    props.disabled ? "var(--color-f-green)" : "var(--color-f-white)"};
+  background: ${(props) =>
+    props.disabled ? "var(--color-b-green)" : "var(--color-b-red)"};
+  cursor: ${(props) => (props.disabled ? "unset" : "pointer")};
 `;
 
 const Colon = styled.div`
@@ -140,6 +171,8 @@ export {
   TimeContainer,
   FlowContainer,
   ButtonContainer,
-  ButtonStyle,
+  StartButton,
+  ResetButton,
+  PauseButton,
   Colon,
 };
