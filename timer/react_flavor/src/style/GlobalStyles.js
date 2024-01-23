@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
+import bg from "../images/main-bg.svg";
 
 const GlobalStyles = createGlobalStyle`
   ${reset}
@@ -9,6 +10,13 @@ const GlobalStyles = createGlobalStyle`
     cursor: pointer;
     padding: 0;
     margin: 0;
+  }
+
+  body {
+    background: url(${bg});
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
   }
 
   :root {
