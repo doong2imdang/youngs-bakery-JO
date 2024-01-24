@@ -135,14 +135,11 @@ input[type="number"]::-webkit-inner-spin-button {
   font-weight: bold;
 }
 
-.ticket-container {
-  grid-area: image;
-}
-
 .ticket-images {
   display: flex;
   gap: 15px;
   padding-top: 20px;
+  margin-top: 20px;
 }
 
 .ticket-image span {
@@ -155,6 +152,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .ticket-number-container {
+  grid-area: image;
   margin-top: 20px;
   height: 205px;
   width: 420px;
