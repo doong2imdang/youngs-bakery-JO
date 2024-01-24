@@ -26,6 +26,10 @@ input,
 }
 
 /* lotto-logo */
+.logo-text {
+  text-align: center;
+}
+
 .logo-text-first {
   font-size: 110px;
   color: #ffffff;
@@ -93,7 +97,7 @@ input[type="number"]::-webkit-inner-spin-button {
   background: #ffffff;
   outline: none;
   padding: 11px 27px;
-  min-width: 600px;
+  width: 600px;
   font-size: 30px;
 }
 
@@ -138,6 +142,16 @@ input[type="number"]::-webkit-inner-spin-button {
 .ticket-images {
   display: flex;
   gap: 15px;
+  padding-top: 20px;
+}
+
+.ticket-image span {
+  font-size: 45px;
+  background: #ff0000;
+  color: #ffffff;
+  border-radius: 50%;
+  padding: 4px 12px;
+  font-weight: bold;
 }
 
 .ticket-number-container {

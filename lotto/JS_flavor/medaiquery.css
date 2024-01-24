@@ -1,0 +1,175 @@
+/* media query */
+@media screen and (min-width: 1020px) and (max-width: 1770px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .lotto-winning {
+    margin: 100px auto 0 auto;
+  }
+}
+
+@media screen and (max-width: 1020px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 67px 10px;
+  }
+
+  .logo-text-first {
+    font-size: 55px;
+    padding: 4px 10px;
+    vertical-align: 10px;
+  }
+
+  .logo-text-second {
+    font-size: 25px;
+    padding: 4px 6px;
+    vertical-align: 2px;
+  }
+
+  .logo-text-third {
+    font-size: 55px;
+  }
+
+  .lotto-purchase-container {
+    padding: 25px 10px;
+  }
+
+  .lotto-price p {
+    font-size: 25px;
+  }
+
+  .lotto-price-tag li button {
+    font-size: 16px;
+    width: 90px;
+    height: 30px;
+  }
+
+  .input-container {
+    gap: 20px;
+  }
+
+  #input-price {
+    width: 270px;
+    font-size: 25px;
+  }
+
+  .lotto-ticket {
+    grid-template-areas:
+      "text check"
+      "image image";
+  }
+
+  .ticket-container {
+    padding-top: 20px;
+    justify-self: center;
+  }
+
+  .ticket-text p {
+    font-size: 25px;
+  }
+
+  .ticket-image span {
+    font-size: 30px;
+    padding: 2px 5px;
+  }
+
+  .ticket-number-container {
+    width: 300px;
+  }
+
+  .ticket-numbers {
+    font-size: 30px;
+  }
+
+  .number-check {
+    justify-self: start;
+  }
+
+  .number-check p {
+    font-size: 20px;
+  }
+
+  .number-check label {
+    left: 9px;
+  }
+
+  .lotto-winning {
+    margin: 60px auto 0 auto;
+    padding: 100px 35px 23px 35px;
+  }
+
+  .lotto-winning h2 {
+    font-size: 35px;
+  }
+
+  .winning-numbers {
+    place-items: center;
+    gap: 20px;
+    margin: 35px 0;
+  }
+
+  .winning-number div {
+    width: 90px;
+    height: 100px;
+  }
+
+  .winning-number div p {
+    font-size: 45px;
+    line-height: 90px;
+  }
+
+  .bonus-text {
+    font-size: 35px;
+  }
+
+  .bonus-number {
+    width: 100px;
+    height: 110px;
+  }
+
+  .bonus-buttons button {
+    width: 150px;
+    height: 55px;
+    font-size: 16px;
+  }
+
+  .star-six {
+    display: none;
+  }
+
+  .star-six:after {
+    display: none;
+  }
+
+  .star-six-media {
+    width: 0;
+    height: 0;
+    border-left: 130px solid transparent;
+    border-right: 130px solid transparent;
+    border-bottom: 150px solid #004bff;
+    position: absolute;
+    top: -70px;
+    left: -55px;
+    transform: rotate(-10deg);
+  }
+
+  .star-six-media:after {
+    width: 0;
+    height: 0;
+    border-left: 130px solid transparent;
+    border-right: 130px solid transparent;
+    border-top: 150px solid #004bff;
+    position: absolute;
+    content: "";
+    top: 55px;
+    left: -130px;
+  }
+
+  .star-text {
+    font-size: 45px;
+    transform: translate(25%, -10%);
+  }
+}
