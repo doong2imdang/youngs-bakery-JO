@@ -1,0 +1,382 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&display=swap");
+
+body {
+  background: #ffff00;
+}
+
+.container {
+  font-family: "Noto Serif KR", serif;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  place-items: center;
+  padding: 67px 100px;
+}
+
+button,
+input,
+.modal {
+  font-family: "Noto Serif KR", serif;
+}
+
+.lotto-logo h1 {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 23px;
+}
+
+/* lotto-logo */
+.logo-text-first {
+  font-size: 110px;
+  color: #ffffff;
+  background: #ff0000;
+  border-radius: 50%;
+  padding: 9px 20px;
+  vertical-align: 18px;
+}
+
+.logo-text-second {
+  font-size: 40px;
+  font-weight: bold;
+  color: #ffffff;
+  background: #ff0000;
+  border-radius: 50%;
+  padding: 9px 13px;
+}
+
+.logo-text-third {
+  font-size: 110px;
+  font-weight: bold;
+}
+
+/* lotto-purchase-container */
+.lotto-purchase-container {
+  padding-top: 45px;
+  padding-left: 70px;
+}
+
+/* lotto-price */
+.lotto-price p {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.lotto-price-tag {
+  display: flex;
+  padding: 13px 0;
+  gap: 18px;
+}
+
+.lotto-price-tag li button {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+  background: #004bff;
+  width: 120px;
+  height: 40px;
+  border-radius: 30px;
+}
+
+/* input-container */
+.input-container {
+  display: flex;
+  gap: 44px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#input-price {
+  background: #ffffff;
+  outline: none;
+  padding: 11px 27px;
+  min-width: 600px;
+  font-size: 30px;
+}
+
+#input-price::place-holder {
+  color: #878787;
+  font-weight: bold;
+}
+
+.input-button {
+  width: 100px;
+  height: 70px;
+  border-radius: 10px;
+  color: #ffffff;
+  background: #004bff;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/* logo-ticket */
+.lotto-ticket {
+  display: grid;
+  grid-template-areas:
+    "text check"
+    "image check";
+  margin-top: 46px;
+}
+
+.ticket-text {
+  grid-area: text;
+  margin-bottom: 29px;
+}
+
+.ticket-text p {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.ticket-container {
+  grid-area: image;
+}
+
+.ticket-images {
+  display: flex;
+  gap: 15px;
+}
+
+.ticket-number-container {
+  margin-top: 20px;
+  height: 205px;
+  width: 420px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.ticket-numbers {
+  display: flex;
+  font-size: 40px;
+  font-weight: bold;
+  gap: 30px;
+  margin-bottom: 15px;
+}
+
+.number-check {
+  grid-area: check;
+  justify-self: end;
+}
+
+.number-check p {
+  font-size: 30px;
+  color: #004bff;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+#toggle-slider {
+  display: none;
+}
+
+#toggle-slider:checked + label {
+  background-color: #004bff;
+}
+
+#toggle-slider:checked + label::after {
+  left: calc(100% - 15px);
+  background-color: #ffffff;
+}
+
+.number-check label {
+  display: flex;
+  text-indent: -999em;
+  cursor: pointer;
+  width: 60px;
+  height: 25px;
+  background: #d9d9d9;
+  border-radius: 50px;
+  position: relative;
+  left: 28px;
+  transition: 0.5s ease-out;
+}
+
+.number-check label::after {
+  content: "";
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff;
+  position: absolute;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  transform: translate(-30%, -20%);
+  transition: 0.5s ease-out;
+}
+
+/* lotto-winning */
+.lotto-winning {
+  background: #ff0000;
+  color: #ffffff;
+  padding: 160px 45px 23px 45px;
+  text-align: center;
+  border-radius: 10px;
+  position: relative;
+}
+
+.lotto-winning h2 {
+  font-size: 55px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.winning-numbers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin: 35px 0 24px 0;
+}
+
+.winning-number div {
+  width: 120px;
+  height: 130px;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.winning-number div p {
+  font-size: 70px;
+  color: #000000;
+  font-weight: bold;
+  text-align: center;
+  line-height: 120px;
+}
+
+.bonus-and-button {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bonus-text {
+  font-size: 55px;
+  margin-bottom: 25px;
+}
+
+.bonus-number {
+  width: 140px;
+  height: 150px;
+  background: #ffffff;
+  border-radius: 50%;
+}
+
+.bonus-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.bonus-buttons button {
+  width: 245px;
+  height: 70px;
+  font-size: 25px;
+  background: #004bff;
+  color: #ffffff;
+  border-radius: 10px;
+}
+
+/* start-six */
+.star-six {
+  width: 0;
+  height: 0;
+  border-left: 170px solid transparent;
+  border-right: 170px solid transparent;
+  border-bottom: 220px solid #004bff;
+  position: absolute;
+  top: -60px;
+  left: -120px;
+  transform: rotate(-10deg);
+}
+
+.star-six:after {
+  width: 0;
+  height: 0;
+  border-left: 170px solid transparent;
+  border-right: 170px solid transparent;
+  border-top: 220px solid #004bff;
+  position: absolute;
+  content: "";
+  top: 65px;
+  left: -170px;
+}
+
+.star-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  font-size: 65px;
+  font-weight: bold;
+  transform: translate(-10%, 10%);
+}
+
+/* modal */
+.modal {
+  position: absolute;
+  background: #ff0000;
+  border-radius: 10px;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  z-index: 50;
+  transform: translate(-50%, -50%);
+  padding: 100px 54px 44px 54px;
+  display: none;
+}
+
+.modal h2 {
+  color: #ffffff;
+  font-size: 50px;
+  padding-bottom: 74px;
+}
+
+.modal h2 strong {
+  color: #ffff00;
+}
+
+.modal-table {
+  background: #ffffff;
+  padding: 20px;
+}
+
+.modal table {
+  margin: 0 auto;
+}
+
+.modal table tr {
+  border-bottom: 1px solid #bdbdbd;
+}
+
+.modal table tr td {
+  padding: 15px 10px;
+}
+
+.modal button {
+  background: #004bff;
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: bold;
+  border-radius: 10px;
+  width: 250px;
+  height: 70px;
+  margin-top: 35px;
+}
+
+.first-row,
+.last-row {
+  font-weight: bold;
+}
+
+.modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #000000;
+  opacity: 0.85;
+  z-index: 30;
+  display: none;
+}
