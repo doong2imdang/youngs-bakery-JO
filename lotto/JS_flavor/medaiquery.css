@@ -82,8 +82,8 @@
     justify-self: center;
   }
 
-  .ticket-numbers {
-    font-size: 37px;
+  .ticket-numbers li {
+    font-size: 40px;
   }
 
   .number-check {

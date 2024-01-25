@@ -72,10 +72,22 @@
           <div class="lotto-price">
             <p>구!입@할$금^액을 입#력$하%기</p>
             <ul class="lotto-price-tag">
-              <li><button type="button">1,000원</button></li>
-              <li><button type="button">5,000원</button></li>
-              <li><button type="button">10,000원</button></li>
-              <li><button type="button">50,000원</button></li>
+              <li>
+                <button type="button" onclick="setPrice(1000)">1,000원</button>
+              </li>
+              <li>
+                <button type="button" onclick="setPrice(5000)">5,000원</button>
+              </li>
+              <li>
+                <button type="button" onclick="setPrice(10000)">
+                  10,000원
+                </button>
+              </li>
+              <li>
+                <button type="button" onclick="setPrice(50000)">
+                  50,000원
+                </button>
+              </li>
             </ul>
             <div class="input-container">
               <input
@@ -83,60 +95,47 @@
                 id="input-price"
                 placeholder="구입 금액 입력"
               />
-              <button class="input-button" type="button">입력</button>
+              <button
+                class="input-button"
+                type="button"
+                onclick="purchasePrice()"
+              >
+                입력
+              </button>
             </div>
           </div>
           <div class="lotto-ticket">
             <div class="ticket-text">
-              <p>총 5개를 구매하였습니다</p>
-              <ul class="ticket-images">
-                <li class="ticket-image"><span>복</span></li>
-                <li class="ticket-image"><span>복</span></li>
-                <li class="ticket-image"><span>복</span></li>
-                <li class="ticket-image"><span>복</span></li>
-                <li class="ticket-image"><span>복</span></li>
-              </ul>
+              <p>
+                총 <strong class="ticket-number">0</strong>개를 구매하였습니다
+              </p>
             </div>
             <div class="ticket-number-container">
               <ul class="ticket-numbers">
-                <li>4</li>
-                <li>6</li>
-                <li>10</li>
-                <li>11</li>
-                <li>12</li>
-                <li>13</li>
-              </ul>
-              <ul class="ticket-numbers">
-                <li>4</li>
-                <li>6</li>
-                <li>10</li>
-                <li>11</li>
-                <li>12</li>
-                <li>13</li>
-              </ul>
-              <ul class="ticket-numbers">
-                <li>4</li>
-                <li>6</li>
-                <li>10</li>
-                <li>11</li>
-                <li>12</li>
-                <li>13</li>
-              </ul>
-              <ul class="ticket-numbers">
-                <li>4</li>
-                <li>6</li>
-                <li>10</li>
-                <li>11</li>
-                <li>12</li>
-                <li>13</li>
-              </ul>
-              <ul class="ticket-numbers">
-                <li>4</li>
-                <li>6</li>
-                <li>10</li>
-                <li>11</li>
-                <li>12</li>
-                <li>13</li>
+                <!-- <li class="ticket-front">
+                  <span>앞</span>
+                </li>
+                <li class="ticket-back flipped">
+                  <span>뒤</span>
+                </li>
+                <li class="ticket-front">
+                  <span>앞</span>
+                </li>
+                <li class="ticket-back flipped">
+                  <span>뒤</span>
+                </li>
+                <li class="ticket-front">
+                  <span>앞</span>
+                </li>
+                <li class="ticket-back flipped">
+                  <span>뒤</span>
+                </li>
+                <li class="ticket-front">
+                  <span>앞</span>
+                </li>
+                <li class="ticket-back flipped">
+                  <span>뒤</span>
+                </li> -->
               </ul>
             </div>
             <div class="number-check">
