@@ -158,6 +158,8 @@ input[type="number"]::-webkit-inner-spin-button {
   width: 420px;
   overflow-y: scroll;
   overflow-x: hidden;
+  background: #ffffff;
+  padding: 10px 0 10px 20px;
 }
 
 .ticket-numbers {
@@ -355,6 +357,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .modal table {
   margin: 0 auto;
+  width: 365px;
 }
 
 .modal table tr {
