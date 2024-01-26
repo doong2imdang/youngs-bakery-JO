@@ -42,6 +42,10 @@
     font-size: 25px;
   }
 
+  .lotto-price-tag {
+    gap: 10px;
+  }
+
   .lotto-price-tag li button {
     font-size: 16px;
     width: 90px;
