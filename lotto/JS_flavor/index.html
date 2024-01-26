@@ -22,39 +22,43 @@
           <tr>
             <td>0 ~ 2개</td>
             <td>0</td>
-            <td>1개</td>
+            <td><span class="result-underTwo">0</span>개</td>
           </tr>
           <tr>
             <td>3개</td>
             <td>5,000</td>
-            <td>0개</td>
+            <td><span class="result-three">0</span>개</td>
           </tr>
           <tr>
             <td>4개</td>
             <td>50,000</td>
-            <td>0개</td>
+            <td><span class="result-four">0</span>개</td>
           </tr>
           <tr>
             <td>5개</td>
             <td>1,500,000</td>
-            <td>0개</td>
+            <td><span class="result-five">0</span>개</td>
           </tr>
           <tr>
             <td>5개 + 보너스볼</td>
             <td>30,000,000</td>
-            <td>0개</td>
+            <td><span class="result-five-bonus">0</span>개</td>
           </tr>
           <tr>
             <td>6개</td>
             <td>2,000,000,000</td>
-            <td>0개</td>
+            <td><span class="result-six">0</span>개</td>
           </tr>
           <tr class="last-row">
-            <td colspan="3">당신의 총 수익률은 -100.00%입니다.</td>
+            <td colspan="3">
+              당신의 총 수익률은 <span class="result-benefit">0</span>%입니다.
+            </td>
           </tr>
         </table>
       </div>
-      <button type="button">다시 시작하기</button>
+      <button class="restart-button" type="button" onclick="restartButton()">
+        다시 시작하기
+      </button>
     </div>
     <div class="modal-bg"></div>
 
@@ -155,31 +159,57 @@
         <h2>당첨번호</h2>
         <ul class="winning-numbers">
           <li class="winning-number">
-            <div><p>4</p></div>
+            <div>
+              <p></p>
+            </div>
           </li>
           <li class="winning-number">
-            <div><p>6</p></div>
+            <div>
+              <p></p>
+            </div>
           </li>
           <li class="winning-number">
-            <div><p>10</p></div>
+            <div>
+              <p></p>
+            </div>
           </li>
           <li class="winning-number">
-            <div><p>11</p></div>
+            <div>
+              <p></p>
+            </div>
           </li>
           <li class="winning-number">
-            <div><p>12</p></div>
+            <div>
+              <p></p>
+            </div>
           </li>
           <li class="winning-number">
-            <div><p>13</p></div>
+            <div>
+              <p></p>
+            </div>
           </li>
         </ul>
         <div class="bonus-container">
           <h2 class="bonus-text">뽀나스번호</h2>
           <div class="bonus-and-button">
-            <div class="bonus-number"></div>
+            <div class="bonus-number">
+              <p></p>
+            </div>
             <div class="bonus-buttons">
-              <button type="button">당첨 번호 자동입력</button>
-              <button type="button">결과 확인하기</button>
+              <button
+                class="number-draw-button"
+                onclick="numberDraw()"
+                type="button"
+              >
+                당첨 번호 자동입력
+              </button>
+              <button
+                type="button"
+                class="check-result-button"
+                onclick="checkResult()"
+              >
+                결과 확인하기
+              </button>
             </div>
           </div>
         </div>
