@@ -80,10 +80,12 @@
   .ticket-number-container {
     width: 410px;
     justify-self: center;
+    height: 215px;
   }
 
   .ticket-numbers li {
     font-size: 40px;
+    padding: 0;
   }
 
   .number-check {
@@ -130,6 +132,11 @@
   .bonus-number {
     width: 100px;
     height: 110px;
+  }
+
+  .bonus-number p {
+    font-size: 60px;
+    line-height: 100px;
   }
 
   .bonus-buttons button {
