@@ -6,6 +6,8 @@
 
 타이머 JS(https://doong2imdang.github.io/youngs-bakery/timer/JS_flavor/)
 
+로또 JS(https://doong2imdang.github.io/youngs-bakery/lotto/JS_flavor/)
+
 #### 커밋 타입
 
 | 커밋     | 타입 설명                                                                                        |
