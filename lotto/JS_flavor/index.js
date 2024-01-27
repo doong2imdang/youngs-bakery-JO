@@ -20,6 +20,7 @@ const resultBenefit = document.querySelector(".result-benefit");
 
 let totalLottoTickets = 0;
 let existingCount = 0;
+let modalOpen = false;
 
 // 금액 태그 클릭
 function setPrice(amount) {
@@ -154,10 +155,6 @@ function isSubsetInArray(subset, array) {
 
 // 결과 확인하기 버튼
 function checkResult() {
-  // 모달창 띄우기
-  modal.style.display = "block";
-  modalBg.style.display = "block";
-
   // 당첨통계, 수익률 구하기
   const chunk = 6;
   const ticketNumbersArray = [];
@@ -174,7 +171,7 @@ function checkResult() {
 
   // 구입한 로또 번호 6자리씩 나눈거
   const ticketNumberArrays = splitLotto(ticketNumbersArray, chunk);
-  console.log("ticketNumberArrays", ticketNumberArrays);
+  console.log("ticketNumberArrays", ticketNumberArrays.length);
 
   console.log(ticketNumbersArray, winningNumbersArray, bonusNumber);
 
@@ -185,6 +182,15 @@ function checkResult() {
     bonusNumber
   );
   console.log("일치하는 숫자의 개수:", matchingCount);
+
+  if (modalOpen) {
+    // 모달창 띄우기
+    modal.style.display = "block";
+    modalBg.style.display = "block";
+  } else {
+    alert("당첨 번호 자동입력 버튼을 먼저 클릭하세요!");
+  }
+  console.log(modalOpen);
 }
 
 // 구입티켓 6자리로 나누기
@@ -273,11 +279,19 @@ function displayWinningNumbers(winningNumbers, bonusNumber) {
 
 // 당첨번호 자동입력 버튼
 function numberDraw() {
-  const randomNumbersDraw = generateRandomNumbers(7);
-  const winningNumbers = randomNumbersDraw.slice(0, 6);
-  const bonusNumber = randomNumbersDraw[6];
-  displayWinningNumbers(winningNumbers, bonusNumber);
-  console.log("randomNumbersDraw", randomNumbersDraw);
+  const purchaseLottoTickets =
+    document.querySelectorAll(".ticket-back span").length;
+
+  if (purchaseLottoTickets <= 0) {
+    alert("로또를 구입해주세요!");
+  } else {
+    const randomNumbersDraw = generateRandomNumbers(7);
+    const winningNumbers = randomNumbersDraw.slice(0, 6);
+    const bonusNumber = randomNumbersDraw[6];
+    displayWinningNumbers(winningNumbers, bonusNumber);
+    console.log("randomNumbersDraw", randomNumbersDraw);
+  }
+  modalOpen = true;
 }
 
 // 다시 시작하기 버튼
@@ -292,4 +306,5 @@ function restartButton() {
     element.innerHTML = "";
   });
   bonusNumberElements.innerHTML = "";
+  modalOpen = false;
 }
