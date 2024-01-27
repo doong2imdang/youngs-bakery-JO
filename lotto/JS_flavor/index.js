@@ -122,35 +122,25 @@ numberCheckToggle.addEventListener("change", function () {
 
 // 랜덤한 로또 번호 생성
 function generateRandomNumbers(count) {
-  const numbers = [];
-  let attempts = 0;
-
-  while (numbers.length < count && attempts < 100000) {
-    const candidateSet = new Set();
-
-    for (let i = 0; i < count; i++) {
-      const randomNum = Math.floor(Math.random() * 45) + 1;
-      candidateSet.add(randomNum);
-    }
-
-    const candidateArray = Array.from(candidateSet);
-
-    if (!isSubsetInArray(candidateArray, numbers)) {
-      numbers.push(...candidateArray);
-    }
-
-    attempts++;
-  }
-
-  if (attempts >= 100000) {
-    console.error("Failed to generate random numbers within 100000 attempts.");
-  }
-
-  return numbers;
+  const lottoTickets = Array.from({ length: count / 6 }, () =>
+    createLottoNumbers()
+  ).flat();
+  return lottoTickets;
 }
 
-function isSubsetInArray(subset, array) {
-  return subset.every((value) => array.includes(value));
+function createLottoNumbers() {
+  var numbers = Array.from({ length: 45 }, (_, i) => i + 1);
+  var lottoNumbers = [];
+
+  for (var i = 0; i < 7; i++) {
+    var index = Math.floor(Math.random() * numbers.length);
+    var number = numbers.splice(index, 1)[0];
+    lottoNumbers.push(number);
+  }
+
+  return lottoNumbers.sort(function (a, b) {
+    return a - b;
+  });
 }
 
 // 결과 확인하기 버튼
@@ -190,7 +180,6 @@ function checkResult() {
   } else {
     alert("당첨 번호 자동입력 버튼을 먼저 클릭하세요!");
   }
-  console.log(modalOpen);
 }
 
 // 구입티켓 6자리로 나누기
@@ -235,7 +224,6 @@ function countMatchingNumbers(ticket, winning, bonus) {
     } else if (count === 6) {
       matchingCountsArray[5] += 1;
     }
-    console.log("count", count, "matchingBonus", matchingBonus);
   }
 
   // 당첨통계 출력
@@ -262,9 +250,6 @@ function countMatchingNumbers(ticket, winning, bonus) {
   benefit = benefit.toFixed(2);
 
   resultBenefit.innerHTML = benefit;
-  console.log("totalWinningPrice", totalWinningPrice);
-  console.log("totalTicketsPrice", totalTicketsPrice);
-  console.log("benefit", benefit);
 
   return matchingCountsArray;
 }
@@ -289,7 +274,6 @@ function numberDraw() {
     const winningNumbers = randomNumbersDraw.slice(0, 6);
     const bonusNumber = randomNumbersDraw[6];
     displayWinningNumbers(winningNumbers, bonusNumber);
-    console.log("randomNumbersDraw", randomNumbersDraw);
   }
   modalOpen = true;
 }
