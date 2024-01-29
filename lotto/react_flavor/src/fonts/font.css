@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "Noto Serif KR";
+  font-weight: medium;
+  font-style: normal;
+  src: url("./NotoSerifKR-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Noto Serif KR";
+  font-weight: bold;
+  font-style: normal;
+  src: url("./NotoSerifKR-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Noto Serif KR";
+  font-weight: light;
+  font-style: normal;
+  src: url("./NotoSerifKR-Light.otf") format("opentype");
+}
