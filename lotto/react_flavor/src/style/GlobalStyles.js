@@ -18,6 +18,10 @@ const GlobalStyles = createGlobalStyle`
     --color-blue: #004BFF;
     --color-black: #000000;
   }
+
+  body, button, input {
+    font-family: 'Noto Serif KR';
+  }
 `;
 
 export default GlobalStyles;
