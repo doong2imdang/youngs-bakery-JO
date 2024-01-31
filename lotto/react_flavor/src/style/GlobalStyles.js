@@ -22,6 +22,10 @@ const GlobalStyles = createGlobalStyle`
   body, button, input {
     font-family: 'Noto Serif KR';
   }
+
+  body {
+    background: var(--color-yellow);
+  }
 `;
 
 export default GlobalStyles;
