@@ -25,13 +25,36 @@ import {
 
 function App() {
   const [inputPrice, setInputPrice] = useState("");
+  const [totalLottoTickets, setTotalLottoTickets] = useState(0);
 
+  // 로또 티켓 발급
   const setPrice = (amount) => {
     setInputPrice(amount);
   };
 
   const onChange = (e) => {
     setInputPrice(e.target.value);
+  };
+
+  // 입력 버튼
+  const purchasePrice = () => {
+    let balance = 0;
+    let lottoTickets = 0;
+
+    if (inputPrice === "0" || inputPrice === "") {
+      alert("올바른 값을 입력하세요");
+      setInputPrice("");
+    } else {
+      balance = inputPrice % 1000;
+      lottoTickets = Math.floor(inputPrice / 1000);
+      setTotalLottoTickets(
+        (prevTotalLottoTickets) => prevTotalLottoTickets + lottoTickets
+      );
+      alert(`총 ${lottoTickets}장 구매되었으며 ${balance}원 입니다.`);
+      setInputPrice("");
+    }
+
+    console.log(totalLottoTickets, lottoTickets);
   };
 
   return (
@@ -153,14 +176,17 @@ function App() {
                   value={inputPrice}
                   onChange={onChange}
                 />
-                <button type="button">입력</button>
+                <button type="button" onClick={purchasePrice}>
+                  입력
+                </button>
               </InputContainer>
             </LottoPrice>
             <LottoTicket>
               <TicketText>
                 <p>
-                  총 <strong className="ticket-number">0</strong>개를
-                  구매하였습니다
+                  총{" "}
+                  <strong className="ticket-number">{totalLottoTickets}</strong>
+                  개를 구매하였습니다
                 </p>
               </TicketText>
               <TicketNumberContainer>
