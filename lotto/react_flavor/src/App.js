@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import GlobalStyles from "./style/GlobalStyles";
 import {
   Modal,
@@ -24,6 +24,16 @@ import {
 } from "./style/Lotto";
 
 function App() {
+  const [inputPrice, setInputPrice] = useState("");
+
+  const setPrice = (amount) => {
+    setInputPrice(amount);
+  };
+
+  const onChange = (e) => {
+    setInputPrice(e.target.value);
+  };
+
   return (
     <>
       <GlobalStyles />
@@ -101,7 +111,7 @@ function App() {
       <ModalBg></ModalBg>
 
       <Container>
-        <div className="lotto-container">
+        <div>
           <div>
             <h1>★ ★행운의로또★ ★</h1>
             <LogoText>
@@ -115,16 +125,24 @@ function App() {
               <p>구!입@할$금^액을 입#력$하%기</p>
               <ul>
                 <li>
-                  <button type="button">1,000원</button>
+                  <button type="button" onClick={() => setPrice(1000)}>
+                    1,000원
+                  </button>
                 </li>
                 <li>
-                  <button type="button">5,000원</button>
+                  <button type="button" onClick={() => setPrice(5000)}>
+                    5,000원
+                  </button>
                 </li>
                 <li>
-                  <button type="button">10,000원</button>
+                  <button type="button" onClick={() => setPrice(10000)}>
+                    10,000원
+                  </button>
                 </li>
                 <li>
-                  <button type="button">50,000원</button>
+                  <button type="button" onClick={() => setPrice(50000)}>
+                    50,000원
+                  </button>
                 </li>
               </ul>
               <InputContainer>
@@ -132,6 +150,8 @@ function App() {
                   type="number"
                   id="input-price"
                   placeholder="구입 금액 입력"
+                  value={inputPrice}
+                  onChange={onChange}
                 />
                 <button type="button">입력</button>
               </InputContainer>
@@ -145,7 +165,7 @@ function App() {
               </TicketText>
               <TicketNumberContainer>
                 <ul>
-                  <li className="ticket-front">
+                  {/* <li className="ticket-front">
                     <span>앞</span>
                   </li>
                   <li className="ticket-back flipped">
@@ -168,7 +188,7 @@ function App() {
                   </li>
                   <li className="ticket-back flipped">
                     <span>뒤</span>
-                  </li>
+                  </li> */}
                 </ul>
               </TicketNumberContainer>
               <NumberCheck>
