@@ -33,59 +33,65 @@ function App() {
         </h2>
         <ModalTable>
           <table>
-            <tr>
-              <td>일치 갯수</td>
-              <td>당첨금</td>
-              <td>당첨 갯수</td>
-            </tr>
-            <tr>
-              <td>0 ~ 2개</td>
-              <td>0</td>
-              <td>
-                <span className="result-underTwo">0</span>개
-              </td>
-            </tr>
-            <tr>
-              <td>3개</td>
-              <td>5,000</td>
-              <td>
-                <span className="result-three">0</span>개
-              </td>
-            </tr>
-            <tr>
-              <td>4개</td>
-              <td>50,000</td>
-              <td>
-                <span className="result-four">0</span>개
-              </td>
-            </tr>
-            <tr>
-              <td>5개</td>
-              <td>1,500,000</td>
-              <td>
-                <span className="result-five">0</span>개
-              </td>
-            </tr>
-            <tr>
-              <td>5개 + 보너스볼</td>
-              <td>30,000,000</td>
-              <td>
-                <span className="result-five-bonus">0</span>개
-              </td>
-            </tr>
-            <tr>
-              <td>6개</td>
-              <td>2,000,000,000</td>
-              <td>
-                <span className="result-six">0</span>개
-              </td>
-            </tr>
-            <tr>
-              <td colSpan="3">
-                당신의 총 수익률은 <span className="result-benefit">0</span>
-                %입니다.
-              </td>
-            </tr>
+            <thead>
+              <tr>
+                <td>일치 갯수</td>
+                <td>당첨금</td>
+                <td>당첨 갯수</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0 ~ 2개</td>
+                <td>0</td>
+                <td>
+                  <span className="result-underTwo">0</span>개
+                </td>
+              </tr>
+              <tr>
+                <td>3개</td>
+                <td>5,000</td>
+                <td>
+                  <span className="result-three">0</span>개
+                </td>
+              </tr>
+              <tr>
+                <td>4개</td>
+                <td>50,000</td>
+                <td>
+                  <span className="result-four">0</span>개
+                </td>
+              </tr>
+              <tr>
+                <td>5개</td>
+                <td>1,500,000</td>
+                <td>
+                  <span className="result-five">0</span>개
+                </td>
+              </tr>
+              <tr>
+                <td>5개 + 보너스볼</td>
+                <td>30,000,000</td>
+                <td>
+                  <span className="result-five-bonus">0</span>개
+                </td>
+              </tr>
+              <tr>
+                <td>6개</td>
+                <td>2,000,000,000</td>
+                <td>
+                  <span className="result-six">0</span>개
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colSpan="3">
+                  당신의 총 수익률은 <span className="result-benefit">0</span>
+                  %입니다.
+                </td>
+              </tr>
+            </tfoot>
           </table>
         </ModalTable>
         <button className="restart-button" type="button">
