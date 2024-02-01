@@ -20,6 +20,7 @@ import {
   BonusButtons,
   StartSix,
   StartText,
+  StarSixMedia,
 } from "./style/Lotto";
 
 function App() {
@@ -180,7 +181,7 @@ function App() {
             </p>
           </StartText>
           <StartSix></StartSix>
-          <div className="star-six-media"></div>
+          <StarSixMedia></StarSixMedia>
           <h2>당첨번호</h2>
           <ul className="winning-numbers">
             <li className="winning-number">

@@ -32,6 +32,21 @@ const Modal = styled.div`
     height: 70px;
     margin-top: 35px;
   }
+
+  @media screen and (max-width: 1020px) {
+    padding: 50px 50px 22px 50px;
+
+    h2 {
+      font-size: 35px;
+      padding-bottom: 50px;
+    }
+
+    button {
+      font-size: 16px;
+      width: 140px;
+      height: 55px;
+    }
+  }
 `;
 
 const ModalTable = styled.div`
@@ -52,6 +67,16 @@ const ModalTable = styled.div`
       &:last-child {
         font-weight: bold;
       }
+    }
+  }
+
+  @media screen and (max-width: 1020px) {
+    table {
+      width: 280px;
+    }
+
+    table tr td {
+      padding: 10px 5px;
     }
   }
 `;
@@ -80,6 +105,17 @@ const Container = styled.div`
     text-align: center;
     margin-bottom: 23px;
   }
+
+  @media screen and (min-width: 1020px) and (max-width: 1770px) {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  @media screen and (max-width: 1020px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 67px 10px;
+  }
 `;
 
 const LogoText = styled.p`
@@ -93,6 +129,12 @@ const LogoText = styled.p`
       border-radius: 50%;
       padding: 9px 20px;
       vertical-align: 18px;
+
+      @media screen and (max-width: 1020px) {
+        font-size: 55px;
+        padding: 4px 10px;
+        vertical-align: 10px;
+      }
     }
 
     &:nth-child(2) {
@@ -102,11 +144,20 @@ const LogoText = styled.p`
       background: var(--color-red);
       border-radius: 50%;
       padding: 9px 13px;
+      @media screen and (max-width: 1020px) {
+        font-size: 25px;
+        padding: 4px 6px;
+        vertical-align: 2px;
+      }
     }
 
     &:nth-child(3) {
       font-size: 110px;
       font-weight: bold;
+
+      @media screen and (max-width: 1020px) {
+        font-size: 55px;
+      }
     }
   }
 `;
@@ -114,18 +165,30 @@ const LogoText = styled.p`
 const LottoPurchaseContainer = styled.div`
   padding-top: 45px;
   padding-left: 70px;
+
+  @media screen and (max-width: 1020px) {
+    padding: 25px 10px;
+  }
 `;
 
 const LottoPrice = styled.div`
   p {
     font-size: 40px;
     font-weight: bold;
+
+    @media screen and (max-width: 1020px) {
+      font-size: 25px;
+    }
   }
 
   ul {
     display: flex;
     padding: 13px 0;
     gap: 18px;
+
+    @media screen and (max-width: 1020px) {
+      gap: 10px;
+    }
 
     li {
       button {
@@ -136,6 +199,12 @@ const LottoPrice = styled.div`
         width: 120px;
         height: 40px;
         border-radius: 30px;
+
+        @media screen and (max-width: 1020px) {
+          font-size: 16px;
+          width: 90px;
+          height: 30px;
+        }
       }
     }
   }
@@ -160,9 +229,18 @@ const InputContainer = styled.div`
     outline: none;
     border: none;
 
+    @media screen and (max-width: 1020px) {
+      width: 270px;
+      font-size: 25px;
+    }
+
     &::placeholder {
       color: #878787;
       font-weight: bold;
+    }
+
+    @media screen and (max-width: 1020px) {
+      gap: 20px;
     }
   }
 
@@ -183,6 +261,12 @@ const LottoTicket = styled.div`
     "text check"
     "image check";
   margin-top: 46px;
+
+  @media screen and (max-width: 1020px) {
+    grid-template-areas:
+      "text check"
+      "image image";
+  }
 `;
 
 const TicketText = styled.div`
@@ -192,6 +276,10 @@ const TicketText = styled.div`
   p {
     font-size: 30px;
     font-weight: bold;
+
+    @media screen and (max-width: 1020px) {
+      font-size: 25px;
+    }
   }
 `;
 
@@ -204,6 +292,12 @@ const TicketNumberContainer = styled.div`
   overflow-x: hidden;
   background: var(--color-white);
   padding: 10px 30px 10px 20px;
+
+  @media screen and (max-width: 1020px) {
+    width: 410px;
+    justify-self: center;
+    height: 215px;
+  }
 
   ul {
     display: grid;
@@ -232,6 +326,11 @@ const TicketNumberContainer = styled.div`
           opacity: 0;
           position: absolute;
         `}
+
+      @media screen and (max-width: 1020px) {
+        font-size: 40px;
+        padding: 0;
+      }
     }
   }
 `;
@@ -245,6 +344,10 @@ const NumberCheck = styled.div`
     color: var(--color-blue);
     font-weight: bold;
     margin-bottom: 16px;
+
+    @media screen and (max-width: 1020px) {
+      font-size: 20px;
+    }
   }
 
   input {
@@ -284,6 +387,14 @@ const NumberCheck = styled.div`
       transform: translate(-30%, -20%);
       transition: 0.5s ease-out;
     }
+
+    @media screen and (max-width: 1020px) {
+      left: 9px;
+    }
+  }
+
+  @media screen and (max-width: 1020px) {
+    justify-self: end;
   }
 `;
 
@@ -307,11 +418,22 @@ const LottoWinning = styled.div`
     gap: 25px;
     margin: 35px 0 24px 0;
 
+    @media screen and (max-width: 1020px) {
+      place-items: center;
+      gap: 20px;
+      margin: 35px 0;
+    }
+
     li div {
       width: 120px;
       height: 130px;
       background: var(--color-white);
       border-radius: 10px;
+
+      @media screen and (max-width: 1020px) {
+        width: 90px;
+        height: 100px;
+      }
 
       p {
         font-size: 70px;
@@ -319,7 +441,25 @@ const LottoWinning = styled.div`
         font-weight: bold;
         text-align: center;
         line-height: 120px;
+
+        @media screen and (max-width: 1020px) {
+          font-size: 45px;
+          line-height: 90px;
+        }
       }
+    }
+  }
+
+  @media screen and (min-width: 1020px) and (max-width: 1770px) {
+    margin: 100px auto 0 auto;
+    padding: 160px 75px 23px 75px;
+  }
+
+  @media screen and (max-width: 1020px) {
+    margin: 60px auto 0 auto;
+    padding: 100px 45px 23px 45px;
+    h2 {
+      font-size: 35px;
     }
   }
 `;
@@ -328,6 +468,10 @@ const BonusContainer = styled.div`
   h2 {
     font-size: 55px;
     margin-bottom: 25px;
+
+    @media screen and (max-width: 1020px) {
+      font-size: 35px;
+    }
   }
 `;
 
@@ -342,11 +486,21 @@ const BonusNumber = styled.div`
   background: var(--color-white);
   border-radius: 50%;
 
+  @media screen and (max-width: 1020px) {
+    width: 100px;
+    height: 110px;
+  }
+
   p {
     color: var(--color-black);
     font-weight: bold;
     font-size: 70px;
     line-height: 135px;
+
+    @media screen and (max-width: 1020px) {
+      font-size: 60px;
+      line-height: 100px;
+    }
   }
 `;
 
@@ -362,6 +516,12 @@ const BonusButtons = styled.div`
     background: #004bff;
     color: #ffffff;
     border-radius: 10px;
+
+    @media screen and (max-width: 1020px) {
+      width: 150px;
+      height: 55px;
+      font-size: 16px;
+    }
   }
 `;
 
@@ -387,6 +547,10 @@ const StartSix = styled.div`
     top: 65px;
     left: -170px;
   }
+
+  @media screen and (max-width: 1020px) {
+    display: none;
+  }
 `;
 
 const StartText = styled.div`
@@ -397,6 +561,37 @@ const StartText = styled.div`
   font-size: 65px;
   font-weight: bold;
   transform: translate(-10%, 10%);
+
+  @media screen and (max-width: 1020px) {
+    font-size: 45px;
+    transform: translate(25%, -10%);
+  }
+`;
+
+const StarSixMedia = styled.div`
+  @media screen and (max-width: 1020px) {
+    width: 0;
+    height: 0;
+    border-left: 130px solid transparent;
+    border-right: 130px solid transparent;
+    border-bottom: 150px solid #004bff;
+    position: absolute;
+    top: -70px;
+    left: -55px;
+    transform: rotate(-10deg);
+
+    &:after {
+      width: 0;
+      height: 0;
+      border-left: 130px solid transparent;
+      border-right: 130px solid transparent;
+      border-top: 150px solid #004bff;
+      position: absolute;
+      content: "";
+      top: 55px;
+      left: -130px;
+    }
+  }
 `;
 
 export {
@@ -419,4 +614,5 @@ export {
   BonusButtons,
   StartSix,
   StartText,
+  StarSixMedia,
 };
