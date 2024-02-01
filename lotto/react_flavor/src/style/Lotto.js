@@ -57,15 +57,16 @@ const ModalTable = styled.div`
     margin: 0 auto;
     width: 365px;
 
+    thead,
+    tfoot {
+      font-weight: bold;
+    }
+
     tr {
       border-bottom: 1px solid #bdbdbd;
 
       td {
         padding: 15px 10px;
-      }
-      &:first-child,
-      &:last-child {
-        font-weight: bold;
       }
     }
   }
@@ -213,6 +214,10 @@ const LottoPrice = styled.div`
 const InputContainer = styled.div`
   display: flex;
   gap: 44px;
+
+  @media screen and (max-width: 1020px) {
+    gap: 20px;
+  }
 
   input[type="number"]::-webkit-outer-spin-button,
   input[type="number"]::-webkit-inner-spin-button {
@@ -394,7 +399,7 @@ const NumberCheck = styled.div`
   }
 
   @media screen and (max-width: 1020px) {
-    justify-self: end;
+    justify-self: center;
   }
 `;
 
