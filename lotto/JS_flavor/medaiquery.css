@@ -67,18 +67,8 @@
       "image image";
   }
 
-  .ticket-container {
-    padding-top: 20px;
-    justify-self: center;
-  }
-
   .ticket-text p {
     font-size: 25px;
-  }
-
-  .ticket-image span {
-    font-size: 30px;
-    padding: 2px 5px;
   }
 
   .ticket-number-container {
