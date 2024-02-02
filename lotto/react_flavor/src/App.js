@@ -26,6 +26,7 @@ import {
 function App() {
   const [inputPrice, setInputPrice] = useState("");
   const [totalLottoTickets, setTotalLottoTickets] = useState(0);
+  const [imageActive, setImageActive] = useState(false);
 
   // 로또 티켓 발급
   const setPrice = (amount) => {
@@ -54,8 +55,16 @@ function App() {
       setInputPrice("");
     }
 
+    if (lottoTickets > 0) {
+      setImageActive(true);
+    } else {
+      setImageActive(false);
+    }
+
     console.log(totalLottoTickets, lottoTickets);
   };
+
+  // 구매한 로또 티켓 이미지
 
   return (
     <>
@@ -191,30 +200,36 @@ function App() {
               </TicketText>
               <TicketNumberContainer>
                 <ul>
-                  {/* <li className="ticket-front">
-                    <span>앞</span>
-                  </li>
-                  <li className="ticket-back flipped">
-                    <span>뒤</span>
-                  </li>
-                  <li className="ticket-front">
-                    <span>앞</span>
-                  </li>
-                  <li className="ticket-back flipped">
-                    <span>뒤</span>
-                  </li>
-                  <li className="ticket-front">
-                    <span>앞</span>
-                  </li>
-                  <li className="ticket-back flipped">
-                    <span>뒤</span>
-                  </li>
-                  <li className="ticket-front">
-                    <span>앞</span>
-                  </li>
-                  <li className="ticket-back flipped">
-                    <span>뒤</span>
-                  </li> */}
+                  {imageActive ? (
+                    <>
+                      <li className="ticket-front">
+                        <span>복</span>
+                      </li>
+                      <li className="ticket-back flipped">
+                        <span>0</span>
+                      </li>
+                      <li className="ticket-front">
+                        <span>복</span>
+                      </li>
+                      <li className="ticket-back flipped">
+                        <span>0</span>
+                      </li>
+                      <li className="ticket-front">
+                        <span>복</span>
+                      </li>
+                      <li className="ticket-back flipped">
+                        <span>0</span>
+                      </li>
+                      <li className="ticket-front">
+                        <span>복</span>
+                      </li>
+                      <li className="ticket-back flipped">
+                        <span>0</span>
+                      </li>
+                    </>
+                  ) : (
+                    ""
+                  )}
                 </ul>
               </TicketNumberContainer>
               <NumberCheck>
