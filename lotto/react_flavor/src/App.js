@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GlobalStyles from "./style/GlobalStyles";
 import {
   Modal,
@@ -27,6 +27,8 @@ function App() {
   const [inputPrice, setInputPrice] = useState("");
   const [totalLottoTickets, setTotalLottoTickets] = useState(0);
   const [imageActive, setImageActive] = useState(false);
+  const [showNumbers, setShowNumbers] = useState(false);
+  const [lottoNumbers, setLottoNumbers] = useState([]);
 
   // 로또 티켓 발급
   const setPrice = (amount) => {
@@ -64,7 +66,35 @@ function App() {
     console.log(totalLottoTickets, lottoTickets);
   };
 
-  // 구매한 로또 티켓 이미지
+  // 랜덤한 로또 번호 생성
+  const generateRandomNumbers = (count) => {
+    const lottoTickets = Array.from({ length: count / 6 }, () =>
+      createLottoNumbers()
+    ).flat();
+    return lottoTickets;
+  };
+
+  const createLottoNumbers = () => {
+    var numbers = Array.from({ length: 45 }, (_, i) => i + 1);
+    var lottoNumbers = [];
+
+    for (var i = 0; i < 7; i++) {
+      var index = Math.floor(Math.random() * numbers.length);
+      var number = numbers.splice(index, 1)[0];
+      lottoNumbers.push(number);
+    }
+
+    return lottoNumbers.sort(function (a, b) {
+      return a - b;
+    });
+  };
+
+  // 로또만큼 생성한 로또 번호 배열 저장
+  useEffect(() => {
+    if (totalLottoTickets > 0) {
+      setLottoNumbers(generateRandomNumbers(totalLottoTickets * 6));
+    }
+  }, [totalLottoTickets]);
 
   return (
     <>
@@ -200,41 +230,24 @@ function App() {
               </TicketText>
               <TicketNumberContainer>
                 <ul>
-                  {imageActive ? (
-                    <>
-                      <li className="ticket-front">
-                        <span>복</span>
+                  {imageActive &&
+                    lottoNumbers.map((number, index) => (
+                      <li key={index}>
+                        {showNumbers ? <span>{number}</span> : <span>복</span>}
                       </li>
-                      <li className="ticket-back flipped">
-                        <span>0</span>
-                      </li>
-                      <li className="ticket-front">
-                        <span>복</span>
-                      </li>
-                      <li className="ticket-back flipped">
-                        <span>0</span>
-                      </li>
-                      <li className="ticket-front">
-                        <span>복</span>
-                      </li>
-                      <li className="ticket-back flipped">
-                        <span>0</span>
-                      </li>
-                      <li className="ticket-front">
-                        <span>복</span>
-                      </li>
-                      <li className="ticket-back flipped">
-                        <span>0</span>
-                      </li>
-                    </>
-                  ) : (
-                    ""
-                  )}
+                    ))}
                 </ul>
               </TicketNumberContainer>
               <NumberCheck>
                 <p>번호확인</p>
-                <input type="checkbox" id="toggle-slider" />
+                <input
+                  type="checkbox"
+                  id="toggle-slider"
+                  checked={showNumbers}
+                  onChange={() =>
+                    setShowNumbers((prevShowNumbers) => !prevShowNumbers)
+                  }
+                />
                 <label htmlFor="toggle-slider">번호확인</label>
               </NumberCheck>
             </LottoTicket>
