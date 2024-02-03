@@ -29,6 +29,9 @@ function App() {
   const [imageActive, setImageActive] = useState(false);
   const [showNumbers, setShowNumbers] = useState(false);
   const [lottoNumbers, setLottoNumbers] = useState([]);
+  const [winningNumbers, setWinningNumbers] = useState([]);
+  const [bonusNumber, setBonusNumber] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   // 로또 티켓 발급
   const setPrice = (amount) => {
@@ -78,7 +81,7 @@ function App() {
     var numbers = Array.from({ length: 45 }, (_, i) => i + 1);
     var lottoNumbers = [];
 
-    for (var i = 0; i < 7; i++) {
+    for (var i = 0; i < 6; i++) {
       var index = Math.floor(Math.random() * numbers.length);
       var number = numbers.splice(index, 1)[0];
       lottoNumbers.push(number);
@@ -96,81 +99,111 @@ function App() {
     }
   }, [totalLottoTickets]);
 
+  // 당첨 번호 자동입력 버튼 클릭
+  const handleAutoDraw = () => {
+    const randomNumbers = generateRandomNumbers(6);
+    const bonusNumbers = generateRandomNumbers(6);
+    setWinningNumbers(randomNumbers.slice(0, 6));
+
+    const newBonusNumber = bonusNumbers.find(
+      (number) => !randomNumbers.includes(number)
+    );
+    setBonusNumber(newBonusNumber);
+  };
+
+  useEffect(() => {
+    console.log(winningNumbers, bonusNumber);
+  }, [winningNumbers, bonusNumber]);
+
+  // 결과 확인하기 버튼
+  const handleCheckResult = () => {
+    setShowModal(true);
+  };
+
   return (
     <>
       <GlobalStyles />
-      <Modal>
-        <h2>
-          <strong>★</strong> 당첨 통계 <strong>★</strong>
-        </h2>
-        <ModalTable>
-          <table>
-            <thead>
-              <tr>
-                <td>일치 갯수</td>
-                <td>당첨금</td>
-                <td>당첨 갯수</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>0 ~ 2개</td>
-                <td>0</td>
-                <td>
-                  <span className="result-underTwo">0</span>개
-                </td>
-              </tr>
-              <tr>
-                <td>3개</td>
-                <td>5,000</td>
-                <td>
-                  <span className="result-three">0</span>개
-                </td>
-              </tr>
-              <tr>
-                <td>4개</td>
-                <td>50,000</td>
-                <td>
-                  <span className="result-four">0</span>개
-                </td>
-              </tr>
-              <tr>
-                <td>5개</td>
-                <td>1,500,000</td>
-                <td>
-                  <span className="result-five">0</span>개
-                </td>
-              </tr>
-              <tr>
-                <td>5개 + 보너스볼</td>
-                <td>30,000,000</td>
-                <td>
-                  <span className="result-five-bonus">0</span>개
-                </td>
-              </tr>
-              <tr>
-                <td>6개</td>
-                <td>2,000,000,000</td>
-                <td>
-                  <span className="result-six">0</span>개
-                </td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <td colSpan="3">
-                  당신의 총 수익률은 <span className="result-benefit">0</span>
-                  %입니다.
-                </td>
-              </tr>
-            </tfoot>
-          </table>
-        </ModalTable>
-        <button className="restart-button" type="button">
-          다시 시작하기
-        </button>
-      </Modal>
-      <ModalBg></ModalBg>
+      {showModal && (
+        <>
+          <Modal>
+            <h2>
+              <strong>★</strong> 당첨 통계 <strong>★</strong>
+            </h2>
+            <ModalTable>
+              <table>
+                <thead>
+                  <tr>
+                    <td>일치 갯수</td>
+                    <td>당첨금</td>
+                    <td>당첨 갯수</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0 ~ 2개</td>
+                    <td>0</td>
+                    <td>
+                      <span className="result-underTwo">0</span>개
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3개</td>
+                    <td>5,000</td>
+                    <td>
+                      <span className="result-three">0</span>개
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4개</td>
+                    <td>50,000</td>
+                    <td>
+                      <span className="result-four">0</span>개
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>5개</td>
+                    <td>1,500,000</td>
+                    <td>
+                      <span className="result-five">0</span>개
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>5개 + 보너스볼</td>
+                    <td>30,000,000</td>
+                    <td>
+                      <span className="result-five-bonus">0</span>개
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>6개</td>
+                    <td>2,000,000,000</td>
+                    <td>
+                      <span className="result-six">0</span>개
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colSpan="3">
+                      당신의 총 수익률은{" "}
+                      <span className="result-benefit">0</span>
+                      %입니다.
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </ModalTable>
+            <button
+              className="restart-button"
+              type="button"
+              onClick={() => setShowModal(false)}
+            >
+              다시 시작하기
+            </button>
+          </Modal>
+          <ModalBg onClick={() => setShowModal(false)}></ModalBg>
+        </>
+      )}
 
       <Container>
         <div>
@@ -266,32 +299,32 @@ function App() {
           <ul className="winning-numbers">
             <li className="winning-number">
               <div>
-                <p></p>
+                <p>{winningNumbers[0]}</p>
               </div>
             </li>
             <li className="winning-number">
               <div>
-                <p></p>
+                <p>{winningNumbers[1]}</p>
               </div>
             </li>
             <li className="winning-number">
               <div>
-                <p></p>
+                <p>{winningNumbers[2]}</p>
               </div>
             </li>
             <li className="winning-number">
               <div>
-                <p></p>
+                <p>{winningNumbers[3]}</p>
               </div>
             </li>
             <li className="winning-number">
               <div>
-                <p></p>
+                <p>{winningNumbers[4]}</p>
               </div>
             </li>
             <li className="winning-number">
               <div>
-                <p></p>
+                <p>{winningNumbers[5]}</p>
               </div>
             </li>
           </ul>
@@ -299,13 +332,21 @@ function App() {
             <h2>뽀나스번호</h2>
             <BonusAndButton>
               <BonusNumber>
-                <p></p>
+                <p>{bonusNumber}</p>
               </BonusNumber>
               <BonusButtons>
-                <button className="number-draw-button" type="button">
+                <button
+                  className="number-draw-button"
+                  type="button"
+                  onClick={handleAutoDraw}
+                >
                   당첨 번호 자동입력
                 </button>
-                <button type="button" className="check-result-button">
+                <button
+                  type="button"
+                  className="check-result-button"
+                  onClick={handleCheckResult}
+                >
                   결과 확인하기
                 </button>
               </BonusButtons>

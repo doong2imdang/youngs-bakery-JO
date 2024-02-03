@@ -10,7 +10,6 @@ const Modal = styled.div`
   z-index: 50;
   transform: translate(-50%, -50%);
   padding: 100px 54px 44px 54px;
-  display: none;
 
   h2 {
     color: var(--color-white);
@@ -91,7 +90,6 @@ const ModalBg = styled.div`
   background: #000000;
   opacity: 0.85;
   z-index: 30;
-  display: none;
 `;
 
 const Container = styled.div`
