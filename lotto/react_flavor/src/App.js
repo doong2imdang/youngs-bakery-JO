@@ -33,6 +33,7 @@ function App() {
   const [bonusNumber, setBonusNumber] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [matchingCount, setMatchingCount] = useState([]);
+  const [totalWinningRate, setTotalWinningRate] = useState(0);
 
   // 로또 티켓 발급
   const setPrice = (amount) => {
@@ -164,6 +165,23 @@ function App() {
     }
 
     // 수익률 구하기
+    let totalWinningPrice =
+      0 * matchingCountsArray[0] +
+      5000 * matchingCountsArray[1] +
+      50000 * matchingCountsArray[2] +
+      1500000 * matchingCountsArray[3] +
+      30000000 * matchingCountsArray[4] +
+      2000000 * matchingCountsArray[5];
+
+    let totalTicketsPrice = 1000 * lottoNumbersArray.length;
+
+    console.log(matchingCount[0] * 12);
+
+    let benefit =
+      ((totalWinningPrice - totalTicketsPrice) / totalTicketsPrice) * 100;
+    benefit = benefit.toFixed(2);
+
+    setTotalWinningRate(benefit);
   };
 
   const splitLotto = (arr, chunk) => {
@@ -249,7 +267,7 @@ function App() {
                   <tr>
                     <td colSpan="3">
                       당신의 총 수익률은{" "}
-                      <span className="result-benefit">0</span>
+                      <span className="result-benefit">{totalWinningRate}</span>
                       %입니다.
                     </td>
                   </tr>
