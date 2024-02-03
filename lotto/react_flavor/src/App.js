@@ -103,6 +103,10 @@ function App() {
 
   // 당첨 번호 자동입력 버튼 클릭
   const handleAutoDraw = () => {
+    if (lottoNumbers.length === 0) {
+      alert("로또를 먼저 구매해주세요!");
+      return;
+    }
     const randomNumbers = generateRandomNumbers(6);
     const bonusNumbers = generateRandomNumbers(6);
     setWinningNumbers(randomNumbers.slice(0, 6));
@@ -117,8 +121,27 @@ function App() {
     console.log(winningNumbers, bonusNumber);
   }, [winningNumbers, bonusNumber]);
 
+  useEffect(() => {
+    if (!showModal) {
+      setInputPrice("");
+      setTotalLottoTickets(0);
+      setImageActive(false);
+      setShowNumbers(false);
+      setLottoNumbers([]);
+      setWinningNumbers([]);
+      setBonusNumber("");
+      setMatchingCount([]);
+      setTotalWinningRate(0);
+    }
+  }, [showModal]);
+
   // 결과 확인하기 버튼
   const handleCheckResult = () => {
+    if (winningNumbers.length === 0) {
+      alert("당첨 번호를 먼저 설정하세요!");
+      return;
+    }
+
     setShowModal(true);
 
     // 당첨통계
@@ -174,9 +197,6 @@ function App() {
       2000000 * matchingCountsArray[5];
 
     let totalTicketsPrice = 1000 * lottoNumbersArray.length;
-
-    console.log(matchingCount[0] * 12);
-
     let benefit =
       ((totalWinningPrice - totalTicketsPrice) / totalTicketsPrice) * 100;
     benefit = benefit.toFixed(2);
