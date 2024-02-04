@@ -59,7 +59,11 @@ function App() {
         (prevTotalLottoTickets) => prevTotalLottoTickets + lottoTickets
       );
       alert(`총 ${lottoTickets}장 구매되었으며 ${balance}원 입니다.`);
-      setInputPrice("");
+      if (balance > 0) {
+        setInputPrice(balance);
+      } else {
+        setInputPrice("");
+      }
     }
 
     if (lottoTickets > 0) {
