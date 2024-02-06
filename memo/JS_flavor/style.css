@@ -1,0 +1,63 @@
+.paint-board-container {
+  background: #b0b0b0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+canvas {
+  width: 800px;
+  height: 800px;
+  background: #ffffff;
+}
+
+.btns-colors {
+  width: 800px;
+  display: grid;
+  grid-template-areas:
+    "btns range"
+    "colors range";
+  gap: 20px;
+}
+
+.btns {
+  display: flex;
+  margin-top: 30px;
+  gap: 7.5px;
+  grid-area: btns;
+}
+
+.btns button {
+  width: 95px;
+  height: 30px;
+}
+
+.colors {
+  display: flex;
+  grid-area: colors;
+  gap: 5px;
+  justify-self: start;
+  background: #e0e0e0;
+  padding: 5px;
+}
+
+#color {
+  width: 35px;
+  height: 35px;
+}
+
+.color-option {
+  width: 28px;
+  height: 28px;
+  border-left: 5px solid black;
+  border-top: 5px solid black;
+  border-style: inset;
+  cursor: pointer;
+}
+
+#line-width {
+  grid-area: range;
+  justify-self: end;
+}
