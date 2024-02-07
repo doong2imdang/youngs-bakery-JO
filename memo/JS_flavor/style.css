@@ -1,10 +1,27 @@
 .paint-board-container {
   background: #b0b0b0;
-  height: 100vh;
+}
+
+header {
+  height: 40px;
+  width: 100%;
+  color: #ffffff;
+  font-size: 25px;
+  line-height: 40px;
+  padding-left: 10px;
+  background-color: #0b026b;
+}
+
+header img {
+  padding-right: 10px;
+}
+
+main {
+  padding-top: 40px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 canvas {
