@@ -26,7 +26,13 @@ function onMouseUp() {
   isPainting = false;
 }
 
+function onLineWidth(e) {
+  ctx.lineWidth = e.target.value;
+}
+
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", onMouseDown);
 canvas.addEventListener("mouseup", onMouseUp);
 canvas.addEventListener("mouseleave", onMouseUp);
+
+lineWidth.addEventListener("change", onLineWidth);
