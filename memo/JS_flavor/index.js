@@ -3,6 +3,7 @@ const colorOptions = Array.from(
 );
 const color = document.getElementById("color");
 const drawModeBtn = document.querySelector(".draw-mode-btn");
+const eraseBtn = document.querySelector(".erase-btn");
 const lineWidth = document.getElementById("line-width");
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
@@ -50,9 +51,10 @@ function onColorClick(e) {
 function onDrawModeBtn() {
   if (isFilling) {
     isFilling = false;
+    drawModeBtn.innerText = "Fill";
   } else {
     isFilling = true;
-    drawModeBtn.innerHTML = "Fill";
+    drawModeBtn.innerText = "Paint";
   }
 }
 
@@ -60,6 +62,12 @@ function onCanvasClick() {
   if (isFilling) {
     ctx.fillRect(0, 0, 700, 700);
   }
+}
+
+function onErase() {
+  ctx.strokeStyle = "white";
+  isFilling = false;
+  drawModeBtn.innerText = "Fill";
 }
 
 canvas.addEventListener("mousemove", onMove);
@@ -73,3 +81,4 @@ colorOptions.forEach((color) => color.addEventListener("click", onColorClick));
 
 drawModeBtn.addEventListener("click", onDrawModeBtn);
 canvas.addEventListener("click", onCanvasClick);
+eraseBtn.addEventListener("click", onErase);
