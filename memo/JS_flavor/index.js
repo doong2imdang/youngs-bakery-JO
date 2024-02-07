@@ -4,6 +4,7 @@ const colorOptions = Array.from(
 const color = document.getElementById("color");
 const drawModeBtn = document.querySelector(".draw-mode-btn");
 const eraseBtn = document.querySelector(".erase-btn");
+const saveBtn = document.querySelector(".save-btn");
 const lineWidth = document.getElementById("line-width");
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
@@ -70,6 +71,14 @@ function onErase() {
   drawModeBtn.innerText = "Fill";
 }
 
+function onSaveClick() {
+  const url = canvas.toDataURL();
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "myDrawingBoard.png";
+  a.click();
+}
+
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mouseup", cancelPainting);
@@ -82,3 +91,4 @@ colorOptions.forEach((color) => color.addEventListener("click", onColorClick));
 drawModeBtn.addEventListener("click", onDrawModeBtn);
 canvas.addEventListener("click", onCanvasClick);
 eraseBtn.addEventListener("click", onErase);
+saveBtn.addEventListener("click", onSaveClick);
