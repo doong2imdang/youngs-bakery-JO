@@ -8,8 +8,8 @@ const saveBtn = document.querySelector(".save-btn");
 const lineWidth = document.getElementById("line-width");
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
-canvas.width = 700;
-canvas.height = 700;
+canvas.width = 290;
+canvas.height = 290;
 
 let isPainting = false;
 let isFilling = false;
@@ -61,7 +61,7 @@ function onDrawModeBtn() {
 
 function onCanvasClick() {
   if (isFilling) {
-    ctx.fillRect(0, 0, 700, 700);
+    ctx.fillRect(0, 0, 290, 290);
   }
 }
 

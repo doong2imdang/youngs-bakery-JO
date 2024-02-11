@@ -1,23 +1,32 @@
+/* container */
+.container {
+  display: grid;
+  grid-template-areas:
+    "analog calendar calendar"
+    "digital paint slider"
+    "weather paint slider";
+}
+/* container  */
+
+/* 그림판 css */
 .paint-board-container {
   background: #b0b0b0;
+  width: 453px;
+  height: 421px;
+  grid-area: paint;
 }
 
 header {
-  height: 40px;
-  width: 100%;
+  height: 28px;
   color: #ffffff;
-  font-size: 25px;
-  line-height: 40px;
+  font-size: 20px;
+  line-height: 30px;
   padding-left: 10px;
   background-color: #0b026b;
 }
 
-header img {
-  padding-right: 10px;
-}
-
 main {
-  padding-top: 40px;
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,51 +34,52 @@ main {
 }
 
 canvas {
-  width: 700px;
-  height: 700px;
+  width: 290px;
+  height: 290px;
   background: #ffffff;
 }
 
 .btns-colors {
-  width: 700px;
+  width: 290px;
   display: grid;
   grid-template-areas:
     "btns range"
     "colors range";
-  gap: 20px;
+  gap: 4px;
+  margin-top: 17px;
 }
 
 .btns {
-  display: flex;
-  margin-top: 30px;
-  gap: 7.5px;
   grid-area: btns;
+  display: flex;
+  gap: 7.5px;
 }
 
-.btns button {
-  width: 95px;
-  height: 30px;
+.btns li button {
+  padding: 0;
 }
 
 .colors {
   display: flex;
   grid-area: colors;
-  gap: 5px;
+  gap: 2px;
   justify-self: start;
+  align-items: center;
   background: #e0e0e0;
-  padding: 5px;
+  padding-right: 2px;
 }
 
 #color {
-  width: 35px;
-  height: 35px;
+  width: 19px;
+  height: 23px;
+  padding: 0;
 }
 
 .color-option {
-  width: 28px;
-  height: 28px;
-  border-left: 5px solid black;
-  border-top: 5px solid black;
+  width: 13px;
+  height: 13px;
+  border-left: 2.5px solid black;
+  border-top: 2.5px solid black;
   border-style: inset;
   cursor: pointer;
 }
@@ -77,4 +87,7 @@ canvas {
 #line-width {
   grid-area: range;
   justify-self: end;
+  /* width: 108px; */
 }
+
+/* 그림판 css */
