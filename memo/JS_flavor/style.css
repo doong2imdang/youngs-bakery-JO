@@ -8,6 +8,37 @@
 }
 /* container  */
 
+/* analog-container */
+.analog-container {
+  width: 453px;
+  height: 371px;
+  grid-area: analog;
+}
+/* analog-container */
+
+/* digital-container */
+.digital-container {
+  width: 453px;
+  height: 198px;
+  grid-area: digital;
+}
+/* digital-container */
+
+/* weather-container */
+.weather-container {
+  width: 453px;
+  height: 224px;
+  grid-area: weather;
+}
+/* weather-container */
+
+/* calendar-container */
+.calendar-container {
+  width: 756px;
+  height: 366px;
+}
+/* calendar-container */
+
 /* 그림판 css */
 .paint-board-container {
   background: #b0b0b0;
@@ -89,5 +120,12 @@ canvas {
   justify-self: end;
   /* width: 108px; */
 }
-
 /* 그림판 css */
+
+/* images-slider-container */
+.images-slider-container {
+  width: 420px;
+  height: 421px;
+  grid-area: slider;
+}
+/* images-slider-container */
