@@ -6,6 +6,31 @@
   font-style: normal;
 }
 
-.container {
+.container,
+button {
   font-family: "DungGeunMo";
+}
+
+body {
+  background-color: #000079;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 28px;
+  margin: 6.5px;
+  padding: 0 8px;
+  background-color: #0b026b;
+  color: #ffffff;
+  font-size: 20px;
+}
+.btn-container {
+  margin-top: 5px;
+}
+
+.content-container {
+  background: #b0b0b0;
+  box-shadow: inset 5px 5px 1px white, 5px 5px 2px black;
 }

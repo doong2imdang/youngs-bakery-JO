@@ -1,12 +1,56 @@
-/* container */
 .container {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "navbar main";
+  grid-template-columns: 220px auto;
+}
+
+/* header */
+.title {
+  background-color: #000000;
+  grid-area: header;
+}
+
+.title h1 {
+  font-size: 45px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 75px;
+  height: 80px;
+}
+/* header */
+
+/* nav */
+.navbar-list {
+  background-color: #000000;
+  width: 220px;
+  grid-area: navbar;
+  height: 100vh;
+}
+
+.navbar-list li {
+  font-size: 30px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 25px;
+}
+
+/* nav */
+
+/* main */
+.main {
   display: grid;
   grid-template-areas:
     "analog calendar calendar"
     "digital paint slider"
     "weather paint slider";
+  grid-area: main;
+  padding: 29px 0 0 50px;
 }
-/* container  */
+/* main  */
 
 /* analog-container */
 .analog-container {
@@ -21,6 +65,7 @@
   width: 453px;
   height: 198px;
   grid-area: digital;
+  transform: translate(50px, -50px);
 }
 /* digital-container */
 
@@ -29,6 +74,7 @@
   width: 453px;
   height: 224px;
   grid-area: weather;
+  transform: translateY(-60px);
 }
 /* weather-container */
 
@@ -36,32 +82,24 @@
 .calendar-container {
   width: 756px;
   height: 366px;
+  transform: translateX(150px);
 }
 /* calendar-container */
 
 /* 그림판 css */
 .paint-board-container {
-  background: #b0b0b0;
   width: 453px;
   height: 421px;
   grid-area: paint;
+  justify-self: center;
+  transform: translateY(-20px);
 }
 
-header {
-  height: 28px;
-  color: #ffffff;
-  font-size: 20px;
-  line-height: 30px;
-  padding-left: 10px;
-  background-color: #0b026b;
-}
-
-main {
+.paint-board-container main {
   padding-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
 }
 
 canvas {
@@ -77,7 +115,7 @@ canvas {
     "btns range"
     "colors range";
   gap: 4px;
-  margin-top: 17px;
+  margin-top: 10px;
 }
 
 .btns {
@@ -86,8 +124,13 @@ canvas {
   gap: 7.5px;
 }
 
-.btns li button {
-  padding: 0;
+.draw-mode-btn,
+.erase-btn,
+.save-btn {
+  width: 50px;
+  height: 17px;
+  box-shadow: inset 1px 1px 1px white, inset -1px -1px 1px black;
+  font-size: 11px;
 }
 
 .colors {
@@ -109,17 +152,16 @@ canvas {
 .color-option {
   width: 13px;
   height: 13px;
-  border-left: 2.5px solid black;
-  border-top: 2.5px solid black;
-  border-style: inset;
+  box-shadow: inset 1.5px 1.5px 1px black;
   cursor: pointer;
 }
 
 #line-width {
   grid-area: range;
   justify-self: end;
-  /* width: 108px; */
+  width: 108px;
 }
+
 /* 그림판 css */
 
 /* images-slider-container */
@@ -127,5 +169,6 @@ canvas {
   width: 420px;
   height: 421px;
   grid-area: slider;
+  transform: translate(-110px, -60px);
 }
 /* images-slider-container */

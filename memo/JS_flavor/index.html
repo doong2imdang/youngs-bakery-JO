@@ -5,95 +5,177 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memo</title>
-    <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://unpkg.com/98.css" />
+    <!-- <link rel="stylesheet" href="https://unpkg.com/98.css" /> -->
+    <link rel="stylesheet" href="common.css" />
+    <link rel="stylesheet" href="reset.css" />
   </head>
   <body>
     <div class="container">
-      <div class="analog-container"></div>
-      <div class="digital-container"></div>
-      <div class="weather-container"></div>
-      <div class="calendar-container"></div>
-      <div class="paint-board-container">
-        <header>
-          <p>그림판</p>
-        </header>
-        <main>
-          <canvas></canvas>
-          <div class="btns-colors">
-            <ul class="btns">
-              <li>
-                <button class="draw-mode-btn" type="button">Fill</button>
-              </li>
-              <li><button class="erase-btn" type="button">Erase</button></li>
-              <li><button class="save-btn" type="button">Save</button></li>
-            </ul>
-            <ul class="colors">
-              <li><input type="color" id="color" /></li>
-              <li>
-                <div
-                  class="color-option"
-                  style="background-color: #000000"
-                  data-color="#000000"
-                ></div>
-              </li>
-              <li>
-                <div
-                  class="color-option"
-                  style="background-color: #ffffff"
-                  data-color="#ffffff"
-                ></div>
-              </li>
-              <li>
-                <div
-                  class="color-option"
-                  style="background-color: #f40407"
-                  data-color="#f40407"
-                ></div>
-              </li>
-              <li>
-                <div
-                  class="color-option"
-                  style="background-color: #fcfd07"
-                  data-color="#fcfd07"
-                ></div>
-              </li>
-              <li>
-                <div
-                  class="color-option"
-                  style="background-color: #29fd09"
-                  data-color="#29fd09"
-                ></div>
-              </li>
-              <li>
-                <div
-                  class="color-option"
-                  style="background-color: #32fefd"
-                  data-color="#32fefd"
-                ></div>
-              </li>
-              <li>
-                <div
-                  class="color-option"
-                  style="background-color: #1d02fe"
-                  data-color="#1d02fe"
-                ></div>
-              </li>
-              <li>
-                <div
-                  class="color-option"
-                  style="background-color: #fe00ff"
-                  data-color="#fe00ff"
-                ></div>
-              </li>
-            </ul>
-            <input id="line-width" type="range" min="1" max="10" value="5" />
-          </div>
-        </main>
+      <header class="title">
+        <h1>메모장</h1>
+      </header>
+      <nav class="navbar-list">
+        <li class="navbar"><img src="./images/icon-clock.svg" alt=""><a href="#">시계</a></li>
+        <li  class="navbar"><img src="./images/icon-weather.svg" alt=""><a href="#">날씨</a></li>
+        <li  class="navbar"><img src="./images/icon-calendar.svg" alt=""><a href="#">달력</a></li>
+        <li  class="navbar"><img src="./images/icon-paintboard.svg" alt=""><a href="#">그림판</a></li>
+        <li  class="navbar"><img src="./images/icon-slider.svg" alt=""><a href="#">슬라이다</a></li>
+      </nav>
+      <main class="main">
+        <div class="analog-container content-container">
+          <header class="content-header">
+            <h2>시계</h2>
+            <div class="btn-container">
+              <button type="button">
+                <img src="./images/question-btn.svg" alt="">
+              </button>
+            <button type="button">
+              <img src="./images/delete-btn.svg" alt="">
+            </button>
+            </div>
+          </header>
+        </div>
+        <div class="digital-container content-container">
+          <header class="content-header">
+            <h2>시계</h2>
+            <div class="btn-container">
+              <button type="button">
+                <img src="./images/question-btn.svg" alt="">
+              </button>
+            <button type="button">
+              <img src="./images/delete-btn.svg" alt="">
+            </button>
+            </div>
+          </header>
+        </div>
+        <div class="weather-container content-container">
+          <header class="content-header">
+            <h2>날씨</h2>
+            <div class="btn-container">
+              <button type="button">
+                <img src="./images/question-btn.svg" alt="">
+              </button>
+            <button type="button">
+              <img src="./images/delete-btn.svg" alt="">
+            </button>
+            </div>
+          </header>
+        </div>
+        <div class="calendar-container content-container">
+          <header class="content-header">
+            <h2>달력</h2>
+            <div class="btn-container">
+              <button type="button">
+                <img src="./images/question-btn.svg" alt="">
+              </button>
+            <button type="button">
+              <img src="./images/delete-btn.svg" alt="">
+            </button>
+            </div>
+          </header>
+        </div>
+        <div class="paint-board-container content-container">
+          <header class="content-header">
+            <h2>그림판</h2>
+            <div class="btn-container">
+              <button type="button">
+                <img src="./images/question-btn.svg" alt="">
+              </button>
+            <button type="button">
+              <img src="./images/delete-btn.svg" alt="">
+            </button>
+            </div>
+          </header>
+          <main>
+            <canvas></canvas>
+            <div class="btns-colors">
+              <ul class="btns">
+                <li>
+                  <button class="draw-mode-btn" type="button">Fill</button>
+                </li>
+                <li><button class="erase-btn" type="button">Erase</button></li>
+                <li><button class="save-btn" type="button">Save</button></li>
+              </ul>
+              <ul class="colors">
+                <li><input type="color" id="color" /></li>
+                <li>
+                  <div
+                    class="color-option"
+                    style="background-color: #000000"
+                    data-color="#000000"
+                  ></div>
+                </li>
+                <li>
+                  <div
+                    class="color-option"
+                    style="background-color: #ffffff"
+                    data-color="#ffffff"
+                  ></div>
+                </li>
+                <li>
+                  <div
+                    class="color-option"
+                    style="background-color: #f40407"
+                    data-color="#f40407"
+                  ></div>
+                </li>
+                <li>
+                  <div
+                    class="color-option"
+                    style="background-color: #fcfd07"
+                    data-color="#fcfd07"
+                  ></div>
+                </li>
+                <li>
+                  <div
+                    class="color-option"
+                    style="background-color: #29fd09"
+                    data-color="#29fd09"
+                  ></div>
+                </li>
+                <li>
+                  <div
+                    class="color-option"
+                    style="background-color: #32fefd"
+                    data-color="#32fefd"
+                  ></div>
+                </li>
+                <li>
+                  <div
+                    class="color-option"
+                    style="background-color: #1d02fe"
+                    data-color="#1d02fe"
+                  ></div>
+                </li>
+                <li>
+                  <div
+                    class="color-option"
+                    style="background-color: #fe00ff"
+                    data-color="#fe00ff"
+                  ></div>
+                </li>
+              </ul>
+              <input id="line-width" type="range" min="1" max="10" value="5" />
+            </div>
+          </main>
+        </div>
+        <div class="images-slider-container content-container">
+          <header class="content-header">
+            <h2>슬라이다</h2>
+            <div class="btn-container">
+              <button type="button">
+                <img src="./images/question-btn.svg" alt="">
+              </button>
+            <button type="button">
+              <img src="./images/delete-btn.svg" alt="">
+            </button>
+            </div>
+          </header>
+        </div>
       </div>
-      <div class="images-slider-container"></div>
-    </div>
+      </main>
+      
     <script src="paint-board.js"></script>
   </body>
 </html>
