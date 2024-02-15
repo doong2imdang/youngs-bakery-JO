@@ -216,10 +216,6 @@ input[type="range"]::-webkit-slider-runnable-track {
   display: flex;
 }
 
-.slider-images li {
-  transform: translateX(-540px);
-}
-
 .slider-images li img {
   width: 270px;
   height: 100%;

@@ -8,8 +8,16 @@ const bullets = document.querySelectorAll(".bullet");
 const liWidth = sliderLis[0].clientWidth;
 const sliderWidth = liWidth * sliderLis.length;
 
-let currentIdx = 2;
+let currentIdx = 0;
 let translate = 0;
+
+bullets.forEach((bullet, index) => {
+  bullet.addEventListener("click", () => {
+    currentIdx = index;
+    translate = -liWidth * currentIdx;
+    updateSlider();
+  });
+});
 
 const onControlBtnClick = (e) => {
   if (e.target.className === "next-btn") {
@@ -23,9 +31,18 @@ const onControlBtnClick = (e) => {
       translate += liWidth;
     }
   }
-  sliderImages.style.transform = `translateX(${translate}px)`;
+  updateSlider();
+};
 
-  console.log(currentIdx, translate);
+const updateSlider = () => {
+  sliderImages.style.transform = `translateX(${translate}px)`;
+  bullets.forEach((bullet, index) => {
+    if (index === currentIdx) {
+      bullet.classList.add("active");
+    } else {
+      bullet.classList.remove("active");
+    }
+  });
 };
 
 controlBtns.addEventListener("click", onControlBtnClick);
