@@ -8,6 +8,8 @@
 
 로또 JS(https://doong2imdang.github.io/youngs-bakery/lotto/JS_flavor/)
 
+메모장 JS(https://doong2imdang.github.io/youngs-bakery/memo/JS_flavor/)
+
 #### 커밋 타입
 
 | 커밋     | 타입 설명                                                                                        |
