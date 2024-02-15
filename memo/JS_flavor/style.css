@@ -67,6 +67,23 @@
   grid-area: digital;
   transform: translate(50px, -50px);
 }
+
+.digital-box {
+  width: 400px;
+  height: 138px;
+  margin: 10px auto 0 auto;
+  box-shadow: inset 2px 2px 1px white, 2px 2px 1px black;
+}
+
+.digital-time {
+  font-size: 90px;
+  text-align: center;
+}
+
+.digital-date {
+  font-size: 35px;
+  text-align: center;
+}
 /* digital-container */
 
 /* weather-container */
