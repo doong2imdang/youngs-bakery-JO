@@ -13,8 +13,6 @@ const handleDigitalClock = () => {
 
   digitalTime.innerHTML = hour + ":" + min + ":" + sec;
   digitalDate.innerHTML = day + "/" + month + "/" + year;
-
-  console.log(hour, min, sec, year, month, day);
 };
 
 const modifyNumber = (number) => {
