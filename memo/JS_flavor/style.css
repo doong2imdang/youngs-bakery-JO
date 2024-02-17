@@ -58,6 +58,97 @@
   height: 371px;
   grid-area: analog;
 }
+
+.analog-box {
+  width: 262px;
+  height: 262px;
+  border: 11px solid #3f3f3f;
+  background-color: white;
+  margin: 20px auto 0 auto;
+  border-radius: 50%;
+}
+
+.analog-box-inner {
+  width: 244px;
+  height: 244px;
+  border-radius: 50%;
+  border: 3px solid #b0b0b0;
+  margin: 6px auto 0 auto;
+  position: relative;
+  text-align: center;
+  background: url("./images/analog-clock-bg.svg") center no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.analog-box-inner::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background-color: #f6cf73;
+  position: absolute;
+  border-radius: 50%;
+  z-index: 30;
+}
+
+.analog-hour,
+.analog-min,
+.analog-sec {
+  position: absolute;
+}
+
+.hr {
+  width: 120px;
+  height: 120px;
+}
+
+.mn {
+  width: 110px;
+  height: 110px;
+}
+
+.sc {
+  width: 195px;
+  height: 195px;
+}
+
+.hr,
+.mn,
+.sc {
+  display: flex;
+  justify-content: center;
+}
+
+.hr::before {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 65px;
+  background: black;
+  z-index: 10;
+  border-radius: 6px;
+}
+
+.mn::before {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 59px;
+  background: #ec1a1a;
+  z-index: 20;
+  border-radius: 6px;
+}
+
+.sc::before {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 100px;
+  background: black;
+  z-index: 0;
+  border-radius: 6px;
+}
 /* analog-container */
 
 /* digital-container */
