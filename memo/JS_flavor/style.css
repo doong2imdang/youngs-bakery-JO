@@ -104,8 +104,8 @@
 }
 
 .mn {
-  width: 110px;
-  height: 110px;
+  width: 160px;
+  height: 160px;
 }
 
 .sc {
@@ -134,7 +134,7 @@
   content: "";
   position: absolute;
   width: 9px;
-  height: 59px;
+  height: 85px;
   background: #ec1a1a;
   z-index: 20;
   border-radius: 6px;
