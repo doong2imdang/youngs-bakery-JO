@@ -26,7 +26,7 @@
   background-color: #000000;
   width: 220px;
   grid-area: navbar;
-  height: 100vh;
+  height: calc(100vh - 80px);
 }
 
 .navbar-list li {
@@ -156,7 +156,7 @@
   width: 453px;
   height: 198px;
   grid-area: digital;
-  transform: translate(50px, -50px);
+  transform: translate(50px, -45px);
 }
 
 .digital-box {
@@ -182,7 +182,7 @@
   width: 453px;
   height: 224px;
   grid-area: weather;
-  transform: translateY(-60px);
+  transform: translateY(-30px);
 }
 
 .weather-box {
@@ -221,7 +221,7 @@
 .calendar-container {
   width: 756px;
   height: 366px;
-  transform: translateX(150px);
+  transform: translateX(110px);
 }
 
 .calendar-box {
@@ -291,8 +291,6 @@ tbody tr td {
 .today {
   background-color: #0b026b;
   color: white;
-  width: 34px;
-  height: 34px;
 }
 /* calendar-container */
 
@@ -302,7 +300,7 @@ tbody tr td {
   height: 421px;
   grid-area: paint;
   justify-self: center;
-  transform: translateY(-20px);
+  transform: translateY(-10px);
 }
 
 .paint-board-container main {
@@ -403,7 +401,11 @@ input[type="range"]::-webkit-slider-runnable-track {
   width: 420px;
   height: 421px;
   grid-area: slider;
-  transform: translate(-110px, -60px);
+  transform: translate(-110px, -35px);
+  -webkit-transform: translate(-110px, -35px);
+  -moz-transform: translate(-110px, -35px);
+  -ms-transform: translate(-110px, -35px);
+  -o-transform: translate(-110px, -35px);
 }
 
 .slider-main {
