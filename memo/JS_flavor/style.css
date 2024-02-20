@@ -223,6 +223,77 @@
   height: 366px;
   transform: translateX(150px);
 }
+
+.calendar-box {
+  padding: 9px 78px;
+}
+
+.year-and-month {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid white;
+  background-color: #000079;
+  outline: 2px solid black;
+  padding: 3px;
+  margin-bottom: 19px;
+}
+
+.year-and-month button {
+  width: 27px;
+  height: 27px;
+  background-color: #afb0b3;
+  color: #d9d9d9;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.year-and-month span {
+  color: white;
+  font-size: 25px;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+}
+
+thead tr {
+  background: #a9a9a9;
+  border: 1px solid black;
+  border-bottom: 0;
+}
+
+thead tr th {
+  padding: 5px 0;
+}
+
+thead tr th {
+  font-size: 30px;
+}
+
+tbody tr {
+  font-size: 25px;
+  line-height: 32px;
+  background-color: white;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+tbody tr:last-child {
+  border-bottom: 1px solid black;
+}
+
+tbody tr td {
+  padding: 4px 0;
+}
+
+.today {
+  background-color: #0b026b;
+  color: white;
+  width: 34px;
+  height: 34px;
+}
 /* calendar-container */
 
 /* 그림판 css */
