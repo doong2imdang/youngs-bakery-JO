@@ -248,7 +248,7 @@
   line-height: 20px;
 }
 
-.year-and-month span {
+.year-and-month p {
   color: white;
   font-size: 25px;
 }
@@ -291,6 +291,7 @@ tbody tr td {
 .today {
   background-color: #0b026b;
   color: white;
+  padding: 5px;
 }
 /* calendar-container */
 
