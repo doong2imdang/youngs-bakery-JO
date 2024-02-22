@@ -5,9 +5,25 @@ const previousMonthBtn = document.querySelector(".previous-month-btn");
 const nextMonthBtn = document.querySelector(".next-month-btn");
 
 let date = new Date();
+let fixedYear = date.getFullYear();
+let fixedMonth = date.getMonth();
 let year = date.getFullYear();
 let month = date.getMonth();
 let day = date.getDate();
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
 window.addEventListener("load", () => {
   displayYearMonth();
@@ -17,20 +33,6 @@ window.addEventListener("load", () => {
 
 const displayYearMonth = () => {
   // 년도, 월 출력
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
   const monthEng = months[month];
   calendarYear.innerHTML = year;
   calendarMonth.innerHTML = monthEng;
@@ -81,11 +83,7 @@ const displayCalendar = (
         calendarDay < calendarMonthLastDay
       ) {
         calendarDay++;
-        if (calendarDay === day) {
-          html += "<span class='today'>" + calendarDay + "</span>";
-        } else {
-          html += "<span>" + calendarDay + "</span>";
-        }
+        html += "<span>" + calendarDay + "</span>";
       }
       html += "</td>";
       calendarPos++;
@@ -94,6 +92,20 @@ const displayCalendar = (
   }
 
   calendarLayout.innerHTML = html;
+
+  const calendarSpans = document.querySelectorAll(
+    ".calendar-layout tr td span"
+  );
+
+  calendarSpans.forEach((calendarSpan) => {
+    if (
+      Number(calendarSpan.innerHTML) === day &&
+      Number(calendarYear.innerHTML) === fixedYear &&
+      months[fixedMonth] === calendarMonth.innerHTML
+    ) {
+      calendarSpan.classList.add("today");
+    }
+  });
 };
 
 const onPrevBtn = () => {
