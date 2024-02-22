@@ -3,7 +3,7 @@
   grid-template-areas:
     "header header"
     "navbar main";
-  grid-template-columns: 220px auto;
+  grid-template-columns: 240px auto;
 }
 
 /* header */
@@ -27,6 +27,7 @@
   width: 220px;
   grid-area: navbar;
   height: calc(100vh - 80px);
+  padding-left: 20px;
 }
 
 .navbar-list li {
@@ -286,6 +287,10 @@ tbody tr:last-child {
 
 tbody tr td {
   padding: 4px 0;
+}
+
+tbody tr td span {
+  cursor: pointer;
 }
 
 .today {
