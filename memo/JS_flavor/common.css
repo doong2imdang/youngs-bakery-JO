@@ -7,7 +7,8 @@
 }
 
 .container,
-button {
+button,
+input {
   font-family: "DungGeunMo";
 }
 
@@ -33,4 +34,9 @@ body {
 .content-container {
   background: #b0b0b0;
   box-shadow: inset 5px 5px 1px white, 5px 5px 2px black;
+}
+
+button {
+  box-shadow: inset 1px 1px 1px white, inset -1px -1px 1px black;
+  background-color: #b0b0b0;
 }

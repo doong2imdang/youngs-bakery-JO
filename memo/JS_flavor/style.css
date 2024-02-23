@@ -50,6 +50,7 @@
     "weather paint slider";
   grid-area: main;
   padding: 29px 0 0 50px;
+  position: relative;
 }
 /* main  */
 
@@ -298,6 +299,69 @@ tbody tr td span {
   color: white;
   padding: 5px;
 }
+
+.add-schedule {
+  position: absolute;
+  background-color: #bdbdbd;
+  width: 453px;
+  min-height: 224px;
+  top: 5%;
+  right: 27.5%;
+  box-shadow: inset 5px 5px 1px white, 5px 5px 2px black;
+  z-index: 1000;
+}
+
+.add-schedule strong {
+  display: block;
+  height: 28px;
+  font-size: 20px;
+  line-height: 28px;
+  color: white;
+  background-color: #0b026b;
+  padding-left: 5px;
+  margin: 7px 3px 7px 7px;
+}
+
+.added-box {
+  font-size: 20px;
+  box-shadow: inset 2px 2px 1px white, 2px 2px 1px black;
+  padding: 10px 15px;
+  line-height: 30px;
+  margin: 25px 0 0 0;
+}
+
+.added-box span {
+  padding-left: 4px;
+}
+
+.add-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#schedule {
+  width: 320px;
+  height: 23px;
+  background-color: white;
+  margin: 35px 0 21px 0;
+  outline: none;
+  border: 1px solid black;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.add-cancel-btns {
+  padding-bottom: 20px;
+}
+
+.add-btn,
+.cancel-btn {
+  width: 113px;
+  height: 30px;
+  font-size: 16px;
+}
 /* calendar-container */
 
 /* 그림판 css */
@@ -343,7 +407,6 @@ canvas {
 .save-btn {
   width: 50px;
   height: 17px;
-  box-shadow: inset 1px 1px 1px white, inset -1px -1px 1px black;
   font-size: 11px;
 }
 
