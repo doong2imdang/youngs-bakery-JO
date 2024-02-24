@@ -170,6 +170,9 @@ const onAddSchedule = () => {
       JSON.stringify(storedScheduleInfo)
     );
 
+    updateModalContent(selectedDate.innerHTML);
+    scheduleInput.value = "";
+
     console.log(selectedDate.innerHTML, scheduleInputValue, storedScheduleInfo);
   }
 };
