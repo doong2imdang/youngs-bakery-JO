@@ -4,6 +4,14 @@ const calendarLayout = document.querySelector(".calendar-layout");
 const previousMonthBtn = document.querySelector(".previous-month-btn");
 const nextMonthBtn = document.querySelector(".next-month-btn");
 
+// 일정추가
+const addSchedule = document.querySelector(".add-schedule");
+const addedBox = document.querySelector(".added-box");
+const scheduleDate = document.querySelector(".schedule-date");
+const scheduleInput = document.querySelector("#schedule");
+const addBtn = document.querySelector(".add-btn");
+const cancelBtn = document.querySelector(".cancel-btn");
+
 let date = new Date();
 let fixedYear = date.getFullYear();
 let fixedMonth = date.getMonth();
@@ -96,6 +104,7 @@ const displayCalendar = (
   const calendarSpans = document.querySelectorAll(
     ".calendar-layout tr td span"
   );
+  const selectedDate = document.querySelector(".schedule-date");
 
   calendarSpans.forEach((calendarSpan) => {
     if (
@@ -105,6 +114,15 @@ const displayCalendar = (
     ) {
       calendarSpan.classList.add("today");
     }
+  });
+
+  calendarSpans.forEach((calendarSpan) => {
+    calendarSpan.addEventListener("click", () => {
+      addSchedule.style.display = "block";
+      scheduleDate.innerHTML =
+        year + "/" + (month + 1) + "/" + calendarSpan.innerHTML;
+      updateModalContent(selectedDate.innerHTML);
+    });
   });
 };
 
@@ -134,5 +152,51 @@ const onNextBtn = () => {
   calculateStartLastDay();
 };
 
+const onAddSchedule = () => {
+  const selectedDate = document.querySelector(".schedule-date");
+  const scheduleInputValue = scheduleInput.value;
+
+  if (scheduleInputValue.length > 0) {
+    // localStorage
+    let storedScheduleInfo =
+      JSON.parse(localStorage.getItem(selectedDate.innerHTML)) || [];
+
+    // 새로운 일정 추가
+    storedScheduleInfo.push(scheduleInputValue);
+
+    // localStorage에 저장
+    localStorage.setItem(
+      selectedDate.innerHTML,
+      JSON.stringify(storedScheduleInfo)
+    );
+
+    console.log(selectedDate.innerHTML, scheduleInputValue, storedScheduleInfo);
+  }
+};
+
+const updateModalContent = (selectedDate) => {
+  const storedScheduleInfo =
+    JSON.parse(localStorage.getItem(selectedDate)) || [];
+
+  const addedBox = document.querySelector(".added-box");
+  addedBox.innerHTML = "";
+
+  addedBox.style.display = "none";
+
+  storedScheduleInfo.forEach((schedule) => {
+    addedBox.style.display = "block";
+    const addedContainer = document.createElement("p");
+    addedContainer.innerHTML = `▶<span>${schedule}</span>`;
+    addedBox.append(addedContainer);
+  });
+
+  console.log(storedScheduleInfo);
+};
+
 previousMonthBtn.addEventListener("click", onPrevBtn);
 nextMonthBtn.addEventListener("click", onNextBtn);
+addBtn.addEventListener("click", onAddSchedule);
+cancelBtn.addEventListener("click", () => {
+  addSchedule.style.display = "none";
+  scheduleInput.value = "";
+});

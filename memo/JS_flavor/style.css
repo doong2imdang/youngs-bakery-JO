@@ -309,6 +309,7 @@ tbody tr td span {
   right: 27.5%;
   box-shadow: inset 5px 5px 1px white, 5px 5px 2px black;
   z-index: 1000;
+  display: none;
 }
 
 .add-schedule strong {
@@ -323,11 +324,13 @@ tbody tr td span {
 }
 
 .added-box {
+  width: 300px;
   font-size: 20px;
   box-shadow: inset 2px 2px 1px white, 2px 2px 1px black;
   padding: 10px 15px;
   line-height: 30px;
   margin: 25px 0 0 0;
+  display: none;
 }
 
 .added-box span {
