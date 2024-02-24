@@ -37,6 +37,7 @@ window.addEventListener("load", () => {
   displayYearMonth();
   displayCalendar();
   calculateStartLastDay();
+  decorateCalendarWithSchedule();
 });
 
 const displayYearMonth = () => {
@@ -170,8 +171,13 @@ const onAddSchedule = () => {
       JSON.stringify(storedScheduleInfo)
     );
 
-    updateModalContent(selectedDate.innerHTML);
+    addedBox.style.display = "block";
+    const addedContainer = document.createElement("p");
+    addedContainer.innerHTML = `▶<span>${scheduleInputValue}</span>`;
+    addedBox.append(addedContainer);
     scheduleInput.value = "";
+
+    decorateCalendarWithSchedule();
 
     console.log(selectedDate.innerHTML, scheduleInputValue, storedScheduleInfo);
   }
@@ -192,8 +198,24 @@ const updateModalContent = (selectedDate) => {
     addedContainer.innerHTML = `▶<span>${schedule}</span>`;
     addedBox.append(addedContainer);
   });
+};
 
-  console.log(storedScheduleInfo);
+const decorateCalendarWithSchedule = () => {
+  const calendarSpans = document.querySelectorAll(
+    ".calendar-layout tr td span"
+  );
+
+  calendarSpans.forEach((calendarSpan) => {
+    const date =
+      calendarYear.innerHTML +
+      "/" +
+      (months.indexOf(calendarMonth.innerHTML) + 1) +
+      "/" +
+      calendarSpan.innerHTML;
+    if (localStorage.getItem(date)) {
+      calendarSpan.style.textDecoration = "underline";
+    }
+  });
 };
 
 previousMonthBtn.addEventListener("click", onPrevBtn);

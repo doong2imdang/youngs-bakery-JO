@@ -292,6 +292,7 @@ tbody tr td {
 
 tbody tr td span {
   cursor: pointer;
+  /* text-decoration: underline; */
 }
 
 .today {
