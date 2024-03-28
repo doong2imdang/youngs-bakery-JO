@@ -2,13 +2,13 @@
 계산기 JS(https://doong2imdang.github.io/youngs-bakery/calculator/JS_flavor/
 )
 
-자판기 JS(https://doong2imdang.github.io/youngs-bakery/vendingmachine/JS_flavor/)
+자판기 JS(https://doong2imdang.github.io/youngs-bakery-JO/vendingmachine/JS_flavor/)
 
-타이머 JS(https://doong2imdang.github.io/youngs-bakery/timer/JS_flavor/)
+타이머 JS(https://doong2imdang.github.io/youngs-bakery-JO/timer/JS_flavor/)
 
-로또 JS(https://doong2imdang.github.io/youngs-bakery/lotto/JS_flavor/)
+로또 JS(https://doong2imdang.github.io/youngs-bakery-JO/lotto/JS_flavor/)
 
-메모장 JS(https://doong2imdang.github.io/youngs-bakery/memo/JS_flavor/)
+메모장 JS(https://doong2imdang.github.io/youngs-bakery-JO/memo/JS_flavor/)
 
 #### 커밋 타입
 
@@ -22,8 +22,8 @@
 | Fix      | 버그 수정                                                                                        |
 | Revert   | 커밋 취소(reset 사용금지)                                                                        |
 | Test     | 테스트 코드 추가, 기존 테스트 수정                                                               |
-| Chore   | 빌드 관련 파일 수정 (패키지 매니저 설정등 개발코드와 무관한 부분)                                |
-| Dir     | 폴더 및 문서 구조 변경할 경우                                                                 | 
+| Chore    | 빌드 관련 파일 수정 (패키지 매니저 설정등 개발코드와 무관한 부분)                                |
+| Dir      | 폴더 및 문서 구조 변경할 경우                                                                    |
 
 <br>
 
