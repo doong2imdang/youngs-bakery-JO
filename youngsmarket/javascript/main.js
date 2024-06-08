@@ -55,3 +55,13 @@ function updateDots() {
     }
   });
 }
+
+// dot클릭으로 이미지 선택
+dots.forEach((dot, index) => {
+  dot.addEventListener("click", () => {
+    click = index;
+    totalWidth = click * outerWidth;
+    imagesBox.style.transform = `translateX(-${totalWidth}px)`;
+    updateDots();
+  });
+});
