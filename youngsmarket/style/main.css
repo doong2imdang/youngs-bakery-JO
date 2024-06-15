@@ -43,7 +43,6 @@ main {
 }
 
 .btn-search {
-  width: 28px;
   position: absolute;
   right: 22px;
   top: 50%;
@@ -65,7 +64,6 @@ main {
 }
 
 .btn-user {
-  width: 56px;
   margin-left: 20px;
 }
 
