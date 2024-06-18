@@ -1,0 +1,104 @@
+:root {
+  /* color */
+  --color-grey: #e6e3dc;
+  --color-orange: #ec7e62;
+  --color-apricot: #edd0c2;
+  --color-maroon: #a25956;
+}
+
+body {
+  background: var(--color-apricot);
+}
+
+/* login start*/
+.logo {
+  width: 265px;
+  margin: auto;
+  display: block;
+  padding: 100px 0 70px 0;
+}
+
+.login-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-member {
+  width: 552px;
+  display: flex;
+}
+
+.btn-purchasing,
+.btn-sales {
+  height: 72px;
+  width: 276px;
+  background-color: var(--color-apricot);
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px 10px 0 0;
+  border: 1px solid var(--color-orange);
+  border-bottom: none;
+  margin-bottom: -12px;
+  padding-bottom: 12px;
+}
+
+.login-form {
+  width: 480px;
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-orange);
+  border-radius: 10px;
+  padding: 32px 35px 36px 35px;
+}
+
+.memeber-check-btn {
+  z-index: 100;
+  background-color: #f2f2f2;
+  height: 61px;
+  padding: 0;
+}
+
+.member-check-purchasing {
+  border-top-left-radius: 0;
+}
+
+.member-check-sales {
+  border-top-right-radius: 0;
+}
+
+#input-id,
+#input-pw {
+  width: 480px;
+  height: 60px;
+  border-bottom: 1px solid var(--color-orange);
+  font-size: 16px;
+  background-color: #f2f2f2;
+}
+
+#input-pw {
+  margin: 6px 0 36px 0;
+}
+
+.btn-login {
+  width: 480px;
+  height: 60px;
+  background-color: var(--color-maroon);
+  color: #f2f2f2;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.account-actions {
+  color: #333333;
+  font-size: 16px;
+  padding-top: 30px;
+}
+
+.account-actions span {
+  padding: 0 14px;
+}
+
+/* login end */

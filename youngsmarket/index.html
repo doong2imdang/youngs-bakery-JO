@@ -6,8 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YOUNGSMARKET</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="reset.css" />
   </head>
   <body>
+    <header>
+      <h1><img class="logo" src="images/Logo-youngs.svg" alt="로고" /></h1>
+    </header>
+    <main class="login-main">
+      <div class="btn-member">
+        <button type="button" class="btn-purchasing memeber-check-btn">
+          구매회원 로그인
+        </button>
+        <button type="button" class="btn-sales">판매회원 로그인</button>
+      </div>
+      <form class="login-form member-check-purchasing">
+        <input id="input-id" type="text" placeholder="아이디" />
+        <input id="input-pw" type="password" placeholder="비밀번호" />
+        <button type="submit" class="btn-login">로그인</button>
+      </form>
+      <div class="account-actions">
+        <p><a href="">회원가입</a><span>|</span><a href="">비밀번호 찾기</a></p>
+      </div>
+    </main>
+
     <script src="index.js"></script>
   </body>
 </html>
