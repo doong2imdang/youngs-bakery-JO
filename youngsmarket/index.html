@@ -26,8 +26,20 @@
         </button>
       </div>
       <form class="login-form member-check-purchasing">
-        <input id="input-id" type="text" value="" placeholder="아이디" />
-        <input id="input-pw" type="password" value="" placeholder="비밀번호" />
+        <input
+          id="input-id"
+          type="text"
+          value=""
+          placeholder="아이디"
+          oninput="handleInputChange(event)"
+        />
+        <input
+          id="input-pw"
+          type="password"
+          value=""
+          placeholder="비밀번호"
+          oninput="handleInputChange(event)"
+        />
         <button type="submit" class="btn-login">로그인</button>
       </form>
       <div class="account-actions">

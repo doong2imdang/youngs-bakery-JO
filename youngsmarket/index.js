@@ -4,6 +4,8 @@ let loginForm = document.querySelector(".login-form");
 
 // 전역 변수
 let loginType = "BUYER";
+let username = "";
+let password = "";
 const URL = "https://openmarket.weniv.co.kr/";
 
 // 입력값 변경 감지
