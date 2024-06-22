@@ -14,14 +14,20 @@
     </header>
     <main class="login-main">
       <div class="btn-member">
-        <button type="button" class="btn-purchasing member-check-btn">
+        <button
+          type="button"
+          class="btn-purchasing member-check-btn"
+          onclick="btnPurchasingClick()"
+        >
           구매회원 로그인
         </button>
-        <button type="button" class="btn-sales">판매회원 로그인</button>
+        <button type="button" class="btn-sales" onclick="btnSalesClick()">
+          판매회원 로그인
+        </button>
       </div>
       <form class="login-form member-check-purchasing">
-        <input id="input-id" type="text" placeholder="아이디" />
-        <input id="input-pw" type="password" placeholder="비밀번호" />
+        <input id="input-id" type="text" value="" placeholder="아이디" />
+        <input id="input-pw" type="password" value="" placeholder="비밀번호" />
         <button type="submit" class="btn-login">로그인</button>
       </form>
       <div class="account-actions">
