@@ -19,6 +19,26 @@ function handleInputChange(event) {
   }
 }
 
+// 로그인 post 요청
+function handleSubmit(event) {
+  event.preventDefault();
+
+  fetch(URL + "accounts/login/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username: username,
+      password: password,
+      login_type: loginType,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error("Error:", error));
+}
+
 // 로그인 회원 유형 선택 버튼
 function btnPurchasingClick() {
   loginType = "BUYER";
