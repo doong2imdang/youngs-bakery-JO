@@ -78,7 +78,13 @@ body {
 }
 
 #input-pw {
-  margin: 6px 0 36px 0;
+  margin: 6px 0 10px 0;
+}
+
+.login-error {
+  color: #eb5757;
+  font-size: 16px;
+  padding-top: 16px;
 }
 
 .btn-login {
@@ -89,6 +95,7 @@ body {
   font-size: 18px;
   font-weight: bold;
   border-radius: 10px;
+  margin-top: 26px;
 }
 
 .account-actions {

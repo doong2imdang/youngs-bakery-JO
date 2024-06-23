@@ -3,6 +3,7 @@ let btnSales = document.querySelector(".btn-sales");
 let loginForm = document.querySelector(".login-form");
 let inputId = document.getElementById("input-id");
 let inputPw = document.getElementById("input-pw");
+let errorMessage = document.querySelector(".login-error");
 
 // 전역 변수
 let loginType = "BUYER";
@@ -43,6 +44,8 @@ function handleSubmit(event) {
         inputId.value = "";
         inputPw.value = "";
         location.href = "http://127.0.0.1:5500/youngsmarket/pages/main.html";
+      } else {
+        errorMessage.innerHTML = `<p>아이디 또는 비밀번호가 일치하지 않습니다.</p>`;
       }
     })
     .catch((error) => console.error("Error:", error));
