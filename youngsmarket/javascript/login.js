@@ -42,6 +42,7 @@ function handleSubmit(event) {
       if (data.token) {
         inputId.value = "";
         inputPw.value = "";
+        location.href = "http://127.0.0.1:5500/youngsmarket/pages/main.html";
       }
     })
     .catch((error) => console.error("Error:", error));
