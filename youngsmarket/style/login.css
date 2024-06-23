@@ -1,21 +1,10 @@
-:root {
-  /* color */
-  --color-grey: #e6e3dc;
-  --color-orange: #ec7e62;
-  --color-apricot: #edd0c2;
-  --color-maroon: #a25956;
-}
-
-body {
-  background: var(--color-apricot);
-}
-
 /* login start*/
 .logo {
   width: 265px;
   margin: auto;
   display: block;
   padding: 100px 0 70px 0;
+  cursor: pointer;
 }
 
 .login-main {
