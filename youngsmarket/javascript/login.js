@@ -1,6 +1,8 @@
 let btnPurchasing = document.querySelector(".btn-purchasing");
 let btnSales = document.querySelector(".btn-sales");
 let loginForm = document.querySelector(".login-form");
+let inputId = document.getElementById("input-id");
+let inputPw = document.getElementById("input-pw");
 
 // 전역 변수
 let loginType = "BUYER";
@@ -35,7 +37,13 @@ function handleSubmit(event) {
     }),
   })
     .then((response) => response.json())
-    .then((data) => console.log(data))
+    .then((data) => {
+      console.log(data);
+      if (data.token) {
+        inputId.value = "";
+        inputPw.value = "";
+      }
+    })
     .catch((error) => console.error("Error:", error));
 }
 
