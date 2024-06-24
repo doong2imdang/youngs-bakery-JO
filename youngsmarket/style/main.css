@@ -1,3 +1,4 @@
+/* 헤더 */
 .main-header {
   display: flex;
   flex-direction: row;
@@ -52,4 +53,55 @@
 .btn-user {
   width: 56px;
   margin-left: 20px;
+}
+
+/* 메인 */
+main {
+  position: relative;
+}
+
+.image-slider {
+  min-width: 300px;
+  display: flex;
+  overflow: hidden;
+}
+
+.image-slider img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.btn-left-swiper {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+}
+
+.btn-right-swiper {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.btn-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50px;
+  background-color: #fff;
+  padding: 0;
+}
+
+.dot-ative {
+  background-color: #000;
 }
