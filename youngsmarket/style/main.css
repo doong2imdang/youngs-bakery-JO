@@ -62,8 +62,12 @@ main {
 
 .image-slider {
   min-width: 300px;
-  display: flex;
   overflow: hidden;
+}
+
+.images-box {
+  display: flex;
+  transition: all 1s;
 }
 
 .image-slider img {
@@ -75,10 +79,6 @@ main {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
 }
 
 .btn-right-swiper {
