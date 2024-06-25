@@ -38,3 +38,12 @@ function moveToPreviousImage() {
 
 //이미지슬라이더 자동 넘기기
 let autoSlide = setInterval(moveToNextImage, 3000);
+
+// 이미지슬라이더 마우스이벤트
+imagesBox.addEventListener("mouseenter", () => {
+  clearInterval(autoSlide);
+});
+
+imagesBox.addEventListener("mouseleave", () => {
+  autoSlide = setInterval(moveToNextImage, 3000);
+});
