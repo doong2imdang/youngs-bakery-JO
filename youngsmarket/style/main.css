@@ -56,13 +56,10 @@
 }
 
 /* 메인 */
-main {
-  position: relative;
-}
-
 .image-slider {
   min-width: 300px;
   overflow: hidden;
+  position: relative;
 }
 
 .images-box {
@@ -90,8 +87,8 @@ main {
 
 .btn-dots {
   position: absolute;
-  bottom: 10px;
   left: 50%;
+  bottom: 18px;
 }
 
 .dot {
