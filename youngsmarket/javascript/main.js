@@ -8,7 +8,18 @@ let dots = document.querySelectorAll(".dot");
 let outerWidth = document.body.offsetWidth;
 let totalWidth = 0;
 let click = 0;
+let URL = "https://openmarket.weniv.co.kr/";
 
+// 상품 전체 불러오기 GET 요청
+function getProducts() {
+  fetch(URL + "products/")
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error("Error fetching products:", error));
+}
+getProducts();
+
+// 너비 구하기
 window.addEventListener("resize", function () {
   outerWidth = document.body.offsetWidth;
 });
@@ -50,7 +61,6 @@ function updateDots() {
   dots.forEach((dot, index) => {
     dot.classList.remove("dot-active");
     if (index === click) {
-      console.log(index, click);
       dot.classList.add("dot-active");
     }
   });
