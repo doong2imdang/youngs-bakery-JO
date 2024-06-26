@@ -1,11 +1,11 @@
 let btnLeftSwiper = document.querySelector(".btn-left-swiper");
 let btnRightSwiper = document.querySelector(".btn-right-swiper");
 let imagesBox = document.querySelector(".images-box");
-let images = document.querySelectorAll(".image-slider img");
+let images = document.querySelectorAll(".images-box img");
 let dots = document.querySelectorAll(".dot");
 
 // 전역변수
-let outerWidth = document.body.offsetWidth;
+let outerWidth = imagesBox.offsetWidth;
 let totalWidth = 0;
 let click = 0;
 let URL = "https://openmarket.weniv.co.kr/";
@@ -21,7 +21,7 @@ getProducts();
 
 // 너비 구하기
 window.addEventListener("resize", function () {
-  outerWidth = document.body.offsetWidth;
+  outerWidth = imagesBox.offsetWidth;
 });
 
 // 이미지슬라이더 다음버튼
