@@ -148,18 +148,21 @@ main {
   height: 380px;
   border-radius: 10px;
   background-color: #ffffff;
+  border: 1px solid #c4c4c4;
 }
 
 .store-name {
   color: #767676;
   font-size: 16px;
   padding-top: 16px;
+  cursor: pointer;
 }
 
 .product-name {
   color: #000;
   font-size: 18px;
   padding: 10px 0 10px 0;
+  cursor: pointer;
 }
 
 .product-price {
