@@ -40,6 +40,7 @@ function handleSubmit(event) {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
+      localStorage.setItem("token", data.token);
       if (data.token) {
         inputId.value = "";
         inputPw.value = "";
