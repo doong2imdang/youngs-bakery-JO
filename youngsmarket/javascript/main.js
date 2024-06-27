@@ -32,12 +32,12 @@ function displayProducts() {
 
     const formattedPrice = Number(product.price).toLocaleString();
     listItem.className = "product";
-    listItem.innerHTML = `
-    <button class="product-image" type="button">
+    listItem.innerHTML = ` 
+    <button onclick="location.href='http://127.0.0.1:5500/youngsmarket/pages/productDetail.html'" class="product-image" type="button">
       <img src="${product.image}" alt="" />
     </button>
     <p class="store-name">${product.store_name}</p>
-    <strong class="product-name">${product.product_name}</strong>
+    <strong onclick="location.href='http://127.0.0.1:5500/youngsmarket/pages/productDetail.html'" class="product-name">${product.product_name}</strong>
     <p class="product-price">${formattedPrice}<span>원</span></p>
     `;
     productsContainer.appendChild(listItem);
