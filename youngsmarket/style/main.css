@@ -151,6 +151,12 @@ main {
   border: 1px solid #c4c4c4;
 }
 
+.product-image img:hover,
+.store-name:hover,
+.product-name:hover {
+  opacity: 0.6;
+}
+
 .store-name {
   color: #767676;
   font-size: 16px;
