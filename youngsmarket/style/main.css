@@ -117,6 +117,57 @@ main {
   background-color: #000;
 }
 
+.products-container {
+  display: grid;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-image {
+  width: 380px;
+  height: 380px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 49px;
+  place-items: center;
+  padding: 80px 300px 180px 300px;
+}
+
+.product-image {
+  width: 380px;
+  height: 380px;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.store-name {
+  color: #767676;
+  font-size: 16px;
+  padding-top: 16px;
+}
+
+.product-name {
+  color: #000;
+  font-size: 18px;
+  padding: 10px 0 10px 0;
+}
+
+.product-price {
+  color: #000;
+  font-size: 24px;
+  font-weight: bold;
+}
+
 /* footer */
 footer {
   background-color: var(--color-grey);
