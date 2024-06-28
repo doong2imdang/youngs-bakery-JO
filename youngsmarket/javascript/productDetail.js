@@ -14,6 +14,7 @@ let totalQuantity = document.querySelector(".total-quantity p span");
 let token = localStorage.getItem("token");
 let product = localStorage.getItem("product");
 let quantity = 1;
+let URL = "https://openmarket.weniv.co.kr/";
 
 // 유저 버튼 텍스트 업데이트 함수
 function updateUserButton() {
@@ -66,7 +67,42 @@ function updateProductQuantity() {
 }
 updateProductQuantity();
 
-// 바로구매
+// 바로구매 버튼
 function buyNow() {
   location.href = "http://127.0.0.1:5500/youngsmarket/pages/buyNow.html";
+}
+
+// 장바구니 버튼
+function shoppingCart() {
+  let productObj = JSON.parse(product);
+  let productId = productObj.productId;
+  if (!product) {
+    console.error("No product found in localStorage.");
+    return;
+  }
+
+  console.log("Product ID:", productId);
+  console.log("Quantity:", quantity);
+  console.log("Token:", token);
+
+  fetch(URL + "cart/", {
+    method: "POST",
+    headers: {
+      Authorization: `JWT ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      product_id: productId,
+      quantity: quantity,
+      check: false,
+    }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => console.log("Response Data:", data))
+    .catch((error) => console.error("Error:", error));
 }
