@@ -51,7 +51,6 @@ function displayProducts() {
 
     const formattedPrice = Number(product.price).toLocaleString();
     listItem.className = "product";
-    listItem.setAttribute("data-index", index);
     listItem.innerHTML = ` 
     <button onclick="displayProductDetail(${index})" class="product-image" type="button">
       <img src="${product.image}" alt="" />
