@@ -46,13 +46,14 @@ function getProducts() {
 
 // product 데이터 화면에 표시
 function displayProducts() {
-  products.forEach((product) => {
+  products.forEach((product, index) => {
     const listItem = document.createElement("li");
 
     const formattedPrice = Number(product.price).toLocaleString();
     listItem.className = "product";
+    listItem.setAttribute("data-index", index);
     listItem.innerHTML = ` 
-    <button onclick="location.href='http://127.0.0.1:5500/youngsmarket/pages/productDetail.html'" class="product-image" type="button">
+    <button onclick="displayProductDetail(${index})" class="product-image" type="button">
       <img src="${product.image}" alt="" />
     </button>
     <p class="store-name">${product.store_name}</p>
@@ -64,6 +65,26 @@ function displayProducts() {
 }
 
 getProducts();
+
+// 클릭된 상품
+function displayProductDetail(index) {
+  let clickedProduct = products[`${index}`];
+  let clickedProductImg = clickedProduct.image;
+  let clickedProductName = clickedProduct.product_name;
+  let clickedProductStoreName = clickedProduct.store_name;
+  let clickedProductPrice = clickedProduct.price;
+
+  const productDetails = {
+    img: clickedProductImg,
+    storeName: clickedProductStoreName,
+    productName: clickedProductName,
+    price: clickedProductPrice,
+  };
+
+  localStorage.setItem("product", JSON.stringify(productDetails));
+
+  location.href = "http://127.0.0.1:5500/youngsmarket/pages/productDetail.html";
+}
 
 // 너비 구하기
 window.addEventListener("resize", function () {
