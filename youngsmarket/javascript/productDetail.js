@@ -76,13 +76,19 @@ function buyNow() {
 
 // 장바구니 버튼
 function shoppingCart() {
+  changeModalMessage();
   showModal();
+  putInShoppingCart();
 
   let noBtn = document.querySelector(".no-btn");
   noBtn.addEventListener("click", hideModal);
 
   let yesBtn = document.querySelector(".yes-btn");
-  yesBtn.addEventListener("click", putInShoppingCart);
+  yesBtn.addEventListener("click", () => {
+    hideModal();
+    location.href =
+      "http://127.0.0.1:5500/youngsmarket/pages/shoppingCart.html";
+  });
 }
 
 // 장바구니에 넣기
@@ -118,10 +124,8 @@ function putInShoppingCart() {
       return response.json();
     })
     .then((data) => {
-      console.log("Response Data:", data);
-      hideModal();
-      location.href =
-        "http://127.0.0.1:5500/youngsmarket/pages/shoppingCart.html";
+      console.log("shoppingCart", data);
+      localStorage.setItem("quantity", data.quantity);
     })
     .catch((error) => console.error("Error:", error));
 }
@@ -145,3 +149,16 @@ infoBtns.forEach((infoBtn) => {
     infoBtn.classList.add("info-active");
   });
 });
+
+// 모달창 메세지 변경
+function changeModalMessage() {
+  let modalTxt = document.querySelector(".modal-txt");
+  let productQuantity = localStorage.getItem("quantity");
+
+  if (productQuantity > 0) {
+    modalTxt.innerHTML = `
+      이미 장바구니에 있는 상품입니다.<br />
+      장바구니로 이동하시겠습니까?
+    `;
+  }
+}
