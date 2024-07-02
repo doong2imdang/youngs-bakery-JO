@@ -11,7 +11,7 @@ let quantityDisplay = document.querySelector(".product-quantity");
 let totalQuantity = document.querySelector(".total-quantity p span");
 let modalBg = document.querySelector(".modal-bg");
 let infoBtns = document.querySelectorAll(".info-action button");
-let shoppingCartBtn = document.querySelector("shopping-cart-btn");
+let shoppingCartBtn = document.querySelector(".shopping-cart-btn");
 let buyNowBtn = document.querySelector(".purchase-btn");
 
 // 전역변수
@@ -73,6 +73,16 @@ if (productObj.stock > 0) {
   increaseBtn.addEventListener("click", increaseProductQuantity);
   shoppingCartBtn.addEventListener("click", shoppingCart);
   buyNowBtn.addEventListener("click", buyNow);
+} else {
+  buyNowBtn.innerText = "SOLD OUT";
+  buyNowBtn.style.backgroundColor = "black";
+  buyNowBtn.style.cursor = "auto";
+  buyNowBtn.style.color = "white";
+
+  shoppingCartBtn.innerText = "SOLD OUT";
+  shoppingCartBtn.style.backgroundColor = "black";
+  shoppingCartBtn.style.cursor = "auto";
+  shoppingCartBtn.style.color = "white";
 }
 
 // 상품 개수 및 총 가격 업데이트
