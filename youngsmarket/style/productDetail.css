@@ -195,6 +195,7 @@ main {
 .total-quantity strong {
   font-size: 36px;
   color: var(--color-maroon);
+  line-height: 36px;
 }
 
 .total-quantity strong span {
@@ -229,6 +230,7 @@ main {
   grid-area: info;
   align-self: start;
   display: flex;
+  padding: 140px 0 70px 0;
 }
 
 .info-btn {
@@ -242,4 +244,69 @@ main {
 .info-active {
   color: var(--color-maroon);
   border-bottom: 6px solid var(--color-maroon);
+}
+
+/* footer */
+footer {
+  background-color: var(--color-grey);
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  padding: 60px 320px;
+  position: relative;
+}
+
+.corp-area {
+  display: flex;
+  justify-content: space-between;
+}
+
+.corp-area::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  max-width: 1263px;
+  height: 1px;
+  top: 108px;
+  background-color: #767676;
+}
+
+.corp-links,
+.social-links {
+  display: flex;
+  gap: 32px;
+  font-size: 14px;
+  line-height: 35px;
+}
+
+.corp-links li {
+  position: relative;
+}
+
+.corp-links li::before {
+  content: "|";
+  position: absolute;
+  left: -16px;
+  color: #767676;
+}
+
+.corp-links li:first-child::before {
+  content: "";
+}
+
+.social-links {
+  gap: 14px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.info-area {
+  font-size: 14px;
+  color: #767676;
+  line-height: 30px;
+  padding-top: 30px;
 }
