@@ -66,3 +66,36 @@ main {
 .btn-user {
   margin-left: 20px;
 }
+
+/* 메인 */
+main {
+  display: grid;
+  grid-template-areas:
+    "img product"
+    "info info";
+  place-items: center;
+  padding: 80px;
+  grid-gap: 50px;
+}
+
+.product-image {
+  width: 600px;
+  height: 600px;
+  background-color: #fff;
+  grid-area: img;
+  justify-self: end;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+}
+
+.product-info {
+  grid-area: product;
+  justify-self: start;
+}
+
+.info-action {
+  grid-area: info;
+}
