@@ -123,6 +123,7 @@ main {
 .quantity-control {
   display: flex;
   padding-bottom: 78px;
+  position: relative;
 }
 
 .quantity-control button {
@@ -131,6 +132,26 @@ main {
   height: 50px;
   background-color: #f2f2f2;
   font-size: 18px;
+}
+
+.quantity-control button:before {
+  content: "";
+  width: 630px;
+  height: 1px;
+  background-color: var(--color-orange);
+  top: -30px;
+  left: 0;
+  position: absolute;
+}
+
+.quantity-control button:after {
+  content: "";
+  width: 630px;
+  height: 1px;
+  background-color: var(--color-orange);
+  top: 80px;
+  left: 0;
+  position: absolute;
 }
 
 .quantity-control button:first-child {
