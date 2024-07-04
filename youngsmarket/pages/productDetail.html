@@ -50,11 +50,19 @@
         ><span class="currency-unit">원</span>
         <p class="delivery">택배배송<span>/</span>무료배송</p>
         <div class="quantity-control">
-          <button type="button">
+          <button
+            onclick="decreaseProductQuantity()"
+            class="decrease-btn"
+            type="button"
+          >
             <img src="../images/icon-minus-line.svg" alt="수량감소버튼" />
           </button>
-          <button type="button">1</button>
-          <button type="button">
+          <button class="product-quantity" type="button"></button>
+          <button
+            onclick="increaseProductQuantity()"
+            class="increase-btn"
+            type="button"
+          >
             <img src="../images/icon-plus-line.svg" alt="수량추가버튼" />
           </button>
         </div>
@@ -63,7 +71,10 @@
           <div class="total-quantity">
             <p>총 수량 <span>1</span>개</p>
             <span class="bar">|</span>
-            <strong>17,500<span class="currency-unit">원</span></strong>
+            <div>
+              <strong></strong>
+              <span class="currency-unit maroon">원</span>
+            </div>
           </div>
         </div>
         <div class="purchase-action">

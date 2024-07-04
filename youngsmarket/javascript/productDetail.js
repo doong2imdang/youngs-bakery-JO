@@ -5,11 +5,15 @@ let storeName = document.querySelector(".store-name");
 let productName = document.querySelector(".product-name");
 let productPrice = document.querySelector(".product-price");
 let totalPrice = document.querySelector(".total-quantity strong");
+let decreaseBtn = document.querySelector(".decrease-btn");
+let increaseBtn = document.querySelector(".increase-btn");
+let quantityDisplay = document.querySelector(".product-quantity");
+let totalQuantity = document.querySelector(".total-quantity p span");
 
 // 전역변수
 let token = localStorage.getItem("token");
 let product = localStorage.getItem("product");
-console.log(product);
+let quantity = 1;
 
 // 유저 버튼 텍스트 업데이트 함수
 function updateUserButton() {
@@ -39,3 +43,25 @@ function displayProductDetail() {
   }
 }
 displayProductDetail();
+
+// 상품 개수
+function decreaseProductQuantity() {
+  if (quantity > 1) {
+    quantity--;
+    updateProductQuantity();
+  }
+}
+
+function increaseProductQuantity() {
+  quantity++;
+  updateProductQuantity();
+}
+
+// 상품 개수 및 총 가격 업데이트
+function updateProductQuantity() {
+  let productObj = JSON.parse(product);
+  quantityDisplay.innerText = quantity;
+  totalQuantity.innerText = quantity;
+  totalPrice.innerText = (productObj.price * quantity).toLocaleString();
+}
+updateProductQuantity();

@@ -192,14 +192,13 @@ main {
   color: var(--color-orange);
 }
 
-.total-quantity strong {
-  font-size: 36px;
-  color: var(--color-maroon);
-  line-height: 36px;
+.total-quantity div {
+  transform: translateY(-5px);
 }
 
-.total-quantity strong span {
-  font-size: 18px;
+.total-quantity div strong {
+  font-size: 36px;
+  color: var(--color-maroon);
 }
 
 .purchase-action {
@@ -246,6 +245,10 @@ main {
 .info-active {
   color: var(--color-maroon);
   border-bottom: 6px solid var(--color-maroon);
+}
+
+.maroon {
+  color: var(--color-maroon);
 }
 
 /* footer */
