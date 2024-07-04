@@ -65,3 +65,8 @@ function updateProductQuantity() {
   totalPrice.innerText = (productObj.price * quantity).toLocaleString();
 }
 updateProductQuantity();
+
+// 바로구매
+function buyNow() {
+  location.href = "http://127.0.0.1:5500/youngsmarket/pages/buyNow.html";
+}
