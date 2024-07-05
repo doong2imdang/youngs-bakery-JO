@@ -88,6 +88,7 @@ function displayProductDetail(index) {
   let clickedProductStoreName = clickedProduct.store_name;
   let clickedProductPrice = clickedProduct.price;
   let clickedProductId = clickedProduct.product_id;
+  let clickedProductStock = clickedProduct.stock;
 
   const productDetails = {
     img: clickedProductImg,
@@ -95,6 +96,7 @@ function displayProductDetail(index) {
     productName: clickedProductName,
     price: clickedProductPrice,
     productId: clickedProductId,
+    stock: clickedProductStock,
   };
 
   localStorage.setItem("product", JSON.stringify(productDetails));
