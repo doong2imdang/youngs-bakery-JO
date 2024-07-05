@@ -71,6 +71,8 @@ function increaseProductQuantity() {
 if (productObj.stock > 0) {
   decreaseBtn.addEventListener("click", decreaseProductQuantity);
   increaseBtn.addEventListener("click", increaseProductQuantity);
+  shoppingCartBtn.addEventListener("click", shoppingCart);
+  buyNowBtn.addEventListener("click", buyNow);
 }
 
 // 상품 개수 및 총 가격 업데이트
