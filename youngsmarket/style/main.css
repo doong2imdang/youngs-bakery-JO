@@ -137,7 +137,6 @@ main {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 49px;
-  place-items: center;
   padding: 80px 300px 180px 300px;
 }
 
@@ -173,6 +172,11 @@ main {
   color: #000;
   font-size: 24px;
   font-weight: bold;
+}
+
+.soldout-image {
+  width: 125px;
+  padding-bottom: 5px;
 }
 
 /* footer */
