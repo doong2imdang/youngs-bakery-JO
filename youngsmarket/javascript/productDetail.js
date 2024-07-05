@@ -76,14 +76,13 @@ function buyNow() {
 function shoppingCart() {
   let productObj = JSON.parse(product);
   let productId = productObj.productId;
+
   if (!product) {
     console.error("No product found in localStorage.");
     return;
   }
 
-  console.log("Product ID:", productId);
-  console.log("Quantity:", quantity);
-  console.log("Token:", token);
+  displayModal();
 
   fetch(URL + "cart/", {
     method: "POST",
@@ -105,4 +104,10 @@ function shoppingCart() {
     })
     .then((data) => console.log("Response Data:", data))
     .catch((error) => console.error("Error:", error));
+}
+
+// 모달창
+function displayModal() {
+  let modalBg = document.querySelector(".modal-bg");
+  modalBg.style.display = "block";
 }
