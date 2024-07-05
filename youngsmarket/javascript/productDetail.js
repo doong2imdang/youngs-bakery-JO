@@ -9,6 +9,7 @@ let decreaseBtn = document.querySelector(".decrease-btn");
 let increaseBtn = document.querySelector(".increase-btn");
 let quantityDisplay = document.querySelector(".product-quantity");
 let totalQuantity = document.querySelector(".total-quantity p span");
+let modalBg = document.querySelector(".modal-bg");
 
 // 전역변수
 let token = localStorage.getItem("token");
@@ -74,6 +75,17 @@ function buyNow() {
 
 // 장바구니 버튼
 function shoppingCart() {
+  showModal();
+
+  let noBtn = document.querySelector(".no-btn");
+  noBtn.addEventListener("click", hideModal);
+
+  let yesBtn = document.querySelector(".yes-btn");
+  yesBtn.addEventListener("click", putInShoppingCart);
+}
+
+// 장바구니에 넣기
+function putInShoppingCart() {
   let productObj = JSON.parse(product);
   let productId = productObj.productId;
 
@@ -82,13 +94,15 @@ function shoppingCart() {
     return;
   }
 
-  displayModal();
+  console.log("Token:", token);
+  console.log("ProductID:", productId);
+  console.log("Quantity:", quantity);
 
   fetch(URL + "cart/", {
     method: "POST",
     headers: {
-      Authorization: `JWT ${token}`,
       "Content-Type": "application/json",
+      Authorization: `JWT ${token}`,
     },
     body: JSON.stringify({
       product_id: productId,
@@ -102,12 +116,18 @@ function shoppingCart() {
       }
       return response.json();
     })
-    .then((data) => console.log("Response Data:", data))
+    .then((data) => {
+      console.log("Response Data:", data);
+      hideModal();
+    })
     .catch((error) => console.error("Error:", error));
 }
 
 // 모달창
-function displayModal() {
-  let modalBg = document.querySelector(".modal-bg");
+function showModal() {
   modalBg.style.display = "block";
+}
+
+function hideModal() {
+  modalBg.style.display = "none";
 }
