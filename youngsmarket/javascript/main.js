@@ -72,12 +72,14 @@ function displayProductDetail(index) {
   let clickedProductName = clickedProduct.product_name;
   let clickedProductStoreName = clickedProduct.store_name;
   let clickedProductPrice = clickedProduct.price;
+  let clickedProductId = clickedProduct.product_id;
 
   const productDetails = {
     img: clickedProductImg,
     storeName: clickedProductStoreName,
     productName: clickedProductName,
     price: clickedProductPrice,
+    productId: clickedProductId,
   };
 
   localStorage.setItem("product", JSON.stringify(productDetails));
