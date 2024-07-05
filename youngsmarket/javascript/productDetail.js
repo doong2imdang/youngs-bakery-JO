@@ -11,12 +11,20 @@ let quantityDisplay = document.querySelector(".product-quantity");
 let totalQuantity = document.querySelector(".total-quantity p span");
 let modalBg = document.querySelector(".modal-bg");
 let infoBtns = document.querySelectorAll(".info-action button");
+let shoppingCartBtn = document.querySelector("shopping-cart-btn");
+let buyNowBtn = document.querySelector(".purchase-btn");
 
 // 전역변수
 let token = localStorage.getItem("token");
 let product = localStorage.getItem("product");
-let quantity = 1;
 let URL = "https://openmarket.weniv.co.kr/";
+let productObj = JSON.parse(product);
+let quantity = "";
+if (productObj.stock === 0) {
+  quantity = 0;
+} else {
+  quantity = 1;
+}
 
 // 유저 버튼 텍스트 업데이트 함수
 function updateUserButton() {
@@ -58,6 +66,11 @@ function decreaseProductQuantity() {
 function increaseProductQuantity() {
   quantity++;
   updateProductQuantity();
+}
+
+if (productObj.stock > 0) {
+  decreaseBtn.addEventListener("click", decreaseProductQuantity);
+  increaseBtn.addEventListener("click", increaseProductQuantity);
 }
 
 // 상품 개수 및 총 가격 업데이트
