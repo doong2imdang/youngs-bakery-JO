@@ -131,6 +131,9 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 10px;
+  background-color: #ffffff;
+  border: 1px solid #c4c4c4;
 }
 
 .products-container {
@@ -138,14 +141,6 @@ main {
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 49px;
   padding: 80px 300px 180px 300px;
-}
-
-.product-image {
-  width: 380px;
-  height: 380px;
-  border-radius: 10px;
-  background-color: #ffffff;
-  border: 1px solid #c4c4c4;
 }
 
 .product-image img:hover,
