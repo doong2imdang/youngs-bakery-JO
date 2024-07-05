@@ -119,6 +119,8 @@ function putInShoppingCart() {
     .then((data) => {
       console.log("Response Data:", data);
       hideModal();
+      location.href =
+        "http://127.0.0.1:5500/youngsmarket/pages/shoppingCart.html";
     })
     .catch((error) => console.error("Error:", error));
 }
