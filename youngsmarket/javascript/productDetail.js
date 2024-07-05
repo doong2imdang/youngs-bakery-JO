@@ -10,6 +10,7 @@ let increaseBtn = document.querySelector(".increase-btn");
 let quantityDisplay = document.querySelector(".product-quantity");
 let totalQuantity = document.querySelector(".total-quantity p span");
 let modalBg = document.querySelector(".modal-bg");
+let infoBtns = document.querySelectorAll(".info-action button");
 
 // 전역변수
 let token = localStorage.getItem("token");
@@ -133,3 +134,14 @@ function showModal() {
 function hideModal() {
   modalBg.style.display = "none";
 }
+
+// info-action
+infoBtns.forEach((infoBtn) => {
+  infoBtn.addEventListener("click", () => {
+    infoBtns.forEach((btn) => {
+      btn.classList.remove("info-active");
+    });
+
+    infoBtn.classList.add("info-active");
+  });
+});
