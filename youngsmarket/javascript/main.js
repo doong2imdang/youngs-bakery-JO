@@ -51,14 +51,29 @@ function displayProducts() {
 
     const formattedPrice = Number(product.price).toLocaleString();
     listItem.className = "product";
-    listItem.innerHTML = ` 
-    <button onclick="displayProductDetail(${index})" class="product-image" type="button">
-      <img src="${product.image}" alt="" />
-    </button>
-    <p class="store-name">${product.store_name}</p>
-    <strong onclick="location.href='http://127.0.0.1:5500/youngsmarket/pages/productDetail.html'" class="product-name">${product.product_name}</strong>
-    <p class="product-price">${formattedPrice}<span>원</span></p>
+
+    // 기본 product HTML
+    let productHTML = ` 
+      <button onclick="displayProductDetail(${index})" class="product-image" type="button">
+        <img src="${product.image}" alt="" />
+      </button>
+      <p class="store-name">${product.store_name}</p>
+      <strong onclick="location.href='http://127.0.0.1:5500/youngsmarket/pages/productDetail.html'" class="product-name">${product.product_name}</strong>
     `;
+
+    // 재고가 0인 경우 soldout 이미지를 추가
+    if (product.stock === 0) {
+      productHTML += `
+        <img src="../images/icon-soldout.svg" alt="soldout" class="soldout-image" />
+      `;
+    }
+
+    // 가격 추가
+    productHTML += `
+      <p class="product-price">${formattedPrice}<span>원</span></p>
+    `;
+
+    listItem.innerHTML = productHTML;
     productsContainer.appendChild(listItem);
   });
 }
