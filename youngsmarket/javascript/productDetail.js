@@ -180,9 +180,15 @@ function changeModalMessage() {
   let modalTxt = document.querySelector(".modal-txt");
   let productQuantity = localStorage.getItem("quantity");
 
-  if (productQuantity > 0) {
+  if (productQuantity > 0 && productQuantity - productObj.stock < 0) {
     modalTxt.innerHTML = `
       이미 장바구니에 있는 상품입니다.<br />
+      장바구니로 이동하시겠습니까?
+    `;
+  } else {
+    modalTxt.innerHTML = `
+      재고 수량이 부족하여 <br/>
+      장바구니에 담을 수 없습니다. <br />
       장바구니로 이동하시겠습니까?
     `;
   }
