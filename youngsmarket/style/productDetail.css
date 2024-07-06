@@ -351,6 +351,12 @@ footer {
   line-height: 20px;
 }
 
+.answer-action {
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+}
+
 .answer-action button {
   width: 100px;
   height: 40px;
