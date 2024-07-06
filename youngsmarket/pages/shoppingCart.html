@@ -7,9 +7,41 @@
     <title>YOUNGSMARKET</title>
     <link rel="stylesheet" href="../style/shoppingCart.css" />
     <link rel="stylesheet" href="../common.css" />
+    <link rel="stylesheet" href="../style/header.css" />
+    <link rel="stylesheet" href="../style/footer.css" />
     <link rel="stylesheet" href="../reset.css" />
   </head>
   <body>
+    <header class="main-header">
+      <div class="search-container">
+        <button
+          onclick="location.href='http://127.0.0.1:5500/youngsmarket/pages/main.html'"
+          class="main-logo"
+          type="button"
+        >
+          <img src="../images/Logo-youngs.svg" alt="로고" />
+        </button>
+        <input
+          id="input-search"
+          type="text"
+          placeholder="상품을 검색해보세요!"
+        />
+        <button class="btn-search">
+          <img src="../images/icon-search.svg" alt="상품검색" />
+        </button>
+      </div>
+      <div class="user-controls">
+        <button class="btn-shopping-cart" type="button">
+          <img src="../images/icon-shopping-cart.svg" alt="장바구니" />
+          <p>장바구니</p>
+        </button>
+        <button class="btn-user" type="button">
+          <img src="../images/icon-user.svg" alt="로그인" />
+          <p class="user-txt">로그인</p>
+        </button>
+      </div>
+    </header>
+    <script src="../javascript/header.js"></script>
     <script src="../javascript/shoppingCart.js"></script>
   </body>
 </html>

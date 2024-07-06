@@ -6,6 +6,17 @@
   --color-maroon: #a25956;
 }
 
+html,
 body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
   background: var(--color-apricot);
+}
+
+main {
+  flex: 1;
 }

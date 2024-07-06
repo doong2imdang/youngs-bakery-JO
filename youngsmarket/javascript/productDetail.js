@@ -1,5 +1,3 @@
-let userTxt = document.querySelector(".user-txt");
-let btnUser = document.querySelector(".btn-user");
 let productImage = document.querySelector(".product-image img");
 let storeName = document.querySelector(".store-name");
 let productName = document.querySelector(".product-name");
@@ -25,21 +23,6 @@ if (productObj.stock === 0) {
 } else {
   quantity = 1;
 }
-
-// 유저 버튼 텍스트 업데이트 함수
-function updateUserButton() {
-  if (!token) {
-    btnUser.addEventListener("click", () => {
-      location.href = "http://127.0.0.1:5500/youngsmarket/pages/login.html";
-    });
-  } else {
-    userTxt.innerHTML = "마이페이지";
-    btnUser.addEventListener("click", () => {
-      location.href = "http://127.0.0.1:5500/youngsmarket/pages/mypage.html";
-    });
-  }
-}
-updateUserButton();
 
 // 상품상세(이미지/스토어/상품이름/가격)
 function displayProductDetail() {

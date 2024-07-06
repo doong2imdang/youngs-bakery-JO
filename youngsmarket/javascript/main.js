@@ -3,8 +3,6 @@ let btnRightSwiper = document.querySelector(".btn-right-swiper");
 let imagesBox = document.querySelector(".images-box");
 let images = document.querySelectorAll(".images-box img");
 let dots = document.querySelectorAll(".dot");
-let userTxt = document.querySelector(".user-txt");
-let btnUser = document.querySelector(".btn-user");
 
 let productsContainer = document.querySelector(".products-container");
 
@@ -16,21 +14,6 @@ let URL = "https://openmarket.weniv.co.kr/";
 let products = [];
 // localStorage
 let token = localStorage.getItem("token");
-
-// 유저 버튼 텍스트 업데이트 함수
-function updateUserButton() {
-  if (!token) {
-    btnUser.addEventListener("click", () => {
-      location.href = "http://127.0.0.1:5500/youngsmarket/pages/login.html";
-    });
-  } else {
-    userTxt.innerHTML = "마이페이지";
-    btnUser.addEventListener("click", () => {
-      location.href = "http://127.0.0.1:5500/youngsmarket/pages/mypage.html";
-    });
-  }
-}
-updateUserButton();
 
 // 상품 전체 불러오기 GET 요청
 function getProducts() {
