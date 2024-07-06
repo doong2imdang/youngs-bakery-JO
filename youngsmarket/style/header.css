@@ -51,3 +51,8 @@
 .btn-user {
   margin-left: 20px;
 }
+
+.btn-shopping-cart:hover,
+.btn-user:hover {
+  opacity: 0.6;
+}
