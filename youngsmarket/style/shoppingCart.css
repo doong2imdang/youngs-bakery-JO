@@ -10,13 +10,18 @@ main {
 
 .product-details {
   display: grid;
-  grid-template-columns: 0.5fr 1.5fr 1fr 1fr;
-  width: 1280px;
+  grid-template-columns: 0.2fr 1.8fr 1fr 1fr;
+  width: 1220px;
   background-color: #f2f2f2;
   font-size: 18px;
   padding: 20px 30px;
   margin: 52px auto 35px auto;
   border-radius: 10px;
+}
+
+.radio-group {
+  display: flex;
+  align-items: center;
 }
 
 input[type="radio"] {
@@ -35,7 +40,7 @@ label::before {
   content: "";
   position: absolute;
   left: 0;
-  top: -19px;
+  top: -11px;
   width: 18px;
   height: 18px;
   border: 2px solid var(--color-maroon);
@@ -46,7 +51,7 @@ input[type="radio"]:checked + label::after {
   content: "";
   position: absolute;
   left: 5px;
-  top: -14px;
+  top: -6px;
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -59,19 +64,204 @@ input[type="radio"]:checked + label::after {
   color: #000;
 }
 
-.no-product {
+.no-cart-item {
   text-align: center;
   padding: 200px 0 442px 0;
 }
 
-.no-product strong {
+.no-cart-item strong {
   font-size: 18px;
   font-weight: bold;
   color: #000;
 }
 
-.no-product p {
+.no-cart-item p {
   padding-top: 17px;
   font-size: 14px;
   color: #767676;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 0.2fr 0.5fr 1.3fr 1fr 1fr;
+  width: 1220px;
+  margin: 0 auto;
+  background-color: #f2f2f2;
+  padding: 20px 30px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.cart-item-image {
+  width: 160px;
+  height: 160px;
+  border-radius: 10px;
+}
+
+.cart-item-image img {
+  width: 160px;
+  height: 160px;
+  border-radius: 10px;
+}
+
+.product-info {
+  padding: 15px 30px;
+}
+
+.store-name {
+  font-size: 14px;
+  color: #767676;
+}
+
+.product-name {
+  font-size: 18px;
+  color: #000;
+  padding: 10px 0;
+}
+
+.product-price {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.delivery {
+  font-size: 14px;
+  color: #767676;
+  padding-top: 40px;
+}
+
+.product-quantity-control {
+  justify-self: center;
+  align-self: center;
+  font-size: 18px;
+  display: flex;
+}
+
+.product-quantity-control button {
+  border: 1px solid var(--color-orange);
+  width: 50px;
+  height: 50px;
+  background-color: #f2f2f2;
+  font-size: 18px;
+}
+
+.product-quantity-control button:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.product-quantity-control button:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+.product-price {
+  justify-self: center;
+  align-self: center;
+}
+
+.product-price {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.product-price strong {
+  font-size: 18px;
+  color: #eb5757;
+  font-weight: bold;
+  text-align: center;
+}
+
+.product-price button {
+  width: 130px;
+  height: 40px;
+  background-color: var(--color-maroon);
+  color: #f2f2f2;
+  border-radius: 5px;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+}
+
+.payment-amount-calculation {
+  width: 1280px;
+  background-color: #f2f2f2;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  place-items: center;
+  margin: 80px auto 40px auto;
+  padding: 42px 0;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.total-price p,
+.product-discount p,
+.delivery-fee p {
+  padding-bottom: 12px;
+  font-size: 16px;
+}
+
+.total-price strong,
+.product-discount strong,
+.delivery-fee strong {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.total-price span,
+.product-discount span,
+.delivery-fee span {
+  font-size: 16px;
+}
+
+.total-price::after {
+  background: url("../images/icon-minus-line.svg") no-repeat center;
+  content: "";
+  position: absolute;
+  background-color: var(--color-apricot);
+  width: 34px;
+  height: 34px;
+  transform: translate(96px, -20px);
+  border-radius: 50%;
+}
+
+.product-discount::after {
+  background: url("../images/icon-plus-line.svg") no-repeat center;
+  content: "";
+  position: absolute;
+  background-color: var(--color-apricot);
+  width: 34px;
+  height: 34px;
+  transform: translate(128px, -20px);
+  border-radius: 50%;
+}
+
+.expected-payment-amount p {
+  padding-bottom: 5px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.expected-payment-amount strong {
+  font-size: 36px;
+  color: #eb5757;
+}
+
+.expected-payment-amount span {
+  font-size: 18px;
+  color: #eb5757;
+}
+
+.final-order-btn {
+  width: 220px;
+  height: 68px;
+  color: var(--color-apricot);
+  background-color: var(--color-maroon);
+  border-radius: 5px;
+  display: block;
+  margin: 0 auto 106px auto;
+  font-size: 24px;
 }
