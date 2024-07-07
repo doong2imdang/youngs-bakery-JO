@@ -1,0 +1,77 @@
+/* main */
+main {
+  padding: 54px 10px;
+}
+
+.main-txt {
+  font-size: 36px;
+  text-align: center;
+}
+
+.product-details {
+  display: grid;
+  grid-template-columns: 0.5fr 1.5fr 1fr 1fr;
+  width: 1280px;
+  background-color: #f2f2f2;
+  font-size: 18px;
+  padding: 20px 30px;
+  margin: 52px auto 35px auto;
+  border-radius: 10px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -19px;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--color-maroon);
+  border-radius: 50%;
+}
+
+input[type="radio"]:checked + label::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: -14px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-maroon);
+}
+
+.product-details span {
+  justify-self: center;
+  font-size: 18px;
+  color: #000;
+}
+
+.no-product {
+  text-align: center;
+  padding: 200px 0 442px 0;
+}
+
+.no-product strong {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+}
+
+.no-product p {
+  padding-top: 17px;
+  font-size: 14px;
+  color: #767676;
+}
