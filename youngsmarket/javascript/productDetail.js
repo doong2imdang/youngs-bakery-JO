@@ -26,12 +26,14 @@ if (productObj.stock === 0) {
 
 // 상품상세(이미지/스토어/상품이름/가격)
 function displayProductDetail() {
-  let productObj = JSON.parse(product);
-  productImage.src = productObj.img;
-  storeName.innerText = productObj.storeName;
-  productName.innerText = productObj.productName;
-  productPrice.innerText = productObj.price.toLocaleString();
-  console.error("No product found in localStorage.");
+  if (product) {
+    productImage.src = productObj.img;
+    storeName.innerText = productObj.storeName;
+    productName.innerText = productObj.productName;
+    productPrice.innerText = productObj.price.toLocaleString();
+  } else {
+    console.error("No product found in localStorage.");
+  }
 }
 displayProductDetail();
 
@@ -67,7 +69,6 @@ if (productObj.stock > 0) {
 
 // 상품 개수 및 총 가격 업데이트
 function updateProductQuantity() {
-  let productObj = JSON.parse(product);
   quantityDisplay.innerText = quantity;
   totalQuantity.innerText = quantity;
   totalPrice.innerText = (productObj.price * quantity).toLocaleString();
@@ -105,7 +106,6 @@ function shoppingCart() {
 
 // 장바구니에 넣기
 function putInShoppingCart() {
-  let productObj = JSON.parse(product);
   let productId = productObj.productId;
 
   if (!product) {
