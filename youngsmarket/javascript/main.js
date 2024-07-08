@@ -22,6 +22,7 @@ function getProducts() {
     .then((data) => {
       products = data.results;
       console.log(products);
+      localStorage.setItem("products", JSON.stringify(products));
       displayProducts();
     })
     .catch((error) => console.error("Error fetching products:", error));
