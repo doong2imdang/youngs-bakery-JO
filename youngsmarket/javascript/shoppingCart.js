@@ -112,6 +112,15 @@ function displayShoppingCartItems() {
       divItem.innerHTML = cartItemsHTML;
       shoppingCart.appendChild(divItem);
     });
+  } else {
+    const divItem = document.createElement("div");
+    divItem.className = "no-cart-item";
+    let noCartItemHTML = `
+    <strong>장바구니에 담긴 상품이 없습니다.</strong>
+          <p>원하는 상품을 장바구니에 담아보세요!</p>
+    `;
+    divItem.innerHTML = noCartItemHTML;
+    shoppingCart.appendChild(divItem);
   }
 
   console.log(
