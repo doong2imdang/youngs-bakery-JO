@@ -10,6 +10,8 @@
 
 메모장 JS(https://doong2imdang.github.io/youngs-bakery-JO/memo/JS_flavor/)
 
+YOUNGMARKET JS(https://doong2imdang.github.io/youngs-bakery-JO/youngsmarket/pages/main.html)
+
 #### 커밋 타입
 
 | 커밋     | 타입 설명                                                                                        |
