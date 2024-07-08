@@ -36,13 +36,14 @@ getShoppingCartItems();
 
 // 장바구니 상품 화면에 표시
 function displayShoppingCartItems() {
-  // products에서 product_id가 같은 경우
+  // cartItems에서 product_id가 같은 경우
+
   let cartItemsIntersection = cartItems.filter(
     (item) =>
       productsObj.filter((i) => i.product_id === item.product_id).length > 0
   );
 
-  // cartItems에서 product_id가 같은 경우
+  // products에서 product_id가 같은 경우
   let productItemsIntersection = productsObj.filter(
     (item) =>
       cartItems.filter((i) => i.product_id === item.product_id).length > 0
@@ -51,15 +52,23 @@ function displayShoppingCartItems() {
   let cartItemsIntersectionArray = {};
 
   cartItemsIntersection.forEach((item) => {
-    cartItemsIntersectionArray[item.product_id] = item.quantity;
+    cartItemsIntersectionArray[item.product_id] = {
+      quantity: item.quantity,
+      cart_item_id: item.cart_item_id,
+    };
   });
 
+  // productItemsIntersection에 quantity, cart-item-id 추가
   productItemsIntersection = productItemsIntersection.map((product) => {
     return {
       ...product,
       quantity:
         cartItemsIntersectionArray[product.product_id] !== undefined
-          ? cartItemsIntersectionArray[product.product_id]
+          ? cartItemsIntersectionArray[product.product_id].quantity
+          : 0,
+      cart_item_id:
+        cartItemsIntersectionArray[product.product_id] !== undefined
+          ? cartItemsIntersectionArray[product.product_id].cart_item_id
           : 0,
     };
   });
@@ -67,7 +76,7 @@ function displayShoppingCartItems() {
   console.log(cartItemsIntersectionArray);
 
   if (productItemsIntersection.length > 0) {
-    productItemsIntersection.forEach((cartItem, index) => {
+    productItemsIntersection.forEach((cartItem) => {
       const divItem = document.createElement("div");
       divItem.className = "cart-item";
       let price = cartItem.price.toLocaleString() + "원";
@@ -76,8 +85,8 @@ function displayShoppingCartItems() {
 
       let cartItemsHTML = `
       <div class="radio-group">
-            <input type="radio" id="cart-item-check" />
-            <label for="cart-item-check"></label>
+            <input type="radio" id="cart-item-check${cartItem.cart_item_id}" />
+            <label for="cart-item-check${cartItem.cart_item_id}"></label>
           </div>
           <button class="cart-item-image" type="button">
             <img
