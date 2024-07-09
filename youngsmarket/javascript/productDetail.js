@@ -23,6 +23,7 @@ if (productObj.stock === 0) {
 } else {
   quantity = 1;
 }
+let cartItems = JSON.parse(localStorage.getItem("cartItem"));
 
 // 상품상세(이미지/스토어/상품이름/가격)
 function displayProductDetail() {
@@ -46,7 +47,7 @@ function decreaseProductQuantity() {
 }
 
 function increaseProductQuantity() {
-  quantity++;
+  if (quantity < productObj.stock) quantity++;
   updateProductQuantity();
 }
 
@@ -80,17 +81,34 @@ function buyNow() {
   location.href = "http://127.0.0.1:5500/youngsmarket/pages/buyNow.html";
 }
 
+console.log(productObj.stock);
+
 // 장바구니 버튼
 function shoppingCart() {
-  let productQuantity = localStorage.getItem("quantity");
+  let productQuantity = cartItems[productObj.productId]
+    ? cartItems[productObj.productId].quantity
+    : 0;
+  console.log(productQuantity);
 
-  if (productQuantity > 0 && productQuantity - productObj.stock < 0) {
-    notInMyShoppingCartMessage();
+  console.log(
+    "productObj.stock:",
+    productObj.stock,
+    "productQuantity:",
+    productQuantity,
+    "productObj.stock - productQuantity:",
+    productObj.stock - productQuantity,
+    "productQuantity + quantity:",
+    productQuantity + quantity
+  );
+
+  if (productQuantity <= productObj.stock) {
+    if (productQuantity < 0) {
+      notInMyShoppingCartMessage();
+    } else if (productQuantity > 0) {
+      inMyShoppingCartMessage();
+    }
     showModal();
     putInShoppingCart();
-  } else {
-    inMyShoppingCartMessage();
-    showModal();
   }
 
   let noBtn = document.querySelector(".no-btn");
@@ -139,7 +157,11 @@ function putInShoppingCart() {
       console.log("shoppingCart", data);
       localStorage.setItem("quantity", data.quantity);
     })
-    .catch((error) => console.error("Error:", error));
+    .catch((error) => {
+      console.error("Error:", error);
+      overstockShoppingCartMessage();
+      showModal();
+    });
 }
 
 // 모달창
@@ -167,7 +189,7 @@ function notInMyShoppingCartMessage() {
   let modalTxt = document.querySelector(".modal-txt");
 
   modalTxt.innerHTML = `
-      이미 장바구니에 있는 상품입니다.<br />
+     장바구니에 상품을 담았습니다.<br />
       장바구니로 이동하시겠습니까?
     `;
 }
@@ -177,8 +199,18 @@ function inMyShoppingCartMessage() {
   let modalTxt = document.querySelector(".modal-txt");
 
   modalTxt.innerHTML = `
-  재고 수량이 부족하여 <br/>
-  장바구니에 담을 수 없습니다. <br />
-  장바구니로 이동하시겠습니까?
-`;
+    이미 장바구니에 있는 상품입니다.<br />
+    장바구니로 이동하시겠습니까?
+    `;
+}
+
+// 모달창 메세지 변경(장바구니 수량이 재고수량 초과시)
+function overstockShoppingCartMessage() {
+  let modalTxt = document.querySelector(".modal-txt");
+
+  modalTxt.innerHTML = `
+    재고 수량이 부족하여 <br/>
+    장바구니에 담을 수 없습니다. <br />
+    장바구니로 이동하시겠습니까?
+  `;
 }
