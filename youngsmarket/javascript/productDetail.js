@@ -155,7 +155,6 @@ function putInShoppingCart() {
     })
     .then((data) => {
       console.log("shoppingCart", data);
-      localStorage.setItem("quantity", data.quantity);
     })
     .catch((error) => {
       console.error("Error:", error);
