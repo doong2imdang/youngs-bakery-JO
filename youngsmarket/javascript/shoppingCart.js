@@ -3,6 +3,7 @@ let txtShoppingCart = document.querySelector(".btn-shopping-cart p");
 let shoppingCart = document.querySelector(".shopping-cart");
 let paymentContainer = document.querySelector(".payment-container");
 let modalBg = document.querySelector(".modal-bg");
+let cartItemImage = document.querySelector(".cart-item-image");
 
 // 전역변수
 token = localStorage.getItem("token");
@@ -73,8 +74,6 @@ function displayShoppingCartItems() {
           : 0,
     };
   });
-
-  calExpectedPaymentAmount(productItemsIntersection);
 
   console.log(cartItemsIntersectionArray);
   localStorage.setItem("cartItem", JSON.stringify(cartItemsIntersectionArray));
@@ -153,6 +152,8 @@ function displayShoppingCartItems() {
     shoppingCart.appendChild(divItem);
   }
 
+  calExpectedPaymentAmount(productItemsIntersection);
+
   console.log(
     "productItemsIntersection : ",
     productItemsIntersection,
@@ -230,3 +231,15 @@ function calExpectedPaymentAmount(products) {
 
   expectedPaymentAmount.innerHTML = expectedTotalPrice;
 }
+
+// 이미지 누르면 해당상품상세페이지로 이동
+
+// input radio
+
+// 개별 주문하기
+
+// 전체 주문하기
+
+// 전체 삭제하기
+
+// 수량 수정하기
