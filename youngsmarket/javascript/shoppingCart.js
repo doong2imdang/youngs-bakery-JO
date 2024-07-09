@@ -1,6 +1,7 @@
 let iconShoppingCart = document.querySelector(".btn-shopping-cart img");
 let txtShoppingCart = document.querySelector(".btn-shopping-cart p");
 let shoppingCart = document.querySelector(".shopping-cart");
+let paymentContainer = document.querySelector(".payment-container");
 
 // 전역변수
 token = localStorage.getItem("token");
@@ -8,6 +9,7 @@ let URL = "https://openmarket.weniv.co.kr/";
 let cartItems = [];
 let products = localStorage.getItem("products");
 let productsObj = JSON.parse(products);
+let cartItemsIntersectionArray = {};
 
 console.log(productsObj);
 
@@ -49,8 +51,6 @@ function displayShoppingCartItems() {
       cartItems.filter((i) => i.product_id === item.product_id).length > 0
   );
 
-  let cartItemsIntersectionArray = {};
-
   cartItemsIntersection.forEach((item) => {
     cartItemsIntersectionArray[item.product_id] = {
       quantity: item.quantity,
@@ -74,8 +74,10 @@ function displayShoppingCartItems() {
   });
 
   console.log(cartItemsIntersectionArray);
+  localStorage.setItem("cartItem", JSON.stringify(cartItemsIntersectionArray));
 
   if (productItemsIntersection.length > 0) {
+    paymentContainer.style.display = "block";
     productItemsIntersection.forEach((cartItem) => {
       const divItem = document.createElement("div");
       divItem.className = "cart-item";
@@ -85,7 +87,7 @@ function displayShoppingCartItems() {
 
       let cartItemsHTML = `
       <div class="radio-group">
-            <input type="radio" id="cart-item-check${cartItem.cart_item_id}" />
+            <input type="radio" id="cart-item-check${cartItem.cart_item_id}" value="${cartItem.cart_item_id}" />
             <label for="cart-item-check${cartItem.cart_item_id}"></label>
           </div>
           <button class="cart-item-image" type="button">
@@ -120,8 +122,15 @@ function displayShoppingCartItems() {
 
       divItem.innerHTML = cartItemsHTML;
       shoppingCart.appendChild(divItem);
+
+      // 삭제 버튼에 클릭 이벤트 리스너 추가
+      const deleteBtn = divItem.querySelector(".delete-btn");
+      deleteBtn.addEventListener("click", function () {
+        individualDeleteCartItems(cartItem.cart_item_id, cartItemsHTML);
+      });
     });
   } else {
+    paymentContainer.style.display = "none";
     const divItem = document.createElement("div");
     divItem.className = "no-cart-item";
     let noCartItemHTML = `
@@ -138,4 +147,38 @@ function displayShoppingCartItems() {
     "cartItemsIntersection : ",
     cartItemsIntersection
   );
+}
+
+console.log(
+  "cartItemsIntersectionArray",
+  cartItemsIntersectionArray,
+  "productObj",
+  productsObj
+);
+
+// 장바구니 개별 삭제하기
+function individualDeleteCartItems(cartItemId) {
+  let value = parseInt(
+    document.getElementById(`cart-item-check${cartItemId}`).value
+  );
+
+  fetch(URL + `cart/${value}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `JWT ${token}`,
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+    })
+    .then((data) => {
+      console.log("Deleted from cart", data);
+      location.reload();
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 }
