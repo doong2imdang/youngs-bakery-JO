@@ -2,6 +2,7 @@ let iconShoppingCart = document.querySelector(".btn-shopping-cart img");
 let txtShoppingCart = document.querySelector(".btn-shopping-cart p");
 let shoppingCart = document.querySelector(".shopping-cart");
 let paymentContainer = document.querySelector(".payment-container");
+let modalBg = document.querySelector(".modal-bg");
 
 // 전역변수
 token = localStorage.getItem("token");
@@ -125,8 +126,17 @@ function displayShoppingCartItems() {
 
       // 삭제 버튼에 클릭 이벤트 리스너 추가
       const deleteBtn = divItem.querySelector(".delete-btn");
+      let cancelBtn = document.querySelector(".cancel-btn");
+      let checkBtn = document.querySelector(".check-btn");
+
       deleteBtn.addEventListener("click", function () {
-        individualDeleteCartItems(cartItem.cart_item_id, cartItemsHTML);
+        showModal();
+        cancelBtn.addEventListener("click", () => {
+          hideModal();
+        });
+        checkBtn.addEventListener("click", () => {
+          individualDeleteCartItems(cartItem.cart_item_id, cartItemsHTML);
+        });
       });
     });
   } else {
@@ -181,4 +191,13 @@ function individualDeleteCartItems(cartItemId) {
     .catch((error) => {
       console.error("Error:", error);
     });
+}
+
+// 모달창
+function showModal() {
+  modalBg.style.display = "block";
+}
+
+function hideModal() {
+  modalBg.style.display = "none";
 }

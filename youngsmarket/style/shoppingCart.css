@@ -275,3 +275,67 @@ input[type="radio"]:checked + label::after {
   margin: 0 auto 106px auto;
   font-size: 24px;
 }
+
+/* modal */
+.modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  display: none;
+}
+
+.modal {
+  min-width: 360px;
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: #f2f2f2;
+  transform: translate(-50%, -50%);
+  border: 1px solid #c4c4c4c4;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.modal-txt {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.answer-action {
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+}
+
+.answer-action button {
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  margin-top: 30px;
+}
+
+.cancel-btn {
+  background-color: #f2f2f2;
+  border: 1px solid var(--color-orange);
+  color: #767676;
+}
+
+.check-btn {
+  background-color: var(--color-maroon);
+  color: #f2f2f2;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+}

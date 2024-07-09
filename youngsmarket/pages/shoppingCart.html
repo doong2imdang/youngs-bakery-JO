@@ -12,6 +12,18 @@
     <link rel="stylesheet" href="../reset.css" />
   </head>
   <body>
+    <div class="modal-bg">
+      <div class="modal">
+        <p class="modal-txt">상품을 삭제하시겠습니까?</p>
+        <div class="answer-action">
+          <button class="cancel-btn" type="button">취소</button>
+          <button class="check-btn" type="button">확인</button>
+        </div>
+        <button onclick="hideModal()" class="delete-btn" type="button">
+          <img src="../images/icon-delete.svg" alt="닫기버튼" />
+        </button>
+      </div>
+    </div>
     <header class="main-header">
       <div class="search-container">
         <button
