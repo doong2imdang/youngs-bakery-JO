@@ -89,6 +89,14 @@ main {
   border-radius: 5px 0 0 5px;
 }
 
+.decrease-btn:active {
+  background-color: var(--color-maroon);
+}
+
+.increase-btn:active {
+  background-color: var(--color-maroon);
+}
+
 .quantity-control button:last-child {
   border-radius: 0 5px 5px 0;
 }
