@@ -74,6 +74,8 @@ function displayShoppingCartItems() {
     };
   });
 
+  calExpectedPaymentAmount(productItemsIntersection);
+
   console.log(cartItemsIntersectionArray);
   localStorage.setItem("cartItem", JSON.stringify(cartItemsIntersectionArray));
 
@@ -200,4 +202,31 @@ function showModal() {
 
 function hideModal() {
   modalBg.style.display = "none";
+}
+
+// 결제 예정 금액
+function calExpectedPaymentAmount(products) {
+  let price = 0;
+  let totalPrice = document.querySelector(".total-price strong");
+  let productDiscount = document.querySelector(".product-discount strong");
+  let deliveryFee = document.querySelector(".delivery-fee strong");
+  let expectedPaymentAmount = document.querySelector(
+    ".expected-payment-amount strong"
+  );
+
+  // 총 상품금액
+  products.forEach((product) => {
+    price += product.price * product.quantity;
+    expectedPrice = price.toLocaleString();
+  });
+  totalPrice.innerHTML = expectedPrice;
+
+  // 결제예정금액
+  expectedTotalPrice = (
+    price +
+    parseInt(productDiscount.innerHTML) +
+    parseInt(deliveryFee.innerHTML)
+  ).toLocaleString();
+
+  expectedPaymentAmount.innerHTML = expectedTotalPrice;
 }
