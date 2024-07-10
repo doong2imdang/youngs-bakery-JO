@@ -104,6 +104,10 @@ input[type="radio"]:checked + label::after {
   border-radius: 10px;
 }
 
+.cart-item-image:hover {
+  opacity: 0.8;
+}
+
 .cart-item-image img {
   width: 160px;
   height: 160px;
