@@ -3,6 +3,7 @@ let txtShoppingCart = document.querySelector(".btn-shopping-cart p");
 let shoppingCart = document.querySelector(".shopping-cart");
 let paymentContainer = document.querySelector(".payment-container");
 let modalBg = document.querySelector(".modal-bg");
+let finalDeleteBtn = document.querySelector(".final-delete-btn");
 
 // 전역변수
 token = localStorage.getItem("token");
@@ -262,12 +263,39 @@ function goProductDetailPage(productItemsIntersection, clickedImageSrc) {
   location.href = "http://127.0.0.1:5500/youngsmarket/pages/productDetail.html";
 }
 
+// 전체 삭제하기
+// 1. 전체 삭제 시 메시지 변경
+function allCartItems() {
+  fetch(URL + "cart/", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `JWT ${token}`,
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+    })
+    .then((data) => {
+      console.log("Deleted from cart", data);
+      location.reload();
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
+
+// 2. 주문하기 옆에 삭제하기 버튼 새로 만드릭
+// 3. api요청
+
 // input radio
 
 // 개별 주문하기
 
 // 전체 주문하기
 
-// 전체 삭제하기
-
 // 수량 수정하기
+
+// 배송비
