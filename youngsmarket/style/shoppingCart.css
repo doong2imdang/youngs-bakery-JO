@@ -269,15 +269,30 @@ input[type="radio"]:checked + label::after {
   color: #eb5757;
 }
 
-.final-order-btn {
+.final-actions {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 106px;
+}
+
+.final-actions button {
   width: 220px;
   height: 68px;
+  border-radius: 5px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.final-order-btn {
   color: var(--color-apricot);
   background-color: var(--color-maroon);
-  border-radius: 5px;
-  display: block;
-  margin: 0 auto 106px auto;
-  font-size: 24px;
+}
+
+.final-delete-btn {
+  color: #767676;
+  background-color: #f2f2f2;
+  border: 1px solid var(--color-orange);
 }
 
 /* modal */

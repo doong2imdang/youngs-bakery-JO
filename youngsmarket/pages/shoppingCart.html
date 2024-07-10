@@ -14,7 +14,7 @@
   <body>
     <div class="modal-bg">
       <div class="modal">
-        <p class="modal-txt">상품을 삭제하시겠습니까?</p>
+        <p class="modal-txt">선택한 상품을 삭제하시겠습니까?</p>
         <div class="answer-action">
           <button class="cancel-btn" type="button">취소</button>
           <button class="check-btn" type="button">확인</button>
@@ -121,7 +121,16 @@
             <strong>46,500</strong><span>원</span>
           </div>
         </div>
-        <button class="final-order-btn" type="button">주문하기</button>
+        <div class="final-actions">
+          <button class="final-order-btn" type="button">주문하기</button>
+          <button
+            onclick="allCartItems()"
+            class="final-delete-btn"
+            type="button"
+          >
+            삭제하기
+          </button>
+        </div>
       </div>
     </main>
     <footer>
