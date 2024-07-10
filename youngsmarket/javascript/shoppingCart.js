@@ -3,7 +3,6 @@ let txtShoppingCart = document.querySelector(".btn-shopping-cart p");
 let shoppingCart = document.querySelector(".shopping-cart");
 let paymentContainer = document.querySelector(".payment-container");
 let modalBg = document.querySelector(".modal-bg");
-let cartItemImage = document.querySelector(".cart-item-image");
 
 // 전역변수
 token = localStorage.getItem("token");
@@ -125,6 +124,12 @@ function displayShoppingCartItems() {
       divItem.innerHTML = cartItemsHTML;
       shoppingCart.appendChild(divItem);
 
+      // 이미지 클릭 시 상품 상세 페이지로 이동
+      const imageButton = divItem.querySelector(".cart-item-image img");
+      imageButton.addEventListener("click", () => {
+        goProductDetailPage(productItemsIntersection, imageButton.src);
+      });
+
       // 삭제 버튼에 클릭 이벤트 리스너 추가
       const deleteBtn = divItem.querySelector(".delete-btn");
       let cancelBtn = document.querySelector(".cancel-btn");
@@ -233,6 +238,29 @@ function calExpectedPaymentAmount(products) {
 }
 
 // 이미지 누르면 해당상품상세페이지로 이동
+function goProductDetailPage(productItemsIntersection, clickedImageSrc) {
+  let clickedProduct = productItemsIntersection.filter((product) =>
+    product.image == clickedImageSrc ? product : null
+  )[0];
+  let clickedProductId = clickedProduct.product_id;
+  let clickedStoreName = clickedProduct.store_name;
+  let clickedPrice = clickedProduct.price;
+  let clickedProductName = clickedProduct.product_name;
+  let clickedProductStock = clickedProduct.stock;
+
+  let productDetails = JSON.parse(localStorage.getItem("product")) || {};
+
+  productDetails.img = clickedProduct.image;
+  productDetails.productId = clickedProductId;
+  productDetails.storeName = clickedStoreName;
+  productDetails.price = clickedPrice;
+  productDetails.productName = clickedProductName;
+  productDetails.stock = clickedProductStock;
+
+  localStorage.setItem("product", JSON.stringify(productDetails));
+
+  location.href = "http://127.0.0.1:5500/youngsmarket/pages/productDetail.html";
+}
 
 // input radio
 
