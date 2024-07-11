@@ -302,6 +302,7 @@ function selectCheckBox(divItem) {
   // 개별 선택
   checkbox.addEventListener("click", () => {
     check++;
+    selectAllCheckbox.checked = false;
     if (check % 2 === 0) {
       checkbox.checked = true;
       finalDeleteBtn.addEventListener("click", () => {
