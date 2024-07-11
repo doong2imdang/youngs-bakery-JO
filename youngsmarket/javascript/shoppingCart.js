@@ -4,6 +4,7 @@ let shoppingCart = document.querySelector(".shopping-cart");
 let paymentContainer = document.querySelector(".payment-container");
 let modalBg = document.querySelector(".modal-bg");
 let finalDeleteBtn = document.querySelector(".final-delete-btn");
+let modalTxt = document.querySelector(".modal-txt");
 
 // 전역변수
 token = localStorage.getItem("token");
@@ -88,7 +89,7 @@ function displayShoppingCartItems() {
         (cartItem.price * cartItem.quantity).toLocaleString() + "원";
 
       let cartItemsHTML = `
-      <div class="radio-group">
+      <div class="main-radio-group">
             <input type="radio" id="cart-item-check${cartItem.cart_item_id}" value="${cartItem.cart_item_id}" />
             <label for="cart-item-check${cartItem.cart_item_id}"></label>
           </div>
@@ -124,6 +125,9 @@ function displayShoppingCartItems() {
 
       divItem.innerHTML = cartItemsHTML;
       shoppingCart.appendChild(divItem);
+
+      // input radio
+      selectCheckBox(divItem);
 
       // 이미지 클릭 시 상품 상세 페이지로 이동
       const imageButton = divItem.querySelector(".cart-item-image img");
@@ -264,8 +268,7 @@ function goProductDetailPage(productItemsIntersection, clickedImageSrc) {
 }
 
 // 전체 삭제하기
-// 1. 전체 삭제 시 메시지 변경
-function allCartItems() {
+function allCartItemsDelete() {
   fetch(URL + "cart/", {
     method: "DELETE",
     headers: {
@@ -287,10 +290,23 @@ function allCartItems() {
     });
 }
 
-// 2. 주문하기 옆에 삭제하기 버튼 새로 만드릭
-// 3. api요청
-
 // input radio
+function selectCheckBox(divItem) {
+  let check = 1;
+  let selectAllCheckbox = document.getElementById("select-all");
+  const checkbox = divItem.querySelector(".main-radio-group input");
+  let cartItemValue = parseInt(checkbox.value);
+  selectAllCheckbox.addEventListener("click", () => {
+    check++;
+    if (check % 2 === 0) {
+      checkbox.checked = true;
+    } else {
+      checkbox.checked = false;
+      selectAllCheckbox.checked = false;
+    }
+  });
+  console.log(cartItemValue);
+}
 
 // 개별 주문하기
 
