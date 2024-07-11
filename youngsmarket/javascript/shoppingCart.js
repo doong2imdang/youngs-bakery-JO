@@ -116,7 +116,7 @@ function displayShoppingCartItems() {
           </div>
           <div class="product-price">
             <strong>${totalPrice}</strong>
-            <button type="button">주문하기</button>
+            <button class="order-btn" type="button">주문하기</button>
           </div>
           <button class="delete-btn" type="button">
             <img src="../images/icon-delete.svg" alt="" />
@@ -321,7 +321,6 @@ function selectCheckBox(divItem) {
     } else {
       checkbox.checked = false;
     }
-    console.log(cartItemValue);
   });
 
   // 전체 선택
@@ -343,7 +342,6 @@ function selectCheckBox(divItem) {
       selectAllCheckbox.checked = false;
     }
   });
-  console.log(cartItemValue);
 }
 
 // 수량 수정하기

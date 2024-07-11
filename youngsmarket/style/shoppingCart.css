@@ -296,6 +296,7 @@ label {
   justify-content: center;
   gap: 30px;
   margin-bottom: 106px;
+  position: relative;
 }
 
 .final-actions button {
@@ -304,6 +305,24 @@ label {
   border-radius: 5px;
   font-size: 24px;
   font-weight: bold;
+}
+
+.final-order-btn:hover,
+.order-btn:hover {
+  opacity: 0.9;
+}
+
+.final-delete-btn:hover::after {
+  content: "";
+  width: 220px;
+  height: 68px;
+  border-radius: 5px;
+  background-color: var(--color-maroon);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(14px);
+  opacity: 0.2;
 }
 
 .final-order-btn {
@@ -379,4 +398,16 @@ label {
   position: absolute;
   top: 18px;
   right: 18px;
+}
+
+.delete-btn:hover::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: 0;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  background-color: #000;
+  opacity: 0.1;
 }
