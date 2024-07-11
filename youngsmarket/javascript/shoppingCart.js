@@ -296,12 +296,42 @@ function selectCheckBox(divItem) {
   let selectAllCheckbox = document.getElementById("select-all");
   const checkbox = divItem.querySelector(".main-radio-group input");
   let cartItemValue = parseInt(checkbox.value);
+  let cancelBtn = document.querySelector(".cancel-btn");
+  let checkBtn = document.querySelector(".check-btn");
+
+  // 개별 선택
+  checkbox.addEventListener("click", () => {
+    check++;
+    if (check % 2 === 0) {
+      checkbox.checked = true;
+      finalDeleteBtn.addEventListener("click", () => {
+        showModal();
+        cancelBtn.addEventListener("click", () => {
+          hideModal();
+        });
+        checkBtn.addEventListener("click", () => {
+          individualDeleteCartItems(cartItemValue);
+        });
+      });
+    } else {
+      checkbox.checked = false;
+    }
+    console.log(cartItemValue);
+  });
+
+  // 전체 선택
   selectAllCheckbox.addEventListener("click", () => {
     check++;
     if (check % 2 === 0) {
       checkbox.checked = true;
       finalDeleteBtn.addEventListener("click", () => {
-        allCartItemsDelete(cartItemValue);
+        showModal();
+        cancelBtn.addEventListener("click", () => {
+          hideModal();
+        });
+        checkBtn.addEventListener("click", () => {
+          allCartItemsDelete(cartItemValue);
+        });
       });
     } else {
       checkbox.checked = false;
