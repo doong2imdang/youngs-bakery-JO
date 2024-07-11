@@ -300,6 +300,9 @@ function selectCheckBox(divItem) {
     check++;
     if (check % 2 === 0) {
       checkbox.checked = true;
+      finalDeleteBtn.addEventListener("click", () => {
+        allCartItemsDelete(cartItemValue);
+      });
     } else {
       checkbox.checked = false;
       selectAllCheckbox.checked = false;
