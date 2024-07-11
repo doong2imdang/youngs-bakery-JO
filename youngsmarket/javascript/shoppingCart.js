@@ -139,8 +139,12 @@ function displayShoppingCartItems() {
       const deleteBtn = divItem.querySelector(".delete-btn");
       let cancelBtn = document.querySelector(".cancel-btn");
       let checkBtn = document.querySelector(".check-btn");
+      let selectAllCheckbox = document.getElementById("select-all");
+      const checkbox = divItem.querySelector(".main-radio-group input");
 
       deleteBtn.addEventListener("click", function () {
+        selectAllCheckbox.checked = false;
+        checkbox.checked = false;
         showModal();
         cancelBtn.addEventListener("click", () => {
           hideModal();
@@ -342,10 +346,10 @@ function selectCheckBox(divItem) {
   console.log(cartItemValue);
 }
 
+// 수량 수정하기
+
 // 개별 주문하기
 
 // 전체 주문하기
-
-// 수량 수정하기
 
 // 배송비
