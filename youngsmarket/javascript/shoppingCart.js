@@ -5,6 +5,7 @@ let paymentContainer = document.querySelector(".payment-container");
 let modalBg = document.querySelector(".modal-bg");
 let finalDeleteBtn = document.querySelector(".final-delete-btn");
 let modalTxt = document.querySelector(".modal-txt");
+let answerAction = document.querySelector(".answer-action");
 
 // 전역변수
 token = localStorage.getItem("token");
@@ -129,6 +130,15 @@ function displayShoppingCartItems() {
       // input radio
       selectCheckBox(divItem);
 
+      // 수량버튼
+      let productQunatityControl = divItem.querySelector(
+        ".product-quantity-control"
+      );
+      productQunatityControl.addEventListener("click", () => {
+        itemQuantityControlMessage(cartItem);
+        showModal();
+      });
+
       // 이미지 클릭 시 상품 상세 페이지로 이동
       const imageButton = divItem.querySelector(".cart-item-image img");
       imageButton.addEventListener("click", () => {
@@ -145,6 +155,7 @@ function displayShoppingCartItems() {
       deleteBtn.addEventListener("click", function () {
         selectAllCheckbox.checked = false;
         checkbox.checked = false;
+        itemDeleteMessage();
         showModal();
         cancelBtn.addEventListener("click", () => {
           hideModal();
@@ -310,6 +321,7 @@ function selectCheckBox(divItem) {
     if (check % 2 === 0) {
       checkbox.checked = true;
       finalDeleteBtn.addEventListener("click", () => {
+        itemDeleteMessage();
         showModal();
         cancelBtn.addEventListener("click", () => {
           hideModal();
@@ -329,6 +341,7 @@ function selectCheckBox(divItem) {
     if (check % 2 === 0) {
       checkbox.checked = true;
       finalDeleteBtn.addEventListener("click", () => {
+        itemDeleteMessage();
         showModal();
         cancelBtn.addEventListener("click", () => {
           hideModal();
@@ -341,7 +354,36 @@ function selectCheckBox(divItem) {
       checkbox.checked = false;
       selectAllCheckbox.checked = false;
     }
+
+    console.log(cartItemValue);
   });
+}
+
+// 수량 버튼 누르면 모달 메시지 변경
+function itemQuantityControlMessage(cartItem) {
+  modalTxt.innerHTML = `
+  <button class="decrease-btn" type="button">
+              <img src="../images/icon-minus-line.svg" alt="수량감소버튼" />
+            </button>
+            <button class="product-quantity" type="button">${cartItem.quantity}</button>
+            <button class="increase-btn" type="button">
+              <img src="../images/icon-plus-line.svg" alt="수량추가버튼" />
+            </button>
+  `;
+  answerAction.innerHTML = `
+    <button class="cancel-btn" type="button">취소</button>
+    <button class="modify-btn" type="button">수정</button>
+  `;
+}
+
+function itemDeleteMessage() {
+  modalTxt.innerHTML = `
+  <p>선택한 상품을 삭제하시겠습니까?</p>
+  `;
+  answerAction.innerHTML = `
+  <button class="cancel-btn" type="button">취소</button>
+          <button class="check-btn" type="button">확인</button>
+  `;
 }
 
 // 수량 수정하기
