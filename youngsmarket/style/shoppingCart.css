@@ -368,6 +368,9 @@ label {
 .modal-txt {
   font-size: 16px;
   line-height: 20px;
+  justify-self: center;
+  align-self: center;
+  display: flex;
 }
 
 .answer-action {
@@ -394,6 +397,11 @@ label {
   color: #f2f2f2;
 }
 
+.modify-btn {
+  background-color: var(--color-maroon);
+  color: #f2f2f2;
+}
+
 .delete-btn {
   position: absolute;
   top: 18px;
@@ -410,4 +418,20 @@ label {
   border-radius: 50%;
   background-color: #000;
   opacity: 0.1;
+}
+
+.modal-txt button {
+  border: 1px solid var(--color-orange);
+  width: 50px;
+  height: 50px;
+  background-color: #f2f2f2;
+  font-size: 18px;
+}
+
+.modal-txt button:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.modal-txt button:last-child {
+  border-radius: 0 5px 5px 0;
 }
