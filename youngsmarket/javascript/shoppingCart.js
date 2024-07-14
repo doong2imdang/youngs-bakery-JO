@@ -10,6 +10,7 @@ let cancelBtn = document.querySelector(".cancel-btn");
 let checkBtn = document.querySelector(".check-btn");
 let finalOrderBtn = document.querySelector(".final-order-btn");
 let selectAllCheckbox = document.getElementById("select-all");
+let modalDeleteBtn = document.querySelector(".modal .delete-btn");
 
 // 전역변수
 token = localStorage.getItem("token");
@@ -63,6 +64,7 @@ function displayShoppingCartItems() {
     cartItemsIntersectionArray[item.product_id] = {
       quantity: item.quantity,
       cart_item_id: item.cart_item_id,
+      is_active: item.is_active,
     };
   });
 
@@ -77,6 +79,10 @@ function displayShoppingCartItems() {
       cart_item_id:
         cartItemsIntersectionArray[product.product_id] !== undefined
           ? cartItemsIntersectionArray[product.product_id].cart_item_id
+          : 0,
+      is_active:
+        cartItemsIntersectionArray[product.product_id] !== undefined
+          ? cartItemsIntersectionArray[product.product_id].is_active
           : 0,
     };
   });
@@ -137,6 +143,7 @@ alt="상품이미지"
       let productQunatityControl = divItem.querySelector(
         ".product-quantity-control"
       );
+
       productQunatityControl.addEventListener("click", () => {
         itemQuantityControlMessage(cartItem);
         showModal();
@@ -377,19 +384,18 @@ function selectCheckBox(divItem) {
   });
 }
 
-// 수량 버튼 누르면 모달 메시지 변경
-function itemQuantityControlMessage(cartItem) {
+// 주문하기 모달 메시지
+function itemOrderMessage() {
   modalTxt.innerHTML = `
-    <button class="decrease-btn" type="button">
-      <img src="../images/icon-minus-line.svg" alt="수량감소버튼" />
-    </button>
-    <button class="product-quantity" type="button">${cartItem.quantity}</button>
-    <button class="increase-btn" type="button">
-      <img src="../images/icon-plus-line.svg" alt="수량추가버튼" />
-    </button>
+    <p>로그인이 필요한 서비스입니다.<br/> 로그인 하시겠습니까?</p>
   `;
 
-  checkBtn.innerText = "수정";
+  cancelBtn.innerHTML = "아니오";
+  checkBtn.innerHTML = "예";
+
+  modalDeleteBtn.addEventListener("click", () => {
+    location.reload();
+  });
 }
 
 finalOrderBtn.addEventListener("click", () => {
@@ -401,17 +407,83 @@ finalOrderBtn.addEventListener("click", () => {
   }
 });
 
-// 주문하기 모달 메시지
-function itemOrderMessage() {
+// 수량 버튼 누르면 모달 메시지 변경
+function itemQuantityControlMessage(cartItem) {
+  let currentQuantity = cartItem.quantity;
+
   modalTxt.innerHTML = `
-    <p>로그인이 필요한 서비스입니다.<br/> 로그인 하시겠습니까?</p>
+    <button class="decrease-btn" type="button">
+      <img src="../images/icon-minus-line.svg" alt="수량감소버튼" />
+    </button>
+    <button class="product-quantity" type="button">${currentQuantity}</button>
+    <button class="increase-btn" type="button">
+      <img src="../images/icon-plus-line.svg" alt="수량추가버튼" />
+    </button>
   `;
 
-  cancelBtn.innerHTML = "아니오";
-  checkBtn.innerHTML = "예";
+  const decreaseBtn = modalTxt.querySelector(".decrease-btn");
+  const increaseBtn = modalTxt.querySelector(".increase-btn");
+  const quantityDisplay = modalTxt.querySelector(".product-quantity");
+  const cartItemStock = cartItem.stock;
+
+  decreaseBtn.addEventListener("click", () => {
+    if (currentQuantity > 1) {
+      currentQuantity--;
+      quantityDisplay.textContent = currentQuantity;
+    }
+  });
+
+  increaseBtn.addEventListener("click", () => {
+    if (currentQuantity < cartItemStock) {
+      currentQuantity++;
+    }
+    quantityDisplay.textContent = currentQuantity;
+  });
+
+  checkBtn.innerText = "수정";
+  checkBtn.addEventListener("click", () => {
+    itemQuantityControl(cartItem, currentQuantity);
+  });
+
+  modalDeleteBtn.addEventListener("click", () => {
+    location.reload();
+  });
 }
 
 // 수량 수정하기
+function itemQuantityControl(cartItem, newQuantity) {
+  let cartItemId = cartItem.cart_item_id;
+  let productId = cartItem.product_id;
+  let isActive = cartItem.is_active;
+  console.log(
+    `Updating item ${cartItemId} with quantity ${newQuantity} and is_active ${isActive}`
+  );
+
+  fetch(URL + `cart/${cartItemId}/`, {
+    method: "PUT",
+    headers: {
+      Authorization: `JWT ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      product_id: productId,
+      quantity: newQuantity,
+      is_active: isActive,
+    }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+    })
+    .then((data) => {
+      console.log("itemQuantityControl:", data);
+      location.reload();
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
 
 // 개별 주문하기
 
