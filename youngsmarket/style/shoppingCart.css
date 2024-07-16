@@ -428,6 +428,11 @@ label {
   font-size: 18px;
 }
 
+.modal-txt .decrease-btn:active,
+.modal-txt .increase-btn:active {
+  background-color: var(--color-maroon);
+}
+
 .modal-txt button:first-child {
   border-radius: 5px 0 0 5px;
 }
