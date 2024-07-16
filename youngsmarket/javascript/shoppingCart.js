@@ -8,6 +8,7 @@ let modalTxt = document.querySelector(".modal-txt");
 let answerAction = document.querySelector(".answer-action");
 let cancelBtn = document.querySelector(".cancel-btn");
 let checkBtn = document.querySelector(".check-btn");
+let finalOrderBtn = document.querySelector(".final-order-btn");
 
 // 전역변수
 token = localStorage.getItem("token");
@@ -93,37 +94,36 @@ function displayShoppingCartItems() {
 
       let cartItemsHTML = `
       <div class="main-radio-group">
-            <input type="radio" id="cart-item-check${cartItem.cart_item_id}" value="${cartItem.cart_item_id}" />
-            <label for="cart-item-check${cartItem.cart_item_id}"></label>
-          </div>
-          <button class="cart-item-image" type="button">
-            <img
-              src="${cartItem.image}"
-              alt="상품이미지"
-            />
-          </button>
-          <div class="product-info">
-            <p class="store-name">${cartItem.store_name}</p>
-            <p class="product-name">${cartItem.product_name}</p>
-            <strong class="product-price">${price}</strong>
-            <p class="delivery">택배배송<span>/</span>무료배송</p>
-          </div>
-          <div class="product-quantity-control">
-            <button class="decrease-btn" type="button">
-              <img src="../images/icon-minus-line.svg" alt="수량감소버튼" />
-            </button>
-            <button class="product-quantity" type="button">${cartItem.quantity}</button>
-            <button class="increase-btn" type="button">
-              <img src="../images/icon-plus-line.svg" alt="수량추가버튼" />
-            </button>
-          </div>
-          <div class="product-price">
-            <strong>${totalPrice}</strong>
-            <button class="order-btn" type="button">주문하기</button>
-          </div>
-          <button class="delete-btn" type="button">
-            <img src="../images/icon-delete.svg" alt="" />
-          </button>
+        <input type="radio" id="cart-item-check${cartItem.cart_item_id}" value="${cartItem.cart_item_id}" />
+        <label for="cart-item-check${cartItem.cart_item_id}"></label>
+      </div>
+      <button class="cart-item-image" type="button">
+        <img src="${cartItem.image}"
+alt="상품이미지"
+        />
+      </button>
+      <div class="product-info">
+        <p class="store-name">${cartItem.store_name}</p>
+        <p class="product-name">${cartItem.product_name}</p>
+        <strong class="product-price">${price}</strong>
+        <p class="delivery">택배배송<span>/</span>무료배송</p>
+      </div>
+      <div class="product-quantity-control">
+        <button class="decrease-btn" type="button">
+          <img src="../images/icon-minus-line.svg" alt="수량감소버튼" />
+        </button>
+        <button class="product-quantity" type="button">${cartItem.quantity}</button>
+        <button class="increase-btn" type="button">
+          <img src="../images/icon-plus-line.svg" alt="수량추가버튼" />
+        </button>
+        </div>
+        <div class="product-price">
+          <strong>${totalPrice}</strong>
+          <button class="order-btn" type="button">주문하기</button>
+        </div>
+        <button class="delete-btn" type="button">
+          <img src="../images/icon-delete.svg" alt="" />
+        </button>
       `;
 
       divItem.innerHTML = cartItemsHTML;
@@ -141,6 +141,17 @@ function displayShoppingCartItems() {
         showModal();
       });
 
+      // 개별 주문하기
+      let orderBtn = divItem.querySelector(".order-btn");
+      orderBtn.addEventListener("click", () => {
+        if (!token) {
+          itemOrderMessage();
+          showModal();
+        } else {
+          location.href = "http://127.0.0.1:5500/youngsmarket/pages/order.html";
+        }
+      });
+
       // 이미지 클릭 시 상품 상세 페이지로 이동
       const imageButton = divItem.querySelector(".cart-item-image img");
       imageButton.addEventListener("click", () => {
@@ -156,9 +167,7 @@ function displayShoppingCartItems() {
         selectAllCheckbox.checked = false;
         checkbox.checked = false;
         showModal();
-        cancelBtn.addEventListener("click", () => {
-          hideModal();
-        });
+
         checkBtn.addEventListener("click", () => {
           individualDeleteCartItems(cartItem.cart_item_id, cartItemsHTML);
         });
@@ -228,6 +237,10 @@ function showModal() {
 function hideModal() {
   modalBg.style.display = "none";
 }
+
+cancelBtn.addEventListener("click", () => {
+  hideModal();
+});
 
 // 결제 예정 금액
 function calExpectedPaymentAmount(products) {
@@ -310,8 +323,6 @@ function selectCheckBox(divItem) {
   let selectAllCheckbox = document.getElementById("select-all");
   const checkbox = divItem.querySelector(".main-radio-group input");
   let cartItemValue = parseInt(checkbox.value);
-  let cancelBtn = document.querySelector(".cancel-btn");
-  let checkBtn = document.querySelector(".check-btn");
 
   // 개별 선택
   checkbox.addEventListener("click", () => {
@@ -321,9 +332,7 @@ function selectCheckBox(divItem) {
       checkbox.checked = true;
       finalDeleteBtn.addEventListener("click", () => {
         showModal();
-        cancelBtn.addEventListener("click", () => {
-          hideModal();
-        });
+
         checkBtn.addEventListener("click", () => {
           individualDeleteCartItems(cartItemValue);
         });
@@ -338,11 +347,10 @@ function selectCheckBox(divItem) {
     check++;
     if (check % 2 === 0) {
       checkbox.checked = true;
+
       finalDeleteBtn.addEventListener("click", () => {
         showModal();
-        cancelBtn.addEventListener("click", () => {
-          hideModal();
-        });
+
         checkBtn.addEventListener("click", () => {
           allCartItemsDelete(cartItemValue);
         });
@@ -368,11 +376,26 @@ function itemQuantityControlMessage(cartItem) {
     </button>
   `;
 
-  cancelBtn.addEventListener("click", () => {
-    hideModal();
-  });
-
   checkBtn.innerText = "수정";
+}
+
+finalOrderBtn.addEventListener("click", () => {
+  if (!token) {
+    itemOrderMessage();
+    showModal();
+  } else {
+    location.href = "http://127.0.0.1:5500/youngsmarket/pages/order.html";
+  }
+});
+
+// 주문하기 모달 메시지
+function itemOrderMessage() {
+  modalTxt.innerHTML = `
+    <p>로그인이 필요한 서비스입니다.<br/> 로그인 하시겠습니까?</p>
+  `;
+
+  cancelBtn.innerHTML = "아니오";
+  checkBtn.innerHTML = "예";
 }
 
 // 수량 수정하기
