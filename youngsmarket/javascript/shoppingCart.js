@@ -6,6 +6,8 @@ let modalBg = document.querySelector(".modal-bg");
 let finalDeleteBtn = document.querySelector(".final-delete-btn");
 let modalTxt = document.querySelector(".modal-txt");
 let answerAction = document.querySelector(".answer-action");
+let cancelBtn = document.querySelector(".cancel-btn");
+let checkBtn = document.querySelector(".check-btn");
 
 // 전역변수
 token = localStorage.getItem("token");
@@ -147,15 +149,12 @@ function displayShoppingCartItems() {
 
       // 삭제 버튼에 클릭 이벤트 리스너 추가
       const deleteBtn = divItem.querySelector(".delete-btn");
-      let cancelBtn = document.querySelector(".cancel-btn");
-      let checkBtn = document.querySelector(".check-btn");
       let selectAllCheckbox = document.getElementById("select-all");
       const checkbox = divItem.querySelector(".main-radio-group input");
 
       deleteBtn.addEventListener("click", function () {
         selectAllCheckbox.checked = false;
         checkbox.checked = false;
-        itemDeleteMessage();
         showModal();
         cancelBtn.addEventListener("click", () => {
           hideModal();
@@ -170,8 +169,8 @@ function displayShoppingCartItems() {
     const divItem = document.createElement("div");
     divItem.className = "no-cart-item";
     let noCartItemHTML = `
-    <strong>장바구니에 담긴 상품이 없습니다.</strong>
-          <p>원하는 상품을 장바구니에 담아보세요!</p>
+      <strong>장바구니에 담긴 상품이 없습니다.</strong>
+      <p>원하는 상품을 장바구니에 담아보세요!</p>
     `;
     divItem.innerHTML = noCartItemHTML;
     shoppingCart.appendChild(divItem);
@@ -321,7 +320,6 @@ function selectCheckBox(divItem) {
     if (check % 2 === 0) {
       checkbox.checked = true;
       finalDeleteBtn.addEventListener("click", () => {
-        itemDeleteMessage();
         showModal();
         cancelBtn.addEventListener("click", () => {
           hideModal();
@@ -341,7 +339,6 @@ function selectCheckBox(divItem) {
     if (check % 2 === 0) {
       checkbox.checked = true;
       finalDeleteBtn.addEventListener("click", () => {
-        itemDeleteMessage();
         showModal();
         cancelBtn.addEventListener("click", () => {
           hideModal();
@@ -362,28 +359,20 @@ function selectCheckBox(divItem) {
 // 수량 버튼 누르면 모달 메시지 변경
 function itemQuantityControlMessage(cartItem) {
   modalTxt.innerHTML = `
-  <button class="decrease-btn" type="button">
-              <img src="../images/icon-minus-line.svg" alt="수량감소버튼" />
-            </button>
-            <button class="product-quantity" type="button">${cartItem.quantity}</button>
-            <button class="increase-btn" type="button">
-              <img src="../images/icon-plus-line.svg" alt="수량추가버튼" />
-            </button>
+    <button class="decrease-btn" type="button">
+      <img src="../images/icon-minus-line.svg" alt="수량감소버튼" />
+    </button>
+    <button class="product-quantity" type="button">${cartItem.quantity}</button>
+    <button class="increase-btn" type="button">
+      <img src="../images/icon-plus-line.svg" alt="수량추가버튼" />
+    </button>
   `;
-  answerAction.innerHTML = `
-    <button class="cancel-btn" type="button">취소</button>
-    <button class="modify-btn" type="button">수정</button>
-  `;
-}
 
-function itemDeleteMessage() {
-  modalTxt.innerHTML = `
-  <p>선택한 상품을 삭제하시겠습니까?</p>
-  `;
-  answerAction.innerHTML = `
-  <button class="cancel-btn" type="button">취소</button>
-          <button class="check-btn" type="button">확인</button>
-  `;
+  cancelBtn.addEventListener("click", () => {
+    hideModal();
+  });
+
+  checkBtn.innerText = "수정";
 }
 
 // 수량 수정하기
