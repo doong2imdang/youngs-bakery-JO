@@ -9,6 +9,7 @@ let answerAction = document.querySelector(".answer-action");
 let cancelBtn = document.querySelector(".cancel-btn");
 let checkBtn = document.querySelector(".check-btn");
 let finalOrderBtn = document.querySelector(".final-order-btn");
+let selectAllCheckbox = document.getElementById("select-all");
 
 // 전역변수
 token = localStorage.getItem("token");
@@ -160,7 +161,6 @@ alt="상품이미지"
 
       // 삭제 버튼에 클릭 이벤트 리스너 추가
       const deleteBtn = divItem.querySelector(".delete-btn");
-      let selectAllCheckbox = document.getElementById("select-all");
       const checkbox = divItem.querySelector(".main-radio-group input");
 
       deleteBtn.addEventListener("click", function () {
@@ -171,6 +171,11 @@ alt="상품이미지"
         checkBtn.addEventListener("click", () => {
           individualDeleteCartItems(cartItem.cart_item_id, cartItemsHTML);
         });
+      });
+
+      cancelBtn.addEventListener("click", () => {
+        hideModal();
+        location.reload();
       });
     });
   } else {
@@ -237,10 +242,6 @@ function showModal() {
 function hideModal() {
   modalBg.style.display = "none";
 }
-
-cancelBtn.addEventListener("click", () => {
-  hideModal();
-});
 
 // 결제 예정 금액
 function calExpectedPaymentAmount(products) {
@@ -320,47 +321,59 @@ function allCartItemsDelete() {
 // input radio
 function selectCheckBox(divItem) {
   let check = 1;
-  let selectAllCheckbox = document.getElementById("select-all");
+  let allCheck = 1;
   const checkbox = divItem.querySelector(".main-radio-group input");
-  let cartItemValue = parseInt(checkbox.value);
 
-  // 개별 선택
   checkbox.addEventListener("click", () => {
     check++;
-    selectAllCheckbox.checked = false;
-    if (check % 2 === 0) {
-      checkbox.checked = true;
-      finalDeleteBtn.addEventListener("click", () => {
-        showModal();
+    const allCheckboxes = document.querySelectorAll(".main-radio-group input");
+    const checkedCheckboxes = document.querySelectorAll(
+      ".main-radio-group input:checked"
+    );
 
-        checkBtn.addEventListener("click", () => {
-          individualDeleteCartItems(cartItemValue);
-        });
-      });
-    } else {
+    if (check % 2 === 1) {
       checkbox.checked = false;
     }
-  });
 
-  // 전체 선택
-  selectAllCheckbox.addEventListener("click", () => {
-    check++;
-    if (check % 2 === 0) {
-      checkbox.checked = true;
+    selectAllCheckbox.checked =
+      allCheckboxes.length === checkedCheckboxes.length;
 
-      finalDeleteBtn.addEventListener("click", () => {
+    finalDeleteBtn.addEventListener("click", () => {
+      if (checkedCheckboxes.length > 0 && checkbox.checked === true) {
         showModal();
 
         checkBtn.addEventListener("click", () => {
-          allCartItemsDelete(cartItemValue);
+          checkedCheckboxes.forEach((checkbox) => {
+            individualDeleteCartItems(checkbox.value);
+          });
         });
-      });
-    } else {
-      checkbox.checked = false;
+      }
+    });
+  });
+
+  selectAllCheckbox.addEventListener("click", () => {
+    allCheck++;
+    const allCheckboxes = document.querySelectorAll(".main-radio-group input");
+
+    if (allCheck % 2 === 1) {
       selectAllCheckbox.checked = false;
     }
 
-    console.log(cartItemValue);
+    allCheckboxes.forEach((checkbox) => {
+      checkbox.checked = selectAllCheckbox.checked;
+    });
+
+    console.log(checkbox.checked);
+
+    finalDeleteBtn.addEventListener("click", () => {
+      if (selectAllCheckbox.checked && checkbox.checked) {
+        showModal();
+
+        checkBtn.addEventListener("click", () => {
+          allCartItemsDelete();
+        });
+      }
+    });
   });
 }
 
