@@ -1,5 +1,6 @@
 let userTxt = document.querySelector(".user-txt");
 let btnUser = document.querySelector(".btn-user");
+let mainLogo = document.querySelector(".main-logo");
 
 // 전역변수
 token = localStorage.getItem("token");
@@ -18,3 +19,7 @@ function updateUserButton() {
   }
 }
 updateUserButton();
+
+mainLogo.addEventListener("click", () => {
+  location.href = "http://127.0.0.1:5500/youngsmarket/pages/main.html";
+});
