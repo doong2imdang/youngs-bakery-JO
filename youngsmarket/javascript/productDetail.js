@@ -78,7 +78,7 @@ updateProductQuantity();
 
 // 바로구매 버튼
 function buyNow() {
-  location.href = "http://127.0.0.1:5500/youngsmarket/pages/buyNow.html";
+  location.href = "http://127.0.0.1:5500/youngsmarket/pages/order.html";
 }
 
 console.log(productObj.stock);
