@@ -1,0 +1,301 @@
+main {
+  margin: 0 auto;
+}
+
+.main-txt {
+  font-size: 36px;
+  padding: 54px 0 52px 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+.info-txt {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr 1fr 1fr;
+  justify-items: center;
+  width: 1280px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  padding: 19px 0;
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+
+.order-items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* order-item 시작 */
+.order-item {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr 1fr 1fr;
+  align-items: center;
+  width: 1280px;
+  background-color: #f2f2f2;
+  padding: 8px 0 18px 0;
+}
+
+.item-detail {
+  display: flex;
+  gap: 36px;
+}
+
+.item-image img {
+  width: 104px;
+  height: 104px;
+  border-radius: 10px;
+}
+
+.item-info {
+  padding: 12px 0;
+}
+
+.store-name,
+.item-quantity {
+  font-size: 14px;
+  color: #767676;
+}
+
+.item-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  padding: 6px 0 10px 0;
+}
+
+.discount,
+.delivery,
+.item-price {
+  justify-self: center;
+  font-size: 18px;
+}
+
+.discount,
+.delivery {
+  color: #767676;
+}
+
+.item-price {
+  color: #000;
+  font-weight: bold;
+}
+
+.total-price {
+  margin-left: auto;
+  padding-top: 35px;
+  display: flex;
+  gap: 10px;
+}
+
+.total-price p {
+  font-size: 18px;
+  color: #000;
+}
+
+.total-price strong {
+  font-size: 24px;
+  color: #eb5757;
+  line-height: 15px;
+}
+/* order-item 끝 */
+
+/* delivery-info-container 시작 */
+.delivery-info-txt {
+  font-size: 24px;
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--color-orange);
+}
+
+/* orderer-info 시작 */
+.orderer-info h4 {
+  padding: 40px 0 8px 0;
+  border-bottom: 2px solid var(--color-orange);
+}
+
+.orderer-info div {
+  border-bottom: 1px solid var(--color-orange);
+  padding: 18px 0;
+  position: relative;
+}
+
+.orderer-info div label {
+  font-size: 16px;
+  color: #000;
+}
+
+.orderer-info div input {
+  position: absolute;
+  left: 170px;
+  top: 4px;
+  border: 1px solid var(--color-orange);
+  background-color: var(--color-apricot);
+  font-size: 16px;
+  color: #000;
+}
+
+.orderer-info div span {
+  position: absolute;
+  left: 170px;
+  top: 16px;
+}
+
+.orderer-name input,
+.orderer-email input {
+  width: 324px;
+  height: 30px;
+  padding: 5px;
+}
+
+.orderer-phone-number input {
+  width: 70px;
+  height: 30px;
+  padding: 5px;
+}
+
+.orderer-phone-number span:nth-of-type(1) {
+  transform: translateX(100px);
+}
+
+.orderer-phone-number span:nth-of-type(2) {
+  transform: translateX(227px);
+}
+
+.orderer-phone-number input:nth-of-type(2) {
+  transform: translateX(127px);
+}
+
+.orderer-phone-number input:nth-of-type(3) {
+  transform: translateX(254px);
+}
+/* orderer-info 끝 */
+
+/* delivery-address-info 시작 */
+.delivery-address-info {
+  padding-bottom: 70px;
+}
+
+.delivery-address-info h4 {
+  padding: 40px 0 8px 0;
+  border-bottom: 2px solid var(--color-orange);
+}
+
+.delivery-address-info div {
+  border-bottom: 1px solid var(--color-orange);
+  position: relative;
+}
+
+.delivery-address-recipient,
+.delivery-address-phone-number,
+.delivery-address-message {
+  padding: 18px 0;
+}
+
+.delivery-address {
+  padding: 4px 0;
+}
+
+.delivery-address-info div label {
+  font-size: 16px;
+  color: #000;
+}
+
+.delivery-address-recipient input,
+.delivery-address-message input {
+  width: 326px;
+  height: 30px;
+  padding: 5px;
+  position: absolute;
+  left: 170px;
+  top: 6px;
+  border: 1px solid var(--color-orange);
+  background-color: var(--color-apricot);
+  font-size: 16px;
+}
+
+.delivery-address-phone-number input {
+  width: 72px;
+  height: 30px;
+  padding: 5px;
+  position: absolute;
+  left: 170px;
+  top: 4px;
+  border: 1px solid var(--color-orange);
+  background-color: var(--color-apricot);
+  font-size: 16px;
+}
+
+.delivery-address div input[type="text"] {
+  border: 1px solid var(--color-orange);
+  background-color: var(--color-apricot);
+  font-size: 16px;
+}
+
+.delivery-address div input[type="text"]:last-child {
+  border-bottom: none;
+}
+
+.delivery-address-phone-number span {
+  position: absolute;
+  left: 170px;
+  top: 16px;
+}
+
+.delivery-address-phone-number span:nth-of-type(1) {
+  transform: translateX(100px);
+}
+
+.delivery-address-phone-number span:nth-of-type(2) {
+  transform: translateX(227px);
+}
+
+.delivery-address-phone-number input:nth-of-type(2) {
+  transform: translateX(127px);
+}
+
+.delivery-address-phone-number input:nth-of-type(3) {
+  transform: translateX(254px);
+}
+
+.delivery-address {
+  display: flex;
+}
+
+.delivery-address div {
+  padding: 0;
+  transform: translateX(106px);
+}
+
+.delivery-address div input:nth-of-type(1) {
+  width: 160px;
+  height: 30px;
+  padding: 5px;
+  margin-bottom: 8px;
+}
+
+.delivery-address div input:nth-of-type(1),
+.delivery-address div input:nth-of-type(3) {
+  margin-bottom: 8px;
+}
+
+.delivery-address div input:nth-of-type(3),
+.delivery-address div input:nth-of-type(4) {
+  width: 790px;
+  height: 30px;
+  padding: 5px;
+}
+
+input[type="button"] {
+  position: absolute;
+  left: 180px;
+  cursor: pointer;
+  width: 154px;
+  height: 40px;
+  background-color: var(--color-maroon);
+  color: var(--color-apricot);
+  border-radius: 5px;
+}
+/* delivery-address-info 끝 */
+
+/* delivery-info-container 끝 */
