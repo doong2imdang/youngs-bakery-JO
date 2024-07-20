@@ -141,7 +141,76 @@
           </div>
         </div>
       </div>
-      <div class="payment-method-container"></div>
+      <div class="payment-method-container">
+        <div class="payment-method">
+          <h4>결제수단</h4>
+          <div class="payment-choose">
+            <div>
+              <input type="radio" id="card" />
+              <label for="card"></label>
+              <span>신용/체크카드</span>
+            </div>
+            <div>
+              <input type="radio" id="no-bankbook" />
+              <label for="no-bankbook"></label>
+              <span>무통장 입금</span>
+            </div>
+            <div>
+              <input type="radio" id="mobile-phone" />
+              <label for="mobile-phone"></label>
+              <span>휴대폰 결제</span>
+            </div>
+            <div>
+              <input type="radio" id="naver-pay" />
+              <label for="naver-pay"></label>
+              <span>네이버페이</span>
+            </div>
+            <div>
+              <input type="radio" id="kakao-pay" />
+              <label for="kakao-pay"></label>
+              <span>카카오페이</span>
+            </div>
+          </div>
+        </div>
+        <div class="final-payment-info">
+          <h4>최종결제 정보</h4>
+          <div class="info-box">
+            <div class="content-price">
+              <div class="content-txt">
+                <p><span>-</span>상품금액</p>
+              </div>
+              <div class="price-txt">
+                <strong>46,500</strong><span>원</span>
+              </div>
+            </div>
+            <div class="content-discount">
+              <div class="content-txt">
+                <p><span>-</span>할인금액</p>
+              </div>
+              <div class="price-txt"><strong>0</strong><span>원</span></div>
+            </div>
+            <div class="content-delivery-fee">
+              <div class="content-txt">
+                <p><span>-</span>배송비</p>
+              </div>
+              <div class="price-txt"><strong>0</strong><span>원</span></div>
+            </div>
+            <div class="content-payment">
+              <div class="content-txt">
+                <p><span>-</span>결제금액</p>
+              </div>
+              <strong>46,500원</strong>
+            </div>
+            <div class="content-agreement">
+              <button type="button">
+                <img src="../images/icon-check-box.svg" alt="" />
+              </button>
+              <span>주문 내용을 확인하였으며, 정보 제공 등에 동의합니다.</span>
+              <button class="btn-pay" type="button">결제하기</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
     <footer>
       <div class="footer-container">

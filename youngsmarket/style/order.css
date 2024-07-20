@@ -295,7 +295,147 @@ input[type="button"] {
   background-color: var(--color-maroon);
   color: var(--color-apricot);
   border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
 }
 /* delivery-address-info 끝 */
-
 /* delivery-info-container 끝 */
+
+/* payment-method-container 시작 */
+.payment-method-container {
+  display: grid;
+  grid-template-columns: 0.6fr 0.4fr;
+  gap: 40px;
+  padding-bottom: 200px;
+}
+/* payment-method 시작 */
+.payment-method h4 {
+  padding: 40px 0 18px 0;
+  border-bottom: 2px solid var(--color-orange);
+}
+
+.payment-choose {
+  border-bottom: 2px solid var(--color-orange);
+  padding: 18px 0;
+  display: flex;
+  gap: 20px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  position: relative;
+  padding-right: 25px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -17px;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--color-orange);
+  border-radius: 50%;
+}
+
+input[type="radio"]:checked + label::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: -12px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-orange);
+}
+
+.payment-choose div span {
+  padding-left: 25px;
+}
+/* payment-method 끝 */
+
+/* final-payment-info 시작 */
+.final-payment-info h4 {
+  padding: 40px 0 8px 0;
+}
+
+.info-box {
+  border: 2px solid var(--color-maroon);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.content-price,
+.content-discount,
+.content-delivery-fee,
+.content-payment {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.content-price {
+  padding-top: 34px;
+}
+
+.content-txt {
+  font-size: 16px;
+  color: 000;
+}
+
+.content-txt span {
+  padding-right: 5px;
+}
+
+.content-payment {
+  border-top: 1px solid var(--color-orange);
+  margin: 0 24px;
+  padding: 29px 6px 25px 6px;
+}
+
+.content-payment strong {
+  font-size: 24px;
+  color: #eb5757;
+}
+
+.content-agreement {
+  background-color: #f2f2f2;
+  padding: 32px 30px;
+  text-align: center;
+}
+
+.content-agreement span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.price-txt strong {
+  font-size: 18px;
+}
+
+.price-txt span {
+  font-size: 14px;
+  color: #767676;
+  padding-left: 3px;
+}
+
+.btn-pay {
+  width: 220px;
+  height: 68px;
+  background-color: var(--color-maroon);
+  border-radius: 5px;
+  font-size: 24px;
+  color: var(--color-apricot);
+  font-weight: bold;
+  margin-top: 30px;
+}
+/* final-payment-info 끝 */
+/* payment-method-container 끝 */
