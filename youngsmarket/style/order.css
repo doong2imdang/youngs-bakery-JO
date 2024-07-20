@@ -112,6 +112,7 @@ main {
 .orderer-info h4 {
   padding: 40px 0 8px 0;
   border-bottom: 2px solid var(--color-orange);
+  font-size: 18px;
 }
 
 .orderer-info div {
@@ -179,6 +180,11 @@ main {
 .delivery-address-info h4 {
   padding: 40px 0 8px 0;
   border-bottom: 2px solid var(--color-orange);
+  text-shadow: -1px 0px var(--color-orange), 0px 1px var(--color-orange),
+    1px 0px var(--color-orange), 0px -1px var(--color-orange);
+  color: #000;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .delivery-address-info div {
@@ -198,7 +204,10 @@ main {
 
 .delivery-address-info div label {
   font-size: 16px;
+  text-shadow: -1px 0px var(--color-orange), 0px 1px var(--color-orange),
+    1px 0px var(--color-orange), 0px -1px var(--color-orange);
   color: #000;
+  font-weight: bold;
 }
 
 .delivery-address-recipient input,
@@ -267,6 +276,10 @@ main {
   transform: translateX(106px);
 }
 
+.delivery-address label {
+  line-height: 50px;
+}
+
 .delivery-address div input:nth-of-type(1) {
   width: 160px;
   height: 30px;
@@ -321,11 +334,11 @@ input[type="button"] {
   gap: 20px;
 }
 
-input[type="radio"] {
+.payment-choose input[type="radio"] {
   display: none;
 }
 
-label {
+.payment-choose label {
   position: relative;
   padding-right: 25px;
   cursor: pointer;
@@ -333,22 +346,22 @@ label {
   display: inline-block;
 }
 
-label::before {
+.payment-choose label::before {
   content: "";
   position: absolute;
   left: 0;
-  top: -17px;
+  top: -8px;
   width: 18px;
   height: 18px;
   border: 2px solid var(--color-orange);
   border-radius: 50%;
 }
 
-input[type="radio"]:checked + label::after {
+.payment-choose input[type="radio"]:checked + label::after {
   content: "";
   position: absolute;
   left: 5px;
-  top: -12px;
+  top: -3px;
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -356,7 +369,7 @@ input[type="radio"]:checked + label::after {
 }
 
 .payment-choose div span {
-  padding-left: 25px;
+  padding-left: 3px;
 }
 /* payment-method 끝 */
 
