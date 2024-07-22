@@ -8,7 +8,7 @@ main {
   padding: 34px 100px;
   display: grid;
   align-items: center;
-  grid-template-columns: 0.6fr 5fr 0.55fr 0.55fr 0.55fr;
+  grid-template-columns: 0.6fr 5fr 0.7fr 0.7fr 0.6fr;
   border-radius: 10px;
 }
 
