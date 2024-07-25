@@ -92,12 +92,14 @@ main {
 .total-price p {
   font-size: 18px;
   color: #000;
+  font-weight: bold;
 }
 
 .total-price strong {
   font-size: 24px;
   color: #eb5757;
   line-height: 15px;
+  font-weight: bold;
 }
 /* order-item 끝 */
 
@@ -325,6 +327,8 @@ input[type="button"] {
 .payment-method h4 {
   padding: 40px 0 18px 0;
   border-bottom: 2px solid var(--color-orange);
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .payment-choose {
@@ -375,7 +379,8 @@ input[type="button"] {
 
 /* final-payment-info 시작 */
 .final-payment-info h4 {
-  padding: 40px 0 8px 0;
+  padding: 40px 0 18px 0;
+  font-size: 24px;
 }
 
 .info-box {
@@ -417,6 +422,7 @@ input[type="button"] {
 .content-payment strong {
   font-size: 24px;
   color: #eb5757;
+  font-weight: bold;
 }
 
 .content-agreement {
@@ -432,6 +438,7 @@ input[type="button"] {
 
 .price-txt strong {
   font-size: 18px;
+  font-weight: bold;
 }
 
 .price-txt span {

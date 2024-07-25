@@ -284,6 +284,7 @@ label {
 .expected-payment-amount strong {
   font-size: 36px;
   color: #eb5757;
+  font-weight: bold;
 }
 
 .expected-payment-amount span {
