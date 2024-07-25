@@ -1,0 +1,152 @@
+main {
+  margin: 70px auto;
+}
+
+.user-container {
+  width: 1080px;
+  background-color: #f2f2f2;
+  padding: 34px 100px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 0.6fr 5fr 0.55fr 0.55fr 0.55fr;
+  border-radius: 10px;
+}
+
+.user-container img {
+  width: 32px;
+  height: 32px;
+}
+
+.user-container strong {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.user-container p {
+  font-size: 18px;
+  color: #000;
+}
+
+.user-container span {
+  margin-left: 5px;
+}
+
+.order-processing-status {
+  width: 1280px;
+  padding-top: 18px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  margin: 38px 0;
+  position: relative;
+}
+
+.order-processing-status h3 {
+  margin-bottom: 18px;
+  padding: 0 50px;
+  display: block;
+  font-size: 18px;
+}
+
+.order-processing-status h3::after {
+  content: "";
+  height: 1px;
+  width: 1280px;
+  background: var(--color-maroon);
+  left: 0;
+  top: 58px;
+  position: absolute;
+}
+
+.order-processing-status h3 span {
+  font-weight: lighter;
+}
+
+.order-lists {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  padding: 32px 0 37px 0;
+}
+
+.order-list {
+  text-align: center;
+}
+
+.order-list:first-child:after {
+  content: "";
+  height: 96px;
+  width: 1px;
+  background: var(--color-maroon);
+  position: absolute;
+  top: 69px;
+  left: 320px;
+}
+
+.order-list:nth-of-type(2):after {
+  content: "";
+  height: 96px;
+  width: 1px;
+  background: var(--color-maroon);
+  position: absolute;
+  top: 69px;
+  left: 640px;
+}
+
+.order-list:nth-of-type(3):after {
+  content: "";
+  height: 96px;
+  width: 1px;
+  background: var(--color-maroon);
+  position: absolute;
+  top: 69px;
+  left: 960px;
+}
+
+.order-list a strong {
+  display: block;
+  padding-bottom: 20px;
+}
+
+.cs-lists {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: var(--color-maroon);
+  border-radius: 10px;
+}
+
+.cs-list {
+  padding: 19px 50px;
+  font-size: 18px;
+  border-right: 1px solid #f2f2f2;
+}
+
+.cs-list:last-child {
+  border-right: none;
+}
+
+.cs-list a {
+  display: flex;
+  justify-content: space-between;
+  color: #f2f2f2;
+  font-weight: lighter;
+}
+
+.membership-info {
+  background-color: #f2f2f2;
+  border-radius: 10px;
+}
+
+.membership-lists li {
+  border-bottom: 1px solid var(--color-maroon);
+  font-size: 18px;
+}
+
+.membership-lists li:last-child {
+  border-bottom: none;
+}
+
+.membership-lists li a {
+  display: flex;
+  padding: 14px 50px;
+  justify-content: space-between;
+}

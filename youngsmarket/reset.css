@@ -190,3 +190,7 @@ a {
 li {
   list-style: none;
 }
+
+strong {
+  font-weight: inherit;
+}
