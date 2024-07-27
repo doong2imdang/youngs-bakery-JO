@@ -2,7 +2,7 @@
   width: 265px;
   margin: auto;
   display: block;
-  padding: 100px 0 70px 0;
+  padding: 70px 0;
   cursor: pointer;
 }
 
@@ -66,7 +66,9 @@ label {
 #input-pw-check,
 #input-name,
 #input-phone-number,
-#input-email {
+#input-email,
+#input-business-number,
+#input-store-name {
   height: 52px;
   border: 1px solid var(--color-orange);
   font-size: 16px;
@@ -76,16 +78,23 @@ label {
   padding: 0 10px;
 }
 
-#input-id {
+#input-id,
+#input-business-number {
   width: 326px;
 }
 
-.btn-double-check {
+.input-business-number {
+  margin-top: 50px;
+}
+
+.btn-double-check,
+.btn-certification {
   width: 122px;
   height: 54px;
   background-color: var(--color-maroon);
   color: #f2f2f2;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .id-inputs {
@@ -96,7 +105,8 @@ label {
 
 #input-pw,
 #input-pw-check,
-#input-name {
+#input-name,
+#input-store-name {
   width: 460px;
 }
 
@@ -142,6 +152,7 @@ label {
   font-size: 16px;
   background-color: #f2f2f2;
   font-weight: bold;
+  display: none;
 }
 
 .select-box ul::-webkit-scrollbar {
@@ -172,6 +183,9 @@ label {
   top: 26px;
   left: 110px;
   padding: 0;
+}
+
+.btn-arrow-active {
   transform: rotateX(180deg);
   transition: all 1s;
 }
