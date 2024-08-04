@@ -66,6 +66,20 @@ function handleUsernameDoubleCheckClick() {
   console.log(inputId, idError);
 }
 
+// 비밀번호
+function onInputPw() {
+  const inputPwValue = document.getElementById("input-pw").value;
+  const pwError = document.querySelector(".pw-error");
+
+  if (inputPwValue.length < 8 && inputPwValue.length > 0) {
+    pwError.style.display = "block";
+    pwError.innerHTML = "비밀번호는 8자 이상, 영소문자를 포함해야 합니다.";
+  } else {
+    pwError.style.display = "none";
+  }
+  console.log(inputPwValue);
+}
+
 // 휴대폰 시작하는 번호
 function handleFirstPhoneNumberBtnClick() {
   if (selectBoxUl.style.display === "block") {
