@@ -15,10 +15,6 @@ let products = [];
 // localStorage
 let token = localStorage.getItem("token");
 
-if (!token) {
-  location.href = "http://127.0.0.1:5500/youngsmarket/pages/login.html";
-}
-
 // 상품 전체 불러오기 GET 요청
 function getProducts() {
   fetch(URL + "products/")
