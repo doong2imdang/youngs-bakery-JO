@@ -48,58 +48,60 @@ getShoppingCartItems();
 // 장바구니 상품 화면에 표시
 function displayShoppingCartItems() {
   // cartItems에서 product_id가 같은 경우
+  if (token) {
+    let cartItemsIntersection = cartItems.filter(
+      (item) =>
+        productsObj.filter((i) => i.product_id === item.product_id).length > 0
+    );
 
-  let cartItemsIntersection = cartItems.filter(
-    (item) =>
-      productsObj.filter((i) => i.product_id === item.product_id).length > 0
-  );
+    // products에서 product_id가 같은 경우
+    let productItemsIntersection = productsObj.filter(
+      (item) =>
+        cartItems.filter((i) => i.product_id === item.product_id).length > 0
+    );
 
-  // products에서 product_id가 같은 경우
-  let productItemsIntersection = productsObj.filter(
-    (item) =>
-      cartItems.filter((i) => i.product_id === item.product_id).length > 0
-  );
+    cartItemsIntersection.forEach((item) => {
+      cartItemsIntersectionArray[item.product_id] = {
+        quantity: item.quantity,
+        cart_item_id: item.cart_item_id,
+        is_active: item.is_active,
+      };
+    });
 
-  cartItemsIntersection.forEach((item) => {
-    cartItemsIntersectionArray[item.product_id] = {
-      quantity: item.quantity,
-      cart_item_id: item.cart_item_id,
-      is_active: item.is_active,
-    };
-  });
+    // productItemsIntersection에 quantity, cart-item-id 추가
+    productItemsIntersection = productItemsIntersection.map((product) => {
+      return {
+        ...product,
+        quantity:
+          cartItemsIntersectionArray[product.product_id] !== undefined
+            ? cartItemsIntersectionArray[product.product_id].quantity
+            : 0,
+        cart_item_id:
+          cartItemsIntersectionArray[product.product_id] !== undefined
+            ? cartItemsIntersectionArray[product.product_id].cart_item_id
+            : 0,
+        is_active:
+          cartItemsIntersectionArray[product.product_id] !== undefined
+            ? cartItemsIntersectionArray[product.product_id].is_active
+            : 0,
+      };
+    });
 
-  // productItemsIntersection에 quantity, cart-item-id 추가
-  productItemsIntersection = productItemsIntersection.map((product) => {
-    return {
-      ...product,
-      quantity:
-        cartItemsIntersectionArray[product.product_id] !== undefined
-          ? cartItemsIntersectionArray[product.product_id].quantity
-          : 0,
-      cart_item_id:
-        cartItemsIntersectionArray[product.product_id] !== undefined
-          ? cartItemsIntersectionArray[product.product_id].cart_item_id
-          : 0,
-      is_active:
-        cartItemsIntersectionArray[product.product_id] !== undefined
-          ? cartItemsIntersectionArray[product.product_id].is_active
-          : 0,
-    };
-  });
+    localStorage.setItem(
+      "cartItem",
+      JSON.stringify(cartItemsIntersectionArray)
+    );
 
-  console.log(cartItemsIntersectionArray);
-  localStorage.setItem("cartItem", JSON.stringify(cartItemsIntersectionArray));
+    if (productItemsIntersection.length > 0) {
+      paymentContainer.style.display = "block";
+      productItemsIntersection.forEach((cartItem) => {
+        const divItem = document.createElement("div");
+        divItem.className = "cart-item";
+        let price = cartItem.price.toLocaleString() + "원";
+        let totalPrice =
+          (cartItem.price * cartItem.quantity).toLocaleString() + "원";
 
-  if (productItemsIntersection.length > 0) {
-    paymentContainer.style.display = "block";
-    productItemsIntersection.forEach((cartItem) => {
-      const divItem = document.createElement("div");
-      divItem.className = "cart-item";
-      let price = cartItem.price.toLocaleString() + "원";
-      let totalPrice =
-        (cartItem.price * cartItem.quantity).toLocaleString() + "원";
-
-      let cartItemsHTML = `
+        let cartItemsHTML = `
       <div class="main-radio-group">
         <input type="radio" id="cart-item-check${cartItem.cart_item_id}" value="${cartItem.cart_item_id}" />
         <label for="cart-item-check${cartItem.cart_item_id}"></label>
@@ -133,58 +135,72 @@ alt="상품이미지"
         </button>
       `;
 
-      divItem.innerHTML = cartItemsHTML;
-      shoppingCart.appendChild(divItem);
+        divItem.innerHTML = cartItemsHTML;
+        shoppingCart.appendChild(divItem);
 
-      // input radio
-      selectCheckBox(divItem);
+        // input radio
+        selectCheckBox(divItem);
 
-      // 수량버튼
-      let productQunatityControl = divItem.querySelector(
-        ".product-quantity-control"
-      );
+        // 수량버튼
+        let productQunatityControl = divItem.querySelector(
+          ".product-quantity-control"
+        );
 
-      productQunatityControl.addEventListener("click", () => {
-        itemQuantityControlMessage(cartItem);
-        showModal();
-      });
-
-      // 개별 주문하기
-      let orderBtn = divItem.querySelector(".order-btn");
-      orderBtn.addEventListener("click", () => {
-        if (!token) {
-          itemOrderMessage();
+        productQunatityControl.addEventListener("click", () => {
+          itemQuantityControlMessage(cartItem);
           showModal();
-        } else {
-          location.href = "http://127.0.0.1:5500/youngsmarket/pages/order.html";
-        }
-      });
+        });
 
-      // 이미지 클릭 시 상품 상세 페이지로 이동
-      const imageButton = divItem.querySelector(".cart-item-image img");
-      imageButton.addEventListener("click", () => {
-        goProductDetailPage(productItemsIntersection, imageButton.src);
-      });
+        // 개별 주문하기
+        let orderBtn = divItem.querySelector(".order-btn");
+        orderBtn.addEventListener("click", () => {
+          if (!token) {
+            itemOrderMessage();
+            showModal();
+          } else {
+            location.href =
+              "http://127.0.0.1:5500/youngsmarket/pages/order.html";
+          }
+        });
 
-      // 삭제 버튼에 클릭 이벤트 리스너 추가
-      const deleteBtn = divItem.querySelector(".delete-btn");
-      const checkbox = divItem.querySelector(".main-radio-group input");
+        // 이미지 클릭 시 상품 상세 페이지로 이동
+        const imageButton = divItem.querySelector(".cart-item-image img");
+        imageButton.addEventListener("click", () => {
+          goProductDetailPage(productItemsIntersection, imageButton.src);
+        });
 
-      deleteBtn.addEventListener("click", function () {
-        selectAllCheckbox.checked = false;
-        checkbox.checked = false;
-        showModal();
+        // 삭제 버튼에 클릭 이벤트 리스너 추가
+        const deleteBtn = divItem.querySelector(".delete-btn");
+        const checkbox = divItem.querySelector(".main-radio-group input");
 
-        checkBtn.addEventListener("click", () => {
-          individualDeleteCartItems(cartItem.cart_item_id, cartItemsHTML);
+        deleteBtn.addEventListener("click", function () {
+          selectAllCheckbox.checked = false;
+          checkbox.checked = false;
+          showModal();
+
+          checkBtn.addEventListener("click", () => {
+            individualDeleteCartItems(cartItem.cart_item_id, cartItemsHTML);
+          });
+        });
+
+        cancelBtn.addEventListener("click", () => {
+          hideModal();
+          location.reload();
         });
       });
+    } else if (productItemsIntersection.length <= 0) {
+      paymentContainer.style.display = "none";
+      const divItem = document.createElement("div");
+      divItem.className = "no-cart-item";
+      let noCartItemHTML = `
+    <strong>장바구니에 담긴 상품이 없습니다.</strong>
+    <p>원하는 상품을 장바구니에 담아보세요!</p>
+  `;
+      divItem.innerHTML = noCartItemHTML;
+      shoppingCart.appendChild(divItem);
+    }
 
-      cancelBtn.addEventListener("click", () => {
-        hideModal();
-        location.reload();
-      });
-    });
+    calExpectedPaymentAmount(productItemsIntersection);
   } else {
     paymentContainer.style.display = "none";
     const divItem = document.createElement("div");
@@ -196,15 +212,6 @@ alt="상품이미지"
     divItem.innerHTML = noCartItemHTML;
     shoppingCart.appendChild(divItem);
   }
-
-  calExpectedPaymentAmount(productItemsIntersection);
-
-  console.log(
-    "productItemsIntersection : ",
-    productItemsIntersection,
-    "cartItemsIntersection : ",
-    cartItemsIntersection
-  );
 }
 
 console.log(

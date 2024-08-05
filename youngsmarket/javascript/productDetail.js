@@ -78,7 +78,12 @@ updateProductQuantity();
 
 // 바로구매 버튼
 function buyNow() {
-  location.href = "http://127.0.0.1:5500/youngsmarket/pages/order.html";
+  if (token) {
+    location.href = "http://127.0.0.1:5500/youngsmarket/pages/order.html";
+  } else {
+    noTokenMessage();
+    showModal();
+  }
 }
 
 console.log(productObj.stock);
@@ -101,25 +106,40 @@ function shoppingCart() {
     productQuantity + quantity
   );
 
-  if (productQuantity <= productObj.stock) {
-    if (productQuantity < 0) {
-      notInMyShoppingCartMessage();
-    } else if (productQuantity > 0) {
-      inMyShoppingCartMessage();
-    }
-    showModal();
-    putInShoppingCart();
-  }
-
   let noBtn = document.querySelector(".no-btn");
   noBtn.addEventListener("click", hideModal);
 
   let yesBtn = document.querySelector(".yes-btn");
-  yesBtn.addEventListener("click", () => {
-    hideModal();
-    location.href =
-      "http://127.0.0.1:5500/youngsmarket/pages/shoppingCart.html";
-  });
+
+  if (token) {
+    if (productQuantity < productObj.stock) {
+      if (productQuantity == 0) {
+        notInMyShoppingCartMessage();
+        showModal();
+        putInShoppingCart();
+      } else if (productQuantity > 0) {
+        inMyShoppingCartMessage();
+        showModal();
+      }
+    } else if (productObj.stock == productQuantity) {
+      overstockShoppingCartMessage();
+      showModal();
+    }
+
+    yesBtn.addEventListener("click", () => {
+      hideModal();
+      location.href =
+        "http://127.0.0.1:5500/youngsmarket/pages/shoppingCart.html";
+    });
+  } else {
+    noTokenMessage();
+    showModal();
+
+    yesBtn.addEventListener("click", () => {
+      hideModal();
+      location.href = "http://127.0.0.1:5500/youngsmarket/pages/login.html";
+    });
+  }
 }
 
 // 장바구니에 넣기
@@ -158,8 +178,6 @@ function putInShoppingCart() {
     })
     .catch((error) => {
       console.error("Error:", error);
-      overstockShoppingCartMessage();
-      showModal();
     });
 }
 
@@ -211,5 +229,15 @@ function overstockShoppingCartMessage() {
     재고 수량이 부족하여 <br/>
     장바구니에 담을 수 없습니다. <br />
     장바구니로 이동하시겠습니까?
+  `;
+}
+
+// 모달창 메시지 변경(token이 없을 경우)
+function noTokenMessage() {
+  let modalTxt = document.querySelector(".modal-txt");
+
+  modalTxt.innerHTML = `
+    로그인이 필요한 서비스입니다.<br />
+    로그인하시겠습니까?
   `;
 }
