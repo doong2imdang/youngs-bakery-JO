@@ -187,7 +187,6 @@ label {
 
 .btn-arrow-active {
   transform: rotateX(180deg);
-  transition: all 1s;
 }
 
 .email-inputs {
