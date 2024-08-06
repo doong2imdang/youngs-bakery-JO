@@ -237,3 +237,8 @@ label {
   font-weight: bold;
   text-decoration: underline;
 }
+
+.business-number-box,
+.store-name-box {
+  display: none;
+}

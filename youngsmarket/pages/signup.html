@@ -19,10 +19,16 @@
     </header>
     <main class="signup-main">
       <div class="btn-member">
-        <button type="button" class="btn-purchasing member-check-btn">
+        <button
+          onclick="btnPurchasingClick()"
+          type="button"
+          class="btn-purchasing member-check-btn"
+        >
           구매회원 로그인
         </button>
-        <button type="button" class="btn-sales">판매회원 로그인</button>
+        <button onclick="btnSalesClick()" type="button" class="btn-sales">
+          판매회원 로그인
+        </button>
       </div>
       <form class="signup-form member-check-purchasing">
         <div>
@@ -87,7 +93,7 @@
           </div>
         </div>
 
-        <div>
+        <div class="business-number-box">
           <label class="input-business-number" for="input-business-number"
             >사업자 등록번호</label
           >
@@ -98,7 +104,7 @@
           <div class="signup-error"></div>
         </div>
 
-        <div>
+        <div class="store-name-box">
           <label for="input-store-name">스토어 이름</label>
           <input id="input-store-name" type="text" value="" />
           <div class="signup-error"></div>
