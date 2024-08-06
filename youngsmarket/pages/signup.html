@@ -62,19 +62,19 @@
           <label for="input-phone-number">휴대폰번호</label>
           <div class="phone-number-inputs">
             <div class="select-box">
-              <div class="selected">
+              <div class="selected" onclick="handleFirstPhoneNumberBtnClick()">
                 <div class="selected-value">010</div>
-                <button class="btn-arrow btn-arrow-active" type="button">
+                <button class="btn-arrow" type="button">
                   <img src="../images/icon-down-arrow.svg" alt="" />
                 </button>
               </div>
               <ul>
-                <li class="option">010</li>
-                <li class="option">011</li>
-                <li class="option">016</li>
-                <li class="option">017</li>
-                <li class="option">018</li>
-                <li class="option">019</li>
+                <li class="option" onclick="handleOptionClick(event)">010</li>
+                <li class="option" onclick="handleOptionClick(event)">011</li>
+                <li class="option" onclick="handleOptionClick(event)">016</li>
+                <li class="option" onclick="handleOptionClick(event)">017</li>
+                <li class="option" onclick="handleOptionClick(event)">018</li>
+                <li class="option" onclick="handleOptionClick(event)">019</li>
               </ul>
             </div>
             <input id="input-phone-number" type="text" value="" maxlength="4" />
