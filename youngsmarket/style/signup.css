@@ -200,10 +200,17 @@ label {
   color: #767676;
 }
 
-.signup-error {
+.id-error,
+.pw-error,
+.pw2-error,
+.name-error,
+.phone-number-error,
+.email-error,
+.business-number-error,
+.store-name-error {
   color: #eb5757;
   font-size: 16px;
-  padding-top: 16px;
+  padding-bottom: 16px;
   display: none;
 }
 

@@ -8,6 +8,7 @@ let btnArrow = document.querySelector(".btn-arrow");
 
 // 전역변수
 let signupType = "BUYER";
+let URL = "https://openmarket.weniv.co.kr/";
 
 // 회원가입 회원 유형 선택 버튼
 function btnPurchasingClick() {
@@ -28,6 +29,41 @@ function btnSalesClick() {
   signupForm.classList.remove("member-check-purchasing");
   businessNumberBox.style.display = "block";
   storeNameBox.style.display = "block";
+}
+
+// 아이디 input
+function onInputId() {
+  const idError = document.querySelector(".id-error");
+  idError.style.display = "none";
+}
+
+// 아이디 중복 확인
+function handleUsernameDoubleCheckClick() {
+  const inputId = document.getElementById("input-id").value;
+  const idError = document.querySelector(".id-error");
+
+  fetch(URL + "accounts/signup/valid/username/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username: inputId,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      if (data.FAIL_Message) {
+        idError.innerHTML = data.FAIL_Message;
+        idError.style.display = "block";
+      } else {
+        idError.innerHTML = data.Success;
+        idError.style.display = "block";
+      }
+    });
+
+  console.log(inputId, idError);
 }
 
 // 휴대폰 시작하는 번호
