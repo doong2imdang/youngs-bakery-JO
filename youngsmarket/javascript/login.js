@@ -55,7 +55,6 @@ function handleSubmit(event) {
 // 로그인 회원 유형 선택 버튼
 function btnPurchasingClick() {
   loginType = "BUYER";
-  ("member-check-sales");
   btnPurchasing.classList.add("member-check-btn");
   btnSales.classList.remove("member-check-btn");
   loginForm.classList.add("member-check-purchasing");
