@@ -87,8 +87,20 @@
                 <li class="option" onclick="handleOptionClick(event)">019</li>
               </ul>
             </div>
-            <input id="input-phone-number" type="text" value="" maxlength="4" />
-            <input id="input-phone-number" type="text" value="" maxlength="4" />
+            <input
+              id="input-phone-number"
+              type="text"
+              value=""
+              maxlength="4"
+              onInput="validateInput(event)"
+            />
+            <input
+              id="input-phone-number"
+              type="text"
+              value=""
+              maxlength="4"
+              onInput="validateInput(event)"
+            />
           </div>
           <div class="phone-number-error"></div>
         </div>

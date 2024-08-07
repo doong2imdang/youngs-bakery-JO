@@ -119,3 +119,9 @@ function handleOptionClick(event) {
   selectBoxUl.style.display = "none";
   btnArrow.classList.remove("btn-arrow-btn");
 }
+
+// 휴대폰 번호 숫자만 가능
+function validateInput(event) {
+  const input = event.target;
+  input.value = input.value.replace(/[^0-9]/g, "");
+}
