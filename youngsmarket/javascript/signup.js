@@ -138,3 +138,42 @@ function handleCheckBoxBtn() {
   }
   isChecked = !isChecked;
 }
+
+// 가입하기 버튼
+function handleSignup(event) {
+  event.preventDefault();
+
+  // 입력 데이터
+  const username = document.getElementById("input-id").value;
+  const password = document.getElementById("input-pw").value;
+  const confrimPassword = document.getElementById("input-pw-check").value;
+  const name = document.getElementById("input-name").value;
+  const phoneNumberFirst = document.querySelector(".selected-value").innerText;
+  const phoneNumber = document.querySelectorAll("#input-phone-number");
+  const email = document.querySelectorAll("#input-email");
+
+  // 휴대폰, 이메일
+  const phone = `${phoneNumberFirst}${phoneNumber[0].value}${phoneNumber[1].value}`;
+  const emailComplete = `${email[0].value}@${email[1].value}}`;
+
+  // 입력 데이터 객체 생성
+  const signupData = {
+    username: username,
+    password: password,
+    password2: confrimPassword,
+    phone_number: phone,
+    name: name,
+  };
+
+  fetch(URL + "accounts/signup/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(signupData),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    });
+}
