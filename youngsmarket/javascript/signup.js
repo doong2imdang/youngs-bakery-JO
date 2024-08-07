@@ -167,9 +167,9 @@ function validateInput(event) {
 
   const secondNum = phoneNumberValues[0].value.length;
   const thirdNum = phoneNumberValues[1].value.length;
-  console.log(secondNum + thirdNum);
+  console.log(secondNum, thirdNum);
 
-  if (secondNum + thirdNum < 7 && secondNum + thirdNum > 0) {
+  if (secondNum + thirdNum < 8 && secondNum + thirdNum > 0 && thirdNum !== 4) {
     phoneNumberError.innerText =
       "핸드폰번호는 01*으로 시작해야 하는 10~11자리 숫자여야 합니다.";
     phoneNumberError.style.display = "block";
