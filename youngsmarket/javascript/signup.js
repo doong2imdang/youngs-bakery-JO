@@ -80,6 +80,27 @@ function onInputPw() {
   console.log(inputPwValue);
 }
 
+// 비밀번호 check
+function onInputPw2() {
+  const inputPwValue = document.getElementById("input-pw").value;
+  const inputPwCheckValue = document.getElementById("input-pw-check").value;
+  const pw2Error = document.querySelector(".pw2-error");
+
+  console.log(inputPwValue, inputPwCheckValue, pw2Error);
+
+  if (inputPwValue === inputPwCheckValue) {
+    pw2Error.style.display = "block";
+    pw2Error.innerHTML = "비밀번호가 일치합니다.";
+  } else {
+    pw2Error.style.display = "block";
+    pw2Error.innerHTML = "비밀번호가 일치하지 않습니다.";
+  }
+
+  if (inputPwCheckValue.length <= 0) {
+    pw2Error.style.display = "none";
+  }
+}
+
 // 휴대폰 시작하는 번호
 function handleFirstPhoneNumberBtnClick() {
   if (selectBoxUl.style.display === "block") {
