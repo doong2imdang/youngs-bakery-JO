@@ -9,6 +9,7 @@ let btnArrow = document.querySelector(".btn-arrow");
 // 전역변수
 let signupType = "BUYER";
 let URL = "https://openmarket.weniv.co.kr/";
+let isChecked = false;
 
 // 회원가입 회원 유형 선택 버튼
 function btnPurchasingClick() {
@@ -124,4 +125,16 @@ function handleOptionClick(event) {
 function validateInput(event) {
   const input = event.target;
   input.value = input.value.replace(/[^0-9]/g, "");
+}
+
+// 체크 박스
+function handleCheckBoxBtn() {
+  const btnAgreeImage = document.querySelector(".btn-agree img");
+
+  if (isChecked) {
+    btnAgreeImage.src = "../images/icon-check-box.svg";
+  } else {
+    btnAgreeImage.src = "../images/icon-check-fill-box.svg";
+  }
+  isChecked = !isChecked;
 }
