@@ -214,15 +214,21 @@ label {
   display: none;
 }
 
+.btn-signup[disabled] {
+  background-color: var(--color-orange);
+  cursor: not-allowed;
+}
+
 .btn-signup {
   width: 480px;
   height: 60px;
-  background-color: var(--color-orange);
+  background-color: var(--color-maroon);
   color: var(--color-apricot);
   font-size: 18px;
   font-weight: bold;
   border-radius: 10px;
   margin-top: 26px;
+  cursor: pointer;
 }
 
 .agree-container {

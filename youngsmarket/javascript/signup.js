@@ -5,14 +5,33 @@ let businessNumberBox = document.querySelector(".business-number-box");
 let storeNameBox = document.querySelector(".store-name-box");
 let selectBoxUl = document.querySelector(".select-box ul");
 let btnArrow = document.querySelector(".btn-arrow");
+const signupButton = document.querySelector(".btn-signup");
 
 // 전역변수
 let signupType = "BUYER";
 let URL = "https://openmarket.weniv.co.kr/";
-let isDoubleChecked = false;
-let isChecked = false;
-let isPhoneNumber = false;
 let isUsername = false;
+let isDoubleChecked = false;
+let isPw = false;
+let isPhoneNumber = false;
+let isName = false;
+let isChecked = false;
+
+// 가입하기 버튼 활성화/비활성화 함수
+function checkSignupButton() {
+  if (
+    isChecked &&
+    isDoubleChecked &&
+    isName &&
+    isPhoneNumber &&
+    isPw &&
+    isUsername
+  ) {
+    signupButton.disabled = false;
+  } else {
+    signupButton.disabled = true;
+  }
+}
 
 // 회원가입 회원 유형 선택 버튼
 function btnPurchasingClick() {
@@ -23,6 +42,7 @@ function btnPurchasingClick() {
   signupForm.classList.remove("member-check-sales");
   businessNumberBox.style.display = "none";
   storeNameBox.style.display = "none";
+  checkSignupButton();
 }
 
 function btnSalesClick() {
@@ -33,6 +53,7 @@ function btnSalesClick() {
   signupForm.classList.remove("member-check-purchasing");
   businessNumberBox.style.display = "block";
   storeNameBox.style.display = "block";
+  checkSignupButton();
 }
 
 // 아이디 input
@@ -58,6 +79,7 @@ function onInputId() {
     isUsername = false;
   }
 
+  checkSignupButton();
   console.log(isUsername);
 }
 
@@ -88,6 +110,7 @@ function handleUsernameDoubleCheckClick() {
         idError.style.display = "block";
         isDoubleChecked = true;
       }
+      checkSignupButton();
       console.log(isDoubleChecked);
     });
 
@@ -102,9 +125,13 @@ function onInputPw() {
   if (inputPwValue.length < 8 && inputPwValue.length > 0) {
     pwError.style.display = "block";
     pwError.innerHTML = "비밀번호는 8자 이상, 영소문자를 포함해야 합니다.";
+    isPw = false;
   } else {
     pwError.style.display = "none";
+    isPw = true;
   }
+
+  checkSignupButton();
   console.log(inputPwValue);
 }
 
@@ -119,14 +146,18 @@ function onInputPw2() {
   if (inputPwValue === inputPwCheckValue) {
     pw2Error.style.display = "block";
     pw2Error.innerHTML = "비밀번호가 일치합니다.";
+    isPw = true;
   } else {
     pw2Error.style.display = "block";
     pw2Error.innerHTML = "비밀번호가 일치하지 않습니다.";
+    isPw = false;
   }
 
   if (inputPwCheckValue.length <= 0) {
     pw2Error.style.display = "none";
   }
+
+  checkSignupButton();
 }
 
 // 이름
@@ -136,7 +167,12 @@ function onInputName() {
 
   if (inputNameValue.length > 0) {
     nameError.style.display = "none";
+    isName = true;
+  } else {
+    isName = false;
   }
+
+  checkSignupButton();
 }
 
 // 휴대폰 시작하는 번호
@@ -156,6 +192,7 @@ function handleOptionClick(event) {
   document.querySelector(".selected-value").innerText = selectedValue;
   selectBoxUl.style.display = "none";
   btnArrow.classList.remove("btn-arrow-btn");
+  checkSignupButton();
 }
 
 // 휴대폰 번호 숫자만 가능
@@ -179,6 +216,7 @@ function validateInput(event) {
     isPhoneNumber = true;
   }
 
+  checkSignupButton();
   console.log(isPhoneNumber);
 }
 
@@ -192,6 +230,7 @@ function handleCheckBoxBtn() {
     btnAgreeImage.src = "../images/icon-check-fill-box.svg";
   }
   isChecked = !isChecked;
+  checkSignupButton();
 }
 
 // 가입하기 버튼
@@ -227,41 +266,39 @@ function handleSignup(event) {
     name: name,
   };
 
-  if (isDoubleChecked && isChecked && isPhoneNumber && isUsername) {
-    fetch(URL + "accounts/signup/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(signupData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        if (data.username) {
-          idError.innerText = data.username[0];
-          idError.style.display = "block";
-        }
+  fetch(URL + "accounts/signup/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(signupData),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      if (data.username) {
+        idError.innerText = data.username[0];
+        idError.style.display = "block";
+      }
 
-        if (data.password) {
-          pwError.innerText = data.password[0];
-          pwError.style.display = "block";
-        }
+      if (data.password) {
+        pwError.innerText = data.password[0];
+        pwError.style.display = "block";
+      }
 
-        if (data.password2) {
-          pwCheckError.innerText = data.password2[0];
-          pwCheckError.style.display = "block";
-        }
+      if (data.password2) {
+        pwCheckError.innerText = data.password2[0];
+        pwCheckError.style.display = "block";
+      }
 
-        if (data.name) {
-          nameError.innerText = data.name[0];
-          nameError.style.display = "block";
-        }
+      if (data.name) {
+        nameError.innerText = data.name[0];
+        nameError.style.display = "block";
+      }
 
-        if (data.phone_number) {
-          phoneNumberError.innerText = data.phone_number[0];
-          phoneNumberError.style.display = "block";
-        }
-      });
-  }
+      if (data.phone_number) {
+        phoneNumberError.innerText = data.phone_number[0];
+        phoneNumberError.style.display = "block";
+      }
+    });
 }
