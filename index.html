@@ -78,8 +78,8 @@
 
       .tongs {
         position: absolute;
-        right: 0;
-        top: 63%;
+        /* transition: transform 0.1s ease; */
+        z-index: 100;
       }
     </style>
   </head>
@@ -137,7 +137,44 @@
           ></a>
         </li>
       </ul>
-      <img class="tongs" src="./images/tongs.svg" alt="" />
+      <img class="tongs" src="./images/tongs.svg" alt="tongs" />
     </div>
+    <script>
+      document.addEventListener("mousemove", function (event) {
+        const tongs = document.querySelector(".tongs");
+        const x = event.clientX;
+        const y = event.clientY;
+        tongs.style.transform = `translate(${x - 100}px, ${y - 350}px)`;
+      });
+
+      document
+        .querySelector(".tongs")
+        .addEventListener("click", function (event) {
+          const tongs = document.querySelector(".tongs");
+          const x = event.clientX;
+          const y = event.clientY;
+
+          const liElements = document.querySelectorAll(".breads li");
+          tongs.src = "./images/tongs_active.svg";
+
+          liElements.forEach((li) => {
+            const rect = li.getBoundingClientRect();
+            console.log(rect, x, y);
+            if (
+              x >= rect.left &&
+              x <= rect.right &&
+              y >= rect.top &&
+              y <= rect.bottom
+            ) {
+              const link = li.querySelector("a");
+              if (link) {
+                setTimeout(() => {
+                  link.click();
+                }, 300);
+              }
+            }
+          });
+        });
+    </script>
   </body>
 </html>
