@@ -56,3 +56,54 @@
 .btn-user:hover {
   opacity: 0.6;
 }
+
+.speech-bubble {
+  width: 120px;
+  height: 88px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 90px;
+  right: 260px;
+  z-index: 1;
+  background-color: #ffff;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 2px 2px rgb(178 178 178 / 0.3);
+  display: none;
+}
+
+.triangle {
+  width: 30px;
+  height: 30px;
+  background-color: #ffff;
+  border-radius: 4px;
+  transform: rotate(135deg);
+  position: absolute;
+  bottom: 80px;
+  left: 55px;
+  z-index: -10;
+}
+
+.speech-bubble-txt {
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 100;
+  color: #767676;
+  text-align: center;
+}
+
+.speech-bubble-txt p {
+  width: 109px;
+  padding: 10px 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.speech-bubble-txt p:hover {
+  border: 1px solid #000;
+  color: #000;
+}
