@@ -7,6 +7,7 @@ let logout = document.querySelector(".logout");
 
 // 전역변수
 token = localStorage.getItem("token");
+let count = 1;
 
 // 유저 버튼 텍스트 업데이트 함수
 function updateUserButton() {
@@ -19,6 +20,10 @@ function updateUserButton() {
     userTxt.innerHTML = "마이페이지";
     btnUser.addEventListener("click", () => {
       speechBubble.style.display = "block";
+      count++;
+      if (count % 2 === 1) {
+        speechBubble.style.display = "none";
+      }
 
       goMyPage.addEventListener("click", () => {
         location.href = "http://127.0.0.1:5500/youngsmarket/pages/mypage.html";
