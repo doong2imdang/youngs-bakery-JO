@@ -41,6 +41,7 @@ function handleSubmit(event) {
     .then((data) => {
       console.log(data);
       localStorage.setItem("token", data.token);
+      localStorage.setItem("userType", data.user_type);
       if (data.token) {
         inputId.value = "";
         inputPw.value = "";
