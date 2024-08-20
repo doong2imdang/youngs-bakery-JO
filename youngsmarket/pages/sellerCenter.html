@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YOUNGSMARKET</title>
+    <link rel="stylesheet" href="../style/sellerCenter.css" />
+    <link rel="stylesheet" href="../style/header.css" />
+    <link rel="stylesheet" href="../style/footer.css" />
+    <link rel="stylesheet" href="../common.css" />
+    <link rel="stylesheet" href="../reset.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="search-container">
+        <button class="main-logo" type="button">
+          <img src="../images/Logo-youngs.svg" alt="로고" />
+        </button>
+        <input
+          id="input-search"
+          type="text"
+          placeholder="상품을 검색해보세요!"
+        />
+        <button class="btn-search">
+          <img src="../images/icon-search.svg" alt="상품검색" />
+        </button>
+      </div>
+      <div class="user-controls">
+        <button
+          onclick="location.href='http://127.0.0.1:5500/youngsmarket/pages/shoppingCart.html'"
+          class="btn-shopping-cart"
+          type="button"
+        >
+          <img src="../images/icon-shopping-cart.svg" alt="장바구니" />
+          <p>장바구니</p>
+        </button>
+        <button class="btn-user" type="button">
+          <img src="../images/icon-user.svg" alt="로그인" />
+          <p class="user-txt">로그인</p>
+        </button>
+        <button
+          class="btn-seller-center"
+          type="button"
+          onclick="location.href='http://127.0.0.1:5500/youngsmarket/pages/sellerCenter.html'"
+        >
+          <img src="../images/icon-shopping-bag.svg" alt="판매자센터" />
+          <p>판매자 센터</p>
+        </button>
+        <div class="speech-bubble">
+          <div class="triangle"></div>
+          <div class="speech-bubble-txt">
+            <p class="go-mypage">마이페이지</p>
+            <p class="logout">로그아웃</p>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main></main>
+    <footer>
+      <div class="footer-container">
+        <div class="corp-area">
+          <ul class="corp-links">
+            <li><a>호두샵소개</a></li>
+            <li><a>이용약관</a></li>
+            <li class="bold"><a>개인정보처리방침</a></li>
+            <li><a>전자금융거래약관</a></li>
+            <li><a>청소년보호정책</a></li>
+            <li><a>제휴문의</a></li>
+          </ul>
+          <ul class="social-links">
+            <li>
+              <a><img src="../images/icon-insta.svg" alt="인스타" /></a>
+            </li>
+            <li>
+              <a><img src="../images/icon-fb.svg" alt="페이스북" /></a>
+            </li>
+            <li>
+              <a><img src="../images/icon-yt.svg" alt="유투브" /></a>
+            </li>
+          </ul>
+        </div>
+        <div class="info-area">
+          <ul>
+            <li class="bold">
+              <p>(주)HODU SHOP</p>
+            </li>
+            <li>
+              <p>제주특별자치도 제주시 동광고 137 제주코딩베이스캠프</p>
+            </li>
+            <li>
+              <p>사업자 번호: 000-0000-0000 | 통신판매업</p>
+            </li>
+            <li>
+              <p>대표: 김영스</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <script src="../javascript/sellerCenter.js"></script>
+    <script src="../javascript/header.js"></script>
+  </body>
+</html>
