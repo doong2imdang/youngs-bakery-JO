@@ -98,6 +98,7 @@ main {
 .info-contents {
   background-color: #f2f2f2;
   height: 100%;
+  overflow-y: scroll;
 }
 
 .info-content {
