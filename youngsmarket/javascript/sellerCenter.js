@@ -1,4 +1,5 @@
 const infoContents = document.querySelector(".info-contents");
+const navbars = document.querySelectorAll(".navbar");
 
 // 전역변수
 let URL = "https://openmarket.weniv.co.kr/";
@@ -50,3 +51,10 @@ function displayProducts() {
     infoContents.appendChild(listItem);
   });
 }
+
+navbars.forEach((navbar) => {
+  navbar.addEventListener("click", () => {
+    navbars.forEach((item) => item.classList.remove("active"));
+    navbar.classList.add("active");
+  });
+});
