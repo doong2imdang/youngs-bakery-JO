@@ -24,6 +24,7 @@ if (productObj.stock === 0) {
   quantity = 1;
 }
 let cartItems = JSON.parse(localStorage.getItem("cartItem"));
+let loginType = localStorage.getItem("userType");
 
 // 상품상세(이미지/스토어/상품이름/가격)
 function displayProductDetail() {
@@ -78,11 +79,23 @@ updateProductQuantity();
 
 // 바로구매 버튼
 function buyNow() {
-  if (token) {
+  let noBtn = document.querySelector(".no-btn");
+  noBtn.addEventListener("click", hideModal);
+  let yesBtn = document.querySelector(".yes-btn");
+  if (token && loginType === "BUYER") {
     location.href = "http://127.0.0.1:5500/youngsmarket/pages/order.html";
-  } else {
+  } else if (!token && loginType === "BUYER") {
     noTokenMessage();
     showModal();
+  } else if (loginType === "SELLER") {
+    loginTypeSellerMessage();
+    showModal();
+
+    yesBtn.addEventListener("click", () => {
+      hideModal();
+      window.localStorage.removeItem("token");
+      location.href = "http://127.0.0.1:5500/youngsmarket/pages/main.html";
+    });
   }
 }
 
@@ -111,7 +124,7 @@ function shoppingCart() {
 
   let yesBtn = document.querySelector(".yes-btn");
 
-  if (token) {
+  if (token && loginType === "BUYER") {
     if (productQuantity < productObj.stock) {
       if (productQuantity == 0) {
         notInMyShoppingCartMessage();
@@ -131,13 +144,22 @@ function shoppingCart() {
       location.href =
         "http://127.0.0.1:5500/youngsmarket/pages/shoppingCart.html";
     });
-  } else {
+  } else if (!token && loginType === "BUYER") {
     noTokenMessage();
     showModal();
 
     yesBtn.addEventListener("click", () => {
       hideModal();
       location.href = "http://127.0.0.1:5500/youngsmarket/pages/login.html";
+    });
+  } else if (loginType === "SELLER") {
+    loginTypeSellerMessage();
+    showModal();
+
+    yesBtn.addEventListener("click", () => {
+      hideModal();
+      window.localStorage.removeItem("token");
+      location.href = "http://127.0.0.1:5500/youngsmarket/pages/main.html";
     });
   }
 }
@@ -239,5 +261,15 @@ function noTokenMessage() {
   modalTxt.innerHTML = `
     로그인이 필요한 서비스입니다.<br />
     로그인하시겠습니까?
+  `;
+}
+
+// loginType 이 SELLER일 경우
+function loginTypeSellerMessage() {
+  let modalTxt = document.querySelector(".modal-txt");
+
+  modalTxt.innerHTML = `
+    구매자 로그인 시만 가능합니다.<br />
+    로그아웃 하시겠습니까? 
   `;
 }
